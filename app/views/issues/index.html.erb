@@ -33,3 +33,10 @@
 <br>
 
 <%= link_to 'New Issue', new_issue_path %>
+
+<h3>Bookmarklet Simulator</h3>
+<p>Paste in issue url and submit.</p>
+<%= form_tag new_issue_path, :method => "get" do %>
+  <p><%= text_field_tag :url, "https://github.com/jonmagic/scriptular/issues/1" %></p>
+  <p><%= submit_tag "Import Issue" %></p>
+<% end %>
