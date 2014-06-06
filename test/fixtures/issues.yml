@@ -1,0 +1,8 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: fix the copy
+  github_owner: jonmagic
+  github_repository: scriptular
+  github_id: 1
+  state: 0

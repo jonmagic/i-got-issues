@@ -1,0 +1,37 @@
+<%= form_for(@issue) do |f| %>
+  <% if @issue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@issue.errors.count, "error") %> prohibited this issue from being saved:</h2>
+
+      <ul>
+      <% @issue.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :github_owner %><br>
+    <%= f.text_field :github_owner %>
+  </div>
+  <div class="field">
+    <%= f.label :github_repository %><br>
+    <%= f.text_field :github_repository %>
+  </div>
+  <div class="field">
+    <%= f.label :github_id %><br>
+    <%= f.text_field :github_id %>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br>
+    <%= f.number_field :state %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @issue.title %>
+</p>
+
+<p>
+  <strong>Github owner:</strong>
+  <%= @issue.github_owner %>
+</p>
+
+<p>
+  <strong>Github repository:</strong>
+  <%= @issue.github_repository %>
+</p>
+
+<p>
+  <strong>Github:</strong>
+  <%= @issue.github_id %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @issue.state %>
+</p>
+
+<%= link_to 'Edit', edit_issue_path(@issue) %> |
+<%= link_to 'Back', issues_path %>

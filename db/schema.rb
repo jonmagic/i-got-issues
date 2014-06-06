@@ -16,4 +16,14 @@ ActiveRecord::Schema.define(version: 20140606051823) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "issues", force: true do |t|
+    t.string   "title",             null: false
+    t.string   "github_owner",      null: false
+    t.string   "github_repository", null: false
+    t.integer  "github_id",         null: false
+    t.integer  "state",             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
 end
