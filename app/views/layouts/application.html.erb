@@ -8,6 +8,12 @@
 </head>
 <body>
 
+<% if logged_in? %>
+  <a href="<%= logout_path %>" class="btn"><%= t('auth.logout') %></a>
+<% else %>
+  <a href="/auth/github" class="btn"><i class="icon-github-alt"></i> <span><%= t('auth.github_html') %></span></a>
+<% end %>
+
 <%= yield %>
 
 </body>
