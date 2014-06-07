@@ -34,6 +34,10 @@ class PrioritizedIssue < ActiveRecord::Base
     update_attributes :bucket => bucket, :row_order_position => position
   end
 
+  # Public: Delegate issue methods to associated Issue.
+  delegate :title, :github_owner, :github_repository,:github_id, :state,
+    :created_at, :updated_at, :to => :issue
+
   # column :created_at
   # column :updated_at
 end
