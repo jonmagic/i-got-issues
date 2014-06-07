@@ -4,6 +4,7 @@ class BucketsController < ApplicationController
   # GET /buckets
   def index
     @buckets = Bucket.rank(:row_order).all
+    @columns = 12 / @buckets.length
   end
 
   # GET /buckets/1

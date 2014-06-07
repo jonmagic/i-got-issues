@@ -1,6 +1,6 @@
 <div class="row">
   <% @buckets.each do |bucket| %>
-    <div class="span4 bucket">
+    <div class="col-lg-<%= @columns %> col-md-<%= @columns %> col-xs-12 bucket">
       <h3 class="header"><%= bucket.name %></h3>
 
       <ul>
