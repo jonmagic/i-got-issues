@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :buckets
-
   resources :issues
+  resources :prioritized_issues, :only => [] do
+    post :move_to_bucket, :as => :move_to_bucket
+  end
 
   match "/auth/:service/callback" => "services#create", :via => %i(get post)
   match "/auth/failure" => "services#failure",          :via => %i(get post)

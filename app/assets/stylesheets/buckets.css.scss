@@ -2,10 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.bucket {
-  background-color: #eee;
+.bucket-header {
+  text-align: center;
+}
 
-  .header {
-    text-align: center;
-  }
+.bucket-list {
+  background-color: #eee;
+  min-height: 40px;
 }

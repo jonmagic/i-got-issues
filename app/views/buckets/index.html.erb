@@ -1,11 +1,11 @@
 <div class="row">
   <% @buckets.each do |bucket| %>
     <div class="col-lg-<%= @columns %> col-md-<%= @columns %> col-xs-12 bucket">
-      <h3 class="header"><%= bucket.name %></h3>
+      <h3 class="bucket-header"><%= bucket.name %></h3>
 
-      <ul>
+      <ul class="bucket-list js-bucket-list" data-bucket-id="<%= bucket.id %>">
         <% bucket.issues.each do |issue| %>
-          <li><%= issue.title %></li>
+          <li class="ui-state-default" data-prioritized-issue-path="<%= prioritized_issue_move_to_bucket_path(issue) %>"><%= issue.title %></li>
         <% end %>
       </ul>
     </div>
