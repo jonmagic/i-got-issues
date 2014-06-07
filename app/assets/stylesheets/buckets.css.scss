@@ -1,3 +1,11 @@
 // Place all the styles related to the buckets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.bucket {
+  background-color: #eee;
+
+  .header {
+    text-align: center;
+  }
+}
