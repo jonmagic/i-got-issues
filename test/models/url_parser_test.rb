@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UrlParserTest < ActiveSupport::TestCase
   test "raises error if the url does not match pattern" do
-    assert_raises(StandardError) { UrlParser.new("foo") }
+    assert_raises(UrlParser::InvalidUrl) { UrlParser.new("foo") }
   end
 
   test "#github_owner" do
