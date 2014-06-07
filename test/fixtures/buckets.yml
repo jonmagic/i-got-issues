@@ -1,11 +1,11 @@
-one:
+current:
   name: Current
   row_order: 0
 
-two:
+backlog:
   name: Backlog
   row_order: 1
 
-three:
+icebox:
   name: Icebox
   row_order: 2

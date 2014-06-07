@@ -1,8 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+issue1:
   title: fix the copy
   github_owner: jonmagic
   github_repository: scriptular
   github_id: 1
+  state: 0
+
+issue2:
+  title: Fails when .env file doesn't exist
+  github_owner: bkeepers
+  github_repository: dotenv
+  github_id: 2
+  state: 0
+
+issue3:
+  title: list_commits does not return commits for private repos
+  github_owner: octokit
+  github_repository: octokit.rb
+  github_id: 3
   state: 0
