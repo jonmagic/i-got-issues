@@ -12,4 +12,5 @@ gem "ranked-model"
 gem "sass-rails"
 gem "spring", :group => :development
 gem "turbolinks"
+gem "twitter-bootstrap-rails"
 gem "uglifier"
