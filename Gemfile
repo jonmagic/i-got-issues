@@ -5,6 +5,7 @@ gem "bootstrap-sass"
 gem "coffee-rails"
 gem "dotenv-rails", :groups => [:development, :test]
 gem "jquery-rails"
+gem "jquery-ui-rails"
 gem "octokit"
 gem "omniauth-github"
 gem "pg"
