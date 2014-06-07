@@ -9,7 +9,13 @@ class ApplicationController < ActionController::Base
 
   protected
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session.has_key?(:user_id)
+    @current_user ||= begin
+      if session.has_key?(:user_id)
+        user = User.find(session[:user_id])
+        user.github_client = Octokit::Client.new(:access_token => session[:oauth_token])
+        user
+      end
+    end
   rescue ActiveRecord::RecordNotFound
     session[:user_id] = nil
   end

@@ -1,7 +1,5 @@
 <h1>Listing issues</h1>
 
-<a title="+Issue" href="javascript:void((function(){var%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('src','http://localhost:3000/assets/bookmarklet.js');document.body.appendChild(e)})())">+Issue</a>
-
 <table>
   <thead>
     <tr>
@@ -33,6 +31,9 @@
 <br>
 
 <%= link_to 'New Issue', new_issue_path %>
+
+<h3>Bookmarklet</h3>
+<p><a title="+Issue" href="javascript:void((function(){var%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('src','http://localhost:3000/assets/bookmarklet.js');document.body.appendChild(e)})())">+Issue</a></p>
 
 <h3>Bookmarklet Simulator</h3>
 <p>Paste in issue url and submit.</p>

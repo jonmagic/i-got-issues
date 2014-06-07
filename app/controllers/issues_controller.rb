@@ -12,7 +12,8 @@ class IssuesController < ApplicationController
 
   # GET /issues/new
   def new
-    @issue = Issue.new
+    github_issue = current_user.github_client.issue "github/finance", 1
+    @issue = Issue.new :title => github_issue["title"]
   end
 
   # GET /issues/1/edit

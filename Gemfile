@@ -4,6 +4,7 @@ gem "rails", "4.1.1"
 gem "coffee-rails"
 gem "dotenv-rails", :groups => [:development, :test]
 gem "jquery-rails"
+gem "octokit"
 gem "omniauth-github"
 gem "pg"
 gem "sass-rails"
