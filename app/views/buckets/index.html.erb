@@ -1,0 +1,27 @@
+<h1>Listing buckets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Row order</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @buckets.each do |bucket| %>
+      <tr>
+        <td><%= bucket.name %></td>
+        <td><%= bucket.row_order %></td>
+        <td><%= link_to 'Show', bucket %></td>
+        <td><%= link_to 'Edit', edit_bucket_path(bucket) %></td>
+        <td><%= link_to 'Destroy', bucket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bucket', new_bucket_path %>

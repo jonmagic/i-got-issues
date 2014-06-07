@@ -1,0 +1,25 @@
+<%= form_for(@bucket) do |f| %>
+  <% if @bucket.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bucket.errors.count, "error") %> prohibited this bucket from being saved:</h2>
+
+      <ul>
+      <% @bucket.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :row_order %><br>
+    <%= f.number_field :row_order %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :buckets
+
   resources :issues
 
   match "/auth/:service/callback" => "services#create", :via => %i(get post)
