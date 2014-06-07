@@ -12,8 +12,16 @@ class IssuesController < ApplicationController
 
   # GET /issues/new
   def new
-    github_issue = current_user.github_client.issue "github/finance", 1
-    @issue = Issue.new :title => github_issue["title"]
+    @issue = if github_issue
+      Issue.new \
+        :title             => github_issue["title"],
+        :github_owner      => parsed_url.github_owner,
+        :github_repository => parsed_url.github_repository,
+        :github_id         => parsed_url.github_id,
+        :state             => github_issue["state"]
+    else
+      Issue.new
+    end
   end
 
   # GET /issues/1/edit
@@ -55,5 +63,17 @@ private
   # Only allow a trusted parameter "white list" through.
   def issue_params
     params.require(:issue).permit(:title, :github_owner, :github_repository, :github_id, :state)
+  end
+
+  def parsed_url
+    UrlParser.new(params[:url]) if params[:url]
+  end
+
+  def github_issue
+    return unless parsed_url
+
+    current_user.github_client.issue \
+      "#{parsed_url.github_owner}/#{parsed_url.github_repository}",
+      parsed_url.github_id
   end
 end

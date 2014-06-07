@@ -15,22 +15,12 @@
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
-  <div class="field">
-    <%= f.label :github_owner %><br>
-    <%= f.text_field :github_owner %>
-  </div>
-  <div class="field">
-    <%= f.label :github_repository %><br>
-    <%= f.text_field :github_repository %>
-  </div>
-  <div class="field">
-    <%= f.label :github_id %><br>
-    <%= f.text_field :github_id %>
-  </div>
-  <div class="field">
-    <%= f.label :state %><br>
-    <%= f.number_field :state %>
-  </div>
+
+  <%= f.hidden_field :github_owner %>
+  <%= f.hidden_field :github_repository %>
+  <%= f.hidden_field :github_id %>
+  <%= f.hidden_field :state %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
