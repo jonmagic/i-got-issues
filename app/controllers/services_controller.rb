@@ -48,7 +48,7 @@ class ServicesController < ApplicationController
     service = current_user.services.find(params[:id])
     if service.respond_to?(:destroy) and service.destroy
       flash[:notice] = I18n.t("notifications.provider_unlinked", :provider => service.provider)
-      redirect_to redirect_path
+      redirect_to root_url
     end
   end
 
