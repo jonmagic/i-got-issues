@@ -4,7 +4,7 @@
       <h3 class="bucket-header"><%= bucket.name %></h3>
 
       <ul class="bucket-list js-bucket-list" data-bucket-id="<%= bucket.id %>">
-        <% bucket.issues.each do |issue| %>
+        <% PrioritizedIssue.bucket(bucket).each do |issue| %>
           <li class="ui-state-default" data-prioritized-issue-path="<%= prioritized_issue_move_to_bucket_path(issue) %>"><%= issue.title %></li>
         <% end %>
       </ul>
