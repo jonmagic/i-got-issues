@@ -6,6 +6,9 @@ class Bucket < ActiveRecord::Base
   # Returns a String.
   validates :name, :presence => true
 
+  # Public: Has many issues.
+  has_many :issues, :class_name => "PrioritizedIssue"
+
   # Public: Position of bucket.
   # column :row_order
   # Returns an Integer.
