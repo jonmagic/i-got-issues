@@ -19,8 +19,10 @@ class Issue < ActiveRecord::Base
   # column :state
   # Returns a String.
   enum :state => [:open, :closed]
-  
-  # column :created_at
 
+  # Public: Has many prioritized issues.
+  has_many :prioritized_issues
+
+  # column :created_at
   # column :updated_at
 end
