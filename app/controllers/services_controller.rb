@@ -41,7 +41,7 @@ class ServicesController < ApplicationController
       end
     end
 
-    redirect_to issues_path
+    redirect_to buckets_path
   end
 
   def destroy

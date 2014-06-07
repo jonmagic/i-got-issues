@@ -33,36 +33,29 @@
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
-
-    <%= javascript_include_tag "application" %>
   </head>
   <body>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li class="<%= navbar_link_class(:issues) %>"><%= link_to "Issues", issues_path %></li>
+          <li class="<%= navbar_link_class(:buckets) %>"><%= link_to "Buckets", buckets_path %></li>
+        </ul>
 
-    <div class="navbar navbar-fluid-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <ul class="nav">
-            <li><%= link_to "Issues", issues_path %></li>
-            <li><%= link_to "Buckets", buckets_path %></li>
-            <% if logged_in? %>
-              <li><a href="<%= logout_path %>"><%= t('auth.logout') %></a></li>
-            <% else %>
-              <li><a href="/auth/github"><i class="icon-github-alt"></i> <span><%= t('auth.github_html') %></span></a></li>
-            <% end %>
-          </ul>
-        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Logout", logout_path %></li>
+        </ul>
       </div>
-    </div>
+    </nav>
+
 
     <div class="container-fluid">
-      <div class="row">
-        <%= bootstrap_flash %>
-      </div>
-
       <%= yield %>
 
       <footer>
       </footer>
     </div>
+
+    <%= javascript_include_tag "application" %>
   </body>
 </html>
