@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
     if session.has_key?(:user_id)
       current_user
     else
-      redirect_to redirect_path
+      redirect_to root_url
     end
   end
 
