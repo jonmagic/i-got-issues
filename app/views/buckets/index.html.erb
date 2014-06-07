@@ -4,7 +4,7 @@
       <h3 class="header"><%= bucket.name %></h3>
 
       <ul>
-        <% @issues.each do |issue| %>
+        <% bucket.issues.each do |issue| %>
           <li><%= issue.title %></li>
         <% end %>
       </ul>

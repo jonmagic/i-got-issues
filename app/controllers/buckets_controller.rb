@@ -3,7 +3,6 @@ class BucketsController < ApplicationController
 
   # GET /buckets
   def index
-    @issues = Issue.all
     @buckets = Bucket.rank(:row_order).all
   end
 
