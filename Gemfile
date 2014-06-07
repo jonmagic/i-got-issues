@@ -7,6 +7,7 @@ gem "jquery-rails"
 gem "octokit"
 gem "omniauth-github"
 gem "pg"
+gem "ranked-model"
 gem "sass-rails"
 gem "spring", :group => :development
 gem "turbolinks"
