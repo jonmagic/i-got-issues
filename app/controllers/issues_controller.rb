@@ -46,14 +46,14 @@ class IssuesController < ApplicationController
     redirect_to issues_url, notice: 'Issue was successfully destroyed.'
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_issue
-      @issue = Issue.find(params[:id])
-    end
+private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_issue
+    @issue = Issue.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def issue_params
-      params.require(:issue).permit(:title, :github_owner, :github_repository, :github_id, :state)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def issue_params
+    params.require(:issue).permit(:title, :github_owner, :github_repository, :github_id, :state)
+  end
 end
