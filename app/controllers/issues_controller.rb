@@ -1,16 +1,6 @@
 class IssuesController < ApplicationController
-  before_action :set_issue, only: [:show, :edit, :update, :destroy]
+  before_action :set_issue, :only => [:update, :destroy]
 
-  # GET /issues
-  def index
-    @issues = Issue.all
-  end
-
-  # GET /issues/1
-  def show
-  end
-
-  # GET /issues/new
   def new
     @issue = if github_issue
       Issue.new \
@@ -25,11 +15,6 @@ class IssuesController < ApplicationController
     end
   end
 
-  # GET /issues/1/edit
-  def edit
-  end
-
-  # POST /issues
   def create
     @issue = Issue.new(issue_params)
 
@@ -40,7 +25,6 @@ class IssuesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /issues/1
   def update
     if @issue.update(issue_params)
       redirect_to @issue, notice: 'Issue was successfully updated.'
@@ -49,7 +33,6 @@ class IssuesController < ApplicationController
     end
   end
 
-  # DELETE /issues/1
   def destroy
     @issue.destroy
     redirect_to issues_url, notice: 'Issue was successfully destroyed.'

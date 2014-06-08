@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :buckets
-  resources :issues
+  resources :buckets, :only => [:index, :new, :edit, :create, :update, :destroy]
+  resources :issues, :only => [:new, :create, :update, :destroy]
   resources :prioritized_issues, :only => [] do
     post :move_to_bucket, :as => :move_to_bucket
   end

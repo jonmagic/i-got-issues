@@ -3,10 +3,7 @@ class Service < ActiveRecord::Base
   belongs_to :user
 
   # column :uid
-
   # column :provider
-
   # column :created_at
-  
   # column :updated_at
 end

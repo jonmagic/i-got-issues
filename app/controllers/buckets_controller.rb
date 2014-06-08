@@ -1,26 +1,18 @@
 class BucketsController < ApplicationController
-  before_action :set_bucket, only: [:show, :edit, :update, :destroy]
+  before_action :set_bucket, :only => [:edit, :update, :destroy]
 
-  # GET /buckets
   def index
     @buckets = current_user.buckets
     @columns = 12 / (@buckets.length > 0 ? @buckets.length : 1)
   end
 
-  # GET /buckets/1
-  def show
-  end
-
-  # GET /buckets/new
   def new
     @bucket = Bucket.new
   end
 
-  # GET /buckets/1/edit
   def edit
   end
 
-  # POST /buckets
   def create
     @bucket = Bucket.new(bucket_params)
     @bucket.team_id = current_user.team_id
@@ -32,7 +24,6 @@ class BucketsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /buckets/1
   def update
     if @bucket.update(bucket_params)
       redirect_to @bucket, notice: 'Bucket was successfully updated.'
@@ -41,7 +32,6 @@ class BucketsController < ApplicationController
     end
   end
 
-  # DELETE /buckets/1
   def destroy
     @bucket.destroy
     redirect_to buckets_url, notice: 'Bucket was successfully destroyed.'
