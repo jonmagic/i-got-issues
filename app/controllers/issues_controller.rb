@@ -18,7 +18,8 @@ class IssuesController < ApplicationController
         :github_owner      => parsed_url.github_owner,
         :github_repository => parsed_url.github_repository,
         :github_id         => parsed_url.github_id,
-        :state             => github_issue["state"]
+        :state             => github_issue["state"],
+        :assignee          => github_issue["assignee"] ? github_issue["assignee"]["login"] : nil
     else
       Issue.new
     end
@@ -62,7 +63,7 @@ private
 
   # Only allow a trusted parameter "white list" through.
   def issue_params
-    params.require(:issue).permit(:title, :github_owner, :github_repository, :github_id, :state)
+    params.require(:issue).permit(:title, :github_owner, :github_repository, :github_id, :state, :assignee)
   end
 
   def parsed_url

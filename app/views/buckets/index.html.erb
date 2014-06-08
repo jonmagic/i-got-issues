@@ -12,6 +12,7 @@
               <%= check_box_tag :state, issue.closed?, issue.closed? %>
             <% end %>
             <%= link_to issue.title, github_issue_url(issue) %>
+            <%= link_to "@#{issue.assignee}", github_user_url(issue) if issue.assignee %>
           </li>
         <% end %>
       </ul>
