@@ -1,3 +1,5 @@
+Turbolinks.enableTransitionCache();
+
 makeBucketsSortable = ->
   $(".js-bucket-list").sortable({
     connectWith: ".js-bucket-list"
