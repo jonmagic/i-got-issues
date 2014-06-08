@@ -22,6 +22,11 @@ class Bucket < ActiveRecord::Base
     update_attribute :row_order_position, position
   end
 
+  # Public: Id of team on GitHub.
+  # column :team_id
+  # Returns an Integer.
+  validates :team_id, :presence => true
+
   # column :created_at
   # column :updated_at
 end

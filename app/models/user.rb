@@ -1,10 +1,19 @@
 class User < ActiveRecord::Base
-  # column :name
 
+  # Public: GitHub username.
+  # column :name
+  # Returns a String.
+
+  # Public: Primary email address on GitHub.
   # column :email
+  # Returns a String.
+
+  # Public: Id of team on GitHub.
+  # column :team_id
+  # Returns an Integer.
+  validates :team_id, :presence => true
 
   # column :created_at
-
   # column :updated_at
 
   has_many :services
