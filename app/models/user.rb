@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
   # Returns an Integer.
   validates :team_id, :presence => true
 
+  has_many :buckets, -> { rank(:row_order) },
+    :primary_key => "team_id",
+    :foreign_key => "team_id"
+
   # column :created_at
   # column :updated_at
 

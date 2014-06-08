@@ -3,8 +3,8 @@ class BucketsController < ApplicationController
 
   # GET /buckets
   def index
-    @buckets = Bucket.rank(:row_order).all
-    @columns = 12 / @buckets.length
+    @buckets = current_user.buckets
+    @columns = 12 / (@buckets.length > 0 ? @buckets.length : 1)
   end
 
   # GET /buckets/1
