@@ -15,7 +15,8 @@ current = Bucket.create(:name => "Current", :row_order => 0)
     :repository => "dotenv",
     :number     => github_issue["number"],
     :state      => github_issue["state"],
-    :assignee   => github_issue["assignee"] ? github_issue["assignee"]["login"] : nil
+    :assignee   => github_issue["assignee"] ? github_issue["assignee"]["login"] : nil,
+    :labels     => github_issue["labels"].map {|label| label[:name] }
 
   issue.prioritized_issues.create :bucket => icebox
 end

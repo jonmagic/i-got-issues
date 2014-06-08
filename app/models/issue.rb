@@ -27,6 +27,10 @@ class Issue < ActiveRecord::Base
   # column :assignee
   # Returns a String.
 
+  # Public: Labels for issue.
+  # column :labels
+  serialize :labels, Array
+
   # column :created_at
   # column :updated_at
 

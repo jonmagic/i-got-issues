@@ -36,7 +36,7 @@ class PrioritizedIssue < ActiveRecord::Base
 
   # Public: Delegate issue methods to associated Issue.
   delegate :title, :owner, :repository, :number, :state, :created_at,
-    :updated_at, :open?, :closed?, :assignee, :to => :issue
+    :updated_at, :open?, :closed?, :assignee, :labels, :to => :issue
 
   # column :created_at
   # column :updated_at

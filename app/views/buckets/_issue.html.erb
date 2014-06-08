@@ -5,4 +5,7 @@
   <%= link_to issue.title, github_issue_url(issue), :class => "issue-link" %>
   <%= link_to "#{issue.owner} / #{issue.repository}", github_repository_url(issue), :class => "issue-repository-label" %>
   <%= link_to "@#{issue.assignee}", github_user_url(issue), :class => "issue-assignee" if issue.assignee %>
+  <% issue.labels.each do |label| %>
+    <span class="issue-label"><%= label %></span>
+  <% end %>
 </li>

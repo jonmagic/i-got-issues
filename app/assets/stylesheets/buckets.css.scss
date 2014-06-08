@@ -38,19 +38,27 @@
   padding: 2px 6px;
   font-size: 10px;
   border-radius: 4px;
+}
+
+@mixin issue-label-link($color) {
+  @include issue-label($color);
   cursor: pointer;
 
   &:hover {
-    color: rgb(217, 83, 79);
+    background-color: darken($color, 5);
+    color: darken($color, 50);
     text-decoration: none;
   }
-
 }
 
 .issue-repository-label {
-  @include issue-label(rgb(223, 240, 216));
+  @include issue-label-link(rgb(223, 240, 216));
 }
 
 .issue-assignee {
-  @include issue-label(rgb(217, 237, 247));
+  @include issue-label-link(rgb(217, 237, 247));
+}
+
+.issue-label {
+  @include issue-label(rgb(242, 222, 222));
 }
