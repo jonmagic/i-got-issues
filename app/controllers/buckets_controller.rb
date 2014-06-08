@@ -18,7 +18,7 @@ class BucketsController < ApplicationController
     @bucket.team_id = current_user.team_id
 
     if @bucket.save
-      redirect_to @bucket, notice: 'Bucket was successfully created.'
+      redirect_to buckets_path, :notice => "Bucket was successfully created."
     else
       render :new
     end
@@ -26,7 +26,7 @@ class BucketsController < ApplicationController
 
   def update
     if @bucket.update(bucket_params)
-      redirect_to @bucket, notice: 'Bucket was successfully updated.'
+      redirect_to buckets_path, :notice => "Bucket was successfully updated."
     else
       render :edit
     end
@@ -34,7 +34,7 @@ class BucketsController < ApplicationController
 
   def destroy
     @bucket.destroy
-    redirect_to buckets_url, notice: 'Bucket was successfully destroyed.'
+    redirect_to buckets_path, :notice => "Bucket was successfully destroyed."
   end
 
   private
