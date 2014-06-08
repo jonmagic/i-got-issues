@@ -7,6 +7,21 @@
 }
 
 .bucket-list {
-  background-color: #eee;
   min-height: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+.bucket-list-issue {
+  background-color: rgb(248,248,248);
+  border: 1px solid rgb(231,231,231);
+  list-style: none;
+  margin: 0 8px 4px;
+  padding: 10px;
+  line-height: 1.6;
+}
+
+.bucket-list-issue-state {
+  float: left;
+  margin-right: 10px;
 }

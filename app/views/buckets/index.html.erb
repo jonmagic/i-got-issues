@@ -1,11 +1,18 @@
 <div class="row">
   <% @buckets.each do |bucket| %>
     <div class="col-lg-<%= @columns %> col-md-<%= @columns %> col-xs-12 bucket">
-      <h3 class="bucket-header"><%= bucket.name %></h3>
+      <div class="bucket-header">
+        <h3><%= bucket.name %></h3>
+      </div>
 
       <ul class="bucket-list js-bucket-list" data-bucket-id="<%= bucket.id %>">
         <% PrioritizedIssue.bucket(bucket).each do |issue| %>
-          <li class="ui-state-default" data-prioritized-issue-path="<%= prioritized_issue_move_to_bucket_path(issue) %>"><%= issue.title %></li>
+          <li class="ui-state-default bucket-list-issue" data-prioritized-issue-path="<%= prioritized_issue_move_to_bucket_path(issue) %>">
+            <%= form_tag "/", :class => "bucket-list-issue-state" do %>
+              <%= check_box_tag :state, issue.closed?, issue.closed? %>
+            <% end %>
+            <p><%= issue.title %></p>
+          </li>
         <% end %>
       </ul>
     </div>
