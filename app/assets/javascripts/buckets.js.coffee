@@ -1,4 +1,4 @@
-Turbolinks.enableTransitionCache();
+Turbolinks.enableTransitionCache()
 
 makeBucketsSortable = ->
   $(".js-bucket-list").sortable({
@@ -14,10 +14,18 @@ makeBucketsSortable = ->
           url: ui.item.data("prioritized-issue-path")
           dataType: "json"
           data: { prioritized_issue: { bucket_id: bucket_id, row_order_position: position } }
-  }).disableSelection();
+  }).disableSelection()
+
+makeIssuesExpandable = ->
+  $(document).on "click", ".js-issue-toggle", (e) ->
+    e.preventDefault()
+
+    link = $(this)
+    link.parents(".issue").toggleClass("collapsed")
 
 $ ->
-  makeBucketsSortable();
+  makeBucketsSortable()
+  makeIssuesExpandable()
 
 $(document).on "page:load", ->
-  makeBucketsSortable();
+  makeBucketsSortable()
