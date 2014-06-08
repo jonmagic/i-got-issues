@@ -41,7 +41,11 @@ class ServicesController < ApplicationController
       end
     end
 
-    redirect_to buckets_path
+    if current_user.team_id.present?
+      redirect_to buckets_path
+    else
+      redirect_to teams_path
+    end
   end
 
   def destroy
