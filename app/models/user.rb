@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   # Public: GitHub username.
   # column :name
   # Returns a String.
+  validates :name, :uniqueness => true
 
   # Public: Primary email address on GitHub.
   # column :email
