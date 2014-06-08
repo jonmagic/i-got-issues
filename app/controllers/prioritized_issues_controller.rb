@@ -1,17 +1,24 @@
 class PrioritizedIssuesController < ApplicationController
   def create
     if github_issue
-      PrioritizedIssue.create \
-        :bucket             => current_user.buckets.last,
+      issue = Issue.from_attributes({
+        :title      => github_issue["title"],
+        :owner      => parsed_url.owner,
+        :repository => parsed_url.repository,
+        :number     => parsed_url.number,
+        :state      => github_issue["state"],
+        :assignee   => github_issue["assignee"] ? github_issue["assignee"]["login"] : nil
+      })
+
+      prioritized_issue = PrioritizedIssue.where(
+        :bucket => current_user.buckets,
+        :issue  => issue
+      ).first_or_initialize
+
+      prioritized_issue.update_attributes(
         :row_order_position => :last,
-        :issue_attributes   => {
-          :title      => github_issue["title"],
-          :owner      => parsed_url.owner,
-          :repository => parsed_url.repository,
-          :number     => parsed_url.number,
-          :state      => github_issue["state"],
-          :assignee   => github_issue["assignee"] ? github_issue["assignee"]["login"] : nil
-        }
+        :bucket => current_user.buckets.last
+      ) if prioritized_issue.new_record?
     end
 
     redirect_to buckets_path
