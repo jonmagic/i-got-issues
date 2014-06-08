@@ -21,7 +21,7 @@ class Issue < ActiveRecord::Base
   enum :state => [:open, :closed]
 
   # Public: Has many prioritized issues.
-  has_many :prioritized_issues
+  has_many :prioritized_issues, :dependent => :destroy
 
   # Public: Login of assignee.
   # column :assignee
