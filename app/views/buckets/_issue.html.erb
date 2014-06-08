@@ -1,0 +1,8 @@
+<li class="ui-state-default issue" data-prioritized-issue-path="<%= prioritized_issue_move_to_bucket_path(issue) %>">
+  <%= form_tag "/", :class => "issue-state-toggle" do %>
+    <%= check_box_tag :state, issue.closed?, issue.closed? %>
+  <% end %>
+  <%= link_to issue.title, github_issue_url(issue), :class => "issue-link" %>
+  <%= link_to "#{issue.owner} / #{issue.repository}", github_repository_url(issue), :class => "issue-repository-label" %>
+  <%= link_to "@#{issue.assignee}", github_user_url(issue), :class => "issue-assignee" if issue.assignee %>
+</li>

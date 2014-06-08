@@ -6,15 +6,7 @@
       </div>
 
       <ul class="bucket-list js-bucket-list" data-bucket-id="<%= bucket.id %>">
-        <% PrioritizedIssue.bucket(bucket).each do |issue| %>
-          <li class="ui-state-default bucket-list-issue" data-prioritized-issue-path="<%= prioritized_issue_move_to_bucket_path(issue) %>">
-            <%= form_tag "/", :class => "bucket-list-issue-state" do %>
-              <%= check_box_tag :state, issue.closed?, issue.closed? %>
-            <% end %>
-            <%= link_to issue.title, github_issue_url(issue) %>
-            <%= link_to "@#{issue.assignee}", github_user_url(issue) if issue.assignee %>
-          </li>
-        <% end %>
+        <%= render :partial => "issue", :collection => PrioritizedIssue.bucket(bucket) %>
       </ul>
     </div>
   <% end %>

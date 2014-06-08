@@ -12,7 +12,7 @@
   padding: 0;
 }
 
-.bucket-list-issue {
+.issue {
   background-color: rgb(248,248,248);
   border: 1px solid rgb(231,231,231);
   list-style: none;
@@ -21,7 +21,36 @@
   line-height: 1.6;
 }
 
-.bucket-list-issue-state {
+.issue-state-toggle {
   float: left;
   margin-right: 10px;
+}
+
+.issue-link {
+  margin-right: 6px;
+}
+
+@mixin issue-label($color) {
+  display: inline-block;
+  background-color: $color;
+  color: darken($color, 40);
+  border: 1px solid darken($color, 5);
+  padding: 2px 6px;
+  font-size: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    color: rgb(217, 83, 79);
+    text-decoration: none;
+  }
+
+}
+
+.issue-repository-label {
+  @include issue-label(rgb(223, 240, 216));
+}
+
+.issue-assignee {
+  @include issue-label(rgb(217, 237, 247));
 }

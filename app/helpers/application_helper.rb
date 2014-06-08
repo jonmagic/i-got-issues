@@ -10,4 +10,8 @@ module ApplicationHelper
   def github_user_url(issue)
     "https://github.com/#{issue.assignee}"
   end
+
+  def github_repository_url(issue)
+    "https://github.com/#{issue.owner}/#{issue.repository}"
+  end
 end
