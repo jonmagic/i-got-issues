@@ -11,7 +11,7 @@
             <%= form_tag "/", :class => "bucket-list-issue-state" do %>
               <%= check_box_tag :state, issue.closed?, issue.closed? %>
             <% end %>
-            <p><%= issue.title %></p>
+            <%= link_to issue.title, github_issue_url(issue) %>
           </li>
         <% end %>
       </ul>
