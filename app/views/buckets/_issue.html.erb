@@ -5,7 +5,11 @@
   <%= link_to issue.title, github_issue_url(issue), :class => "issue-link" %>
   <div class="issue-details">
     <%= link_to "#{issue.owner} / #{issue.repository}", github_repository_url(issue), :class => "issue-repository-label" %>
-    <%= link_to "@#{issue.assignee}", github_user_url(issue), :class => "issue-assignee" if issue.assignee %>
+    <% if issue.assignee %>
+      <%= link_to "@#{issue.assignee}", github_user_url(issue), :class => "issue-assignee" %>
+    <% else %>
+      <%= link_to "claim or assign", "#", :class => "issue-assignee js-issue-assignee" %>
+    <% end %>
     <% issue.labels.each do |label| %>
       <span class="issue-label"><%= label %></span>
     <% end %>
