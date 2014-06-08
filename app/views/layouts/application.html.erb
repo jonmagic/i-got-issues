@@ -10,7 +10,7 @@
           <li class="<%= navbar_link_class(:teams) %>"><%= link_to "Teams", teams_path %></li>
           <li class="<%= navbar_link_class(:buckets) %>"><%= link_to "Buckets", buckets_path %></li>
           <li>
-            <%= form_tag new_issue_path, :method => "get", :class => "issue-import-form" do %>
+            <%= form_tag prioritized_issues_path, :class => "issue-import-form" do %>
               <%= text_field_tag :url, "https://github.com/jonmagic/scriptular/issues/1", :class => "issue-import-url" %>
               <%= submit_tag "Import Issue" %>
             <% end %>

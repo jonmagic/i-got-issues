@@ -38,6 +38,10 @@ class PrioritizedIssue < ActiveRecord::Base
   delegate :title, :owner, :repository, :number, :state, :created_at,
     :updated_at, :open?, :closed?, :assignee, :to => :issue
 
+  def issue_attributes=(attributes)
+    create_issue(attributes)
+  end
+
   # column :created_at
   # column :updated_at
 end
