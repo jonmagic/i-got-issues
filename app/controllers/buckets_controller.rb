@@ -23,6 +23,7 @@ class BucketsController < ApplicationController
   # POST /buckets
   def create
     @bucket = Bucket.new(bucket_params)
+    @bucket.team_id = current_user.team_id
 
     if @bucket.save
       redirect_to @bucket, notice: 'Bucket was successfully created.'
