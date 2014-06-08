@@ -1,4 +1,4 @@
-$ ->
+makeBucketsSortable = ->
   $(".js-bucket-list").sortable({
     connectWith: ".js-bucket-list"
     update: (event, ui) ->
@@ -13,3 +13,9 @@ $ ->
           dataType: "json"
           data: { prioritized_issue: { bucket_id: bucket_id, row_order_position: position } }
   }).disableSelection();
+
+$ ->
+  makeBucketsSortable();
+
+$(document).on "page:load", ->
+  makeBucketsSortable();
