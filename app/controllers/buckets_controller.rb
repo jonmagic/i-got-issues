@@ -2,8 +2,12 @@ class BucketsController < ApplicationController
   before_action :set_bucket, :only => [:edit, :update, :destroy]
 
   def index
-    @buckets = current_user.buckets
-    @columns = 12 / (@buckets.length > 0 ? @buckets.length : 1)
+    if current_user.buckets.any?
+      @buckets = current_user.buckets
+      @columns = 12 / (@buckets.length > 0 ? @buckets.length : 1)
+    else
+      redirect_to new_bucket_path
+    end
   end
 
   def new
