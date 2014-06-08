@@ -48,8 +48,4 @@ class ApplicationController < ActionController::Base
     @current_user = nil
     reset_session
   end
-
-  def redirect_path
-    "/sessions/new"
-  end
 end

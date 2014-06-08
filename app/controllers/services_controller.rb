@@ -68,8 +68,4 @@ class ServicesController < ApplicationController
   def omniauth_providers
     (OmniAuth::Strategies.local_constants.map(&:downcase) - %i(developer oauth oauth2)).map(&:to_s)
   end
-
-  def redirect_path
-    :services
-  end
 end
