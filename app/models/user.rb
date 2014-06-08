@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
   # Public: Id of team on GitHub.
   # column :team_id
   # Returns an Integer.
-  validates :team_id, :presence => true
 
   has_many :buckets, -> { rank(:row_order) },
     :primary_key => "team_id",
