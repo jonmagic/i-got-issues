@@ -10,15 +10,15 @@ class UrlParser
 
   attr_reader :matches
 
-  def github_owner
+  def owner
     matches[1]
   end
 
-  def github_repository
+  def repository
     matches[2]
   end
 
-  def github_id
+  def number
     matches[3].to_i
   end
 end

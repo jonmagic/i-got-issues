@@ -35,8 +35,8 @@ class PrioritizedIssue < ActiveRecord::Base
   end
 
   # Public: Delegate issue methods to associated Issue.
-  delegate :title, :github_owner, :github_repository,:github_id, :state,
-    :created_at, :updated_at, :open?, :closed?, :assignee, :to => :issue
+  delegate :title, :owner, :repository, :number, :state, :created_at,
+    :updated_at, :open?, :closed?, :assignee, :to => :issue
 
   # column :created_at
   # column :updated_at

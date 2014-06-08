@@ -22,7 +22,7 @@ class ServicesController < ApplicationController
         session[:oauth_token]        = omnihash[:credentials][:token]
         session[:oauth_token_secret] = omnihash[:credentials][:secret]
       else
-        user         = User.where(:name => omnihash[:info][:nickname]).first_or_initialize
+        user         = User.where(:login => omnihash[:info][:nickname]).first_or_initialize
         user.email   = omnihash[:info][:email]
         user_service = user.services.build({
           :provider => omnihash[:provider],

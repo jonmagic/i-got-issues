@@ -1,5 +1,5 @@
 # Create user
-User.create(:name => "jonmagic", :email => "jonmagic@gmail.com")
+User.create(:login => "jonmagic", :email => "jonmagic@gmail.com")
 
 # Create buckets
 icebox  = Bucket.create(:name => "Icebox",  :row_order => 2)
@@ -10,12 +10,12 @@ current = Bucket.create(:name => "Current", :row_order => 0)
 (99..117).each do |n|
   github_issue = Octokit.issue "bkeepers/dotenv", n
   issue = Issue.create \
-    :title             => github_issue["title"],
-    :github_owner      => "bkeepers",
-    :github_repository => "dotenv",
-    :github_id         => github_issue["number"],
-    :state             => github_issue["state"],
-    :assignee          => github_issue["assignee"] ? github_issue["assignee"]["login"] : nil
+    :title      => github_issue["title"],
+    :owner      => "bkeepers",
+    :repository => "dotenv",
+    :number     => github_issue["number"],
+    :state      => github_issue["state"],
+    :assignee   => github_issue["assignee"] ? github_issue["assignee"]["login"] : nil
 
   issue.prioritized_issues.create :bucket => icebox
 end

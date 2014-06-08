@@ -5,18 +5,18 @@ class UrlParserTest < ActiveSupport::TestCase
     assert_raises(UrlParser::InvalidUrl) { UrlParser.new("foo") }
   end
 
-  test "#github_owner" do
+  test "#owner" do
     parsed  = UrlParser.new("https://github.com/jonmagic/scriptular/issues/1")
-    assert_equal "jonmagic", parsed.github_owner
+    assert_equal "jonmagic", parsed.owner
   end
 
-  test "#github_repository" do
+  test "#repository" do
     parsed  = UrlParser.new("https://github.com/jonmagic/scriptular/issues/1")
-    assert_equal "scriptular", parsed.github_repository
+    assert_equal "scriptular", parsed.repository
   end
 
-  test "#github_id" do
+  test "#number" do
     parsed  = UrlParser.new("https://github.com/jonmagic/scriptular/issues/1")
-    assert_equal 1, parsed.github_id
+    assert_equal 1, parsed.number
   end
 end

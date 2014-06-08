@@ -2,21 +2,23 @@
 
 issue1:
   title: fix the copy
-  github_owner: jonmagic
-  github_repository: scriptular
-  github_id: 1
+  owner: jonmagic
+  repository: scriptular
+  number: 1
   state: 0
+  assignee: jonmagic
 
 issue2:
   title: Fails when .env file doesn't exist
-  github_owner: bkeepers
-  github_repository: dotenv
-  github_id: 2
+  owner: bkeepers
+  repository: dotenv
+  number: 2
   state: 0
+  assignee: bkeepers
 
 issue3:
   title: list_commits does not return commits for private repos
-  github_owner: octokit
-  github_repository: octokit.rb
-  github_id: 3
+  owner: octokit
+  repository: octokit.rb
+  number: 3
   state: 0

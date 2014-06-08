@@ -3,16 +3,16 @@ class Issue < ActiveRecord::Base
   # column :title
   # Returns a String.
 
-  # Public: Username for GitHub issue owner.
-  # column :github_owner
+  # Public: Login for GitHub issue owner.
+  # column :owner
   # Returns a String.
 
   # Public: GitHub repository name issue belongs to.
-  # column :github_repository
+  # column :repository
   # Returns a String.
 
-  # Public: Issue id on GitHub.
-  # column :github_id
+  # Public: Issue number for repository on GitHub.
+  # column :number
   # Returns an Integer.
 
   # Public: Issue state.
@@ -22,6 +22,10 @@ class Issue < ActiveRecord::Base
 
   # Public: Has many prioritized issues.
   has_many :prioritized_issues
+
+  # Public: Login of assignee.
+  # column :assignee
+  # Returns a String.
 
   # column :created_at
   # column :updated_at

@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def github_issue_url(issue)
-    "https://github.com/#{issue.github_owner}/#{issue.github_repository}/issues/#{issue.github_id}"
+    "https://github.com/#{issue.owner}/#{issue.repository}/issues/#{issue.number}"
   end
 
   def github_user_url(issue)

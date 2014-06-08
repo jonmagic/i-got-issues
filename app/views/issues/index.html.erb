@@ -16,9 +16,9 @@
     <% @issues.each do |issue| %>
       <tr>
         <td><%= issue.title %></td>
-        <td><%= issue.github_owner %></td>
-        <td><%= issue.github_repository %></td>
-        <td><%= issue.github_id %></td>
+        <td><%= issue.owner %></td>
+        <td><%= issue.repository %></td>
+        <td><%= issue.number %></td>
         <td><%= issue.state %></td>
         <td><%= link_to 'Show', issue %></td>
         <td><%= link_to 'Edit', edit_issue_path(issue) %></td>
