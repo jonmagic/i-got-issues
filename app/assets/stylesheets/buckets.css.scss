@@ -35,6 +35,18 @@
       display: none;
     }
   }
+
+  &.assigning {
+    .issue-assignee {
+      display: none;
+    }
+  }
+
+  &:not(.assigning) {
+    .issue-assignee-form {
+      display: none;
+    }
+  }
 }
 
 .issue-state-toggle {
@@ -97,4 +109,8 @@
     margin-left: -25px;
     opacity: 0.1;
   }
+}
+
+.issue-assignee-form {
+  display: inline-block;
 }

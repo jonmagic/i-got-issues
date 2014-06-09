@@ -12,7 +12,7 @@
           <% if current_user.buckets.any? %>
             <li>
               <%= form_tag prioritized_issues_path, :class => "issue-import-form" do %>
-                <%= text_field_tag :url, "https://github.com/jonmagic/scriptular/issues/1", :class => "issue-import-url" %>
+                <%= text_field_tag :url, "https://github.com/hoytus/acme/issues/1", :class => "issue-import-url" %>
                 <%= submit_tag "Import Issue" %>
               <% end %>
             </li>

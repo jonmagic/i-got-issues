@@ -1,5 +1,6 @@
 class BucketsController < ApplicationController
   before_action :set_bucket, :only => [:edit, :update, :destroy]
+  before_action :load_team, :only => :index
 
   def index
     if current_user.buckets.any?
@@ -41,14 +42,19 @@ class BucketsController < ApplicationController
     redirect_to buckets_path, :notice => "Bucket was successfully destroyed."
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_bucket
-      @bucket = Bucket.find(params[:id])
-    end
+private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_bucket
+    @bucket = Bucket.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def bucket_params
-      params.require(:bucket).permit(:name, :row_order)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def bucket_params
+    params.require(:bucket).permit(:name, :row_order)
+  end
+
+  def load_team
+    team = current_user.github_client.team_members current_user.team_id
+    @teammates = team.map {|member| member["login"] }
+  end
 end

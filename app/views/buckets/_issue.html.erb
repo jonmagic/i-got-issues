@@ -1,4 +1,4 @@
-<li class="ui-state-default issue collapsed" data-prioritized-issue-path="<%= prioritized_issue_move_to_bucket_path(issue) %>">
+<li class="ui-state-default issue collapsed" data-prioritized-issue-path="<%= prioritized_issue_path(issue) %>" data-move-prioritized-issue-path="<%= prioritized_issue_move_to_bucket_path(issue) %>">
   <%= form_tag "/", :class => "issue-state-toggle" do %>
     <%= check_box_tag :state, issue.closed?, issue.closed? %>
   <% end %>
@@ -6,9 +6,12 @@
   <div class="issue-details">
     <%= link_to "#{issue.owner} / #{issue.repository}", github_repository_url(issue), :class => "issue-repository-label" %>
     <% if issue.assignee %>
-      <%= link_to "@#{issue.assignee}", github_user_url(issue), :class => "issue-assignee" %>
+      <%= link_to "@#{issue.assignee}", "#", :class => "issue-assignee js-issue-assignee-link" %>
     <% else %>
-      <%= link_to "claim or assign", "#", :class => "issue-assignee js-issue-assignee" %>
+      <%= link_to "claim or assign", "#", :class => "issue-assignee js-issue-assignee-link" %>
+    <% end %>
+    <%= form_for issue, :html => {:class => "issue-assignee-form"} do |f| %>
+      <%= f.select :assignee, @teammates, {:include_blank => true}, :class => "js-issue-assignee-select" %>
     <% end %>
     <% issue.labels.each do |label| %>
       <span class="issue-label"><%= label %></span>

@@ -11,7 +11,7 @@ makeBucketsSortable = ->
 
         $.ajax
           type: "POST"
-          url: ui.item.data("prioritized-issue-path")
+          url: ui.item.data("move-prioritized-issue-path")
           dataType: "json"
           data: { prioritized_issue: { bucket_id: bucket_id, row_order_position: position } }
   }).disableSelection()
@@ -19,13 +19,32 @@ makeBucketsSortable = ->
 makeIssuesExpandable = ->
   $(document).on "click", ".js-issue-toggle", (e) ->
     e.preventDefault()
-
     link = $(this)
-    link.parents(".issue").toggleClass("collapsed")
+    issue = $(this).parents(".issue")
+    issue.toggleClass("collapsed")
+
+makeIssuesAssignable = ->
+  $(document).on "click", ".js-issue-assignee-link", (e) ->
+    e.preventDefault()
+    link = $(this)
+    issue = $(this).parents(".issue")
+    issue.toggleClass("assigning")
+
+  $(document).on "change", ".js-issue-assignee-select", (e) ->
+    e.preventDefault()
+    field = $(this)
+    issue = $(this).parents(".issue")
+    request = $.ajax
+      type: "PATCH"
+      url: issue.data("prioritized-issue-path")
+      data: { prioritized_issue: { assignee: field.val() } }
+      success: (html) ->
+        issue.replaceWith(html)
 
 $ ->
   makeBucketsSortable()
   makeIssuesExpandable()
+  makeIssuesAssignable()
 
 $(document).on "page:load", ->
   makeBucketsSortable()

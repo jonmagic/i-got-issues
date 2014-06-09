@@ -1,4 +1,6 @@
 class PrioritizedIssuesController < ApplicationController
+  before_action :load_team, :only => :update
+  
   def create
     if github_issue
       issue = Issue.from_attributes({
@@ -25,6 +27,20 @@ class PrioritizedIssuesController < ApplicationController
     redirect_to buckets_path
   end
 
+  def update
+    prioritized_issue = PrioritizedIssue.find(params[:id])
+    prioritized_issue.issue.update(issue_params)
+
+    render :partial => "buckets/issue", :locals => {:issue => prioritized_issue}
+  end
+
+  def destroy
+    issue = Issue.find(params[:id])
+    issue.destroy
+
+    redirect_to buckets_path, :notice => 'Issue was successfully destroyed.'
+  end
+
   def move_to_bucket
     prioritized_issue = PrioritizedIssue.find(params[:prioritized_issue_id])
     bucket = Bucket.find(params[:prioritized_issue][:bucket_id])
@@ -45,5 +61,15 @@ private
     current_user.github_client.issue \
       "#{parsed_url.owner}/#{parsed_url.repository}",
       parsed_url.number
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def issue_params
+    params.require(:prioritized_issue).permit(:title, :owner, :repository, :number, :state, :assignee)
+  end
+
+  def load_team
+    team = current_user.github_client.team_members current_user.team_id
+    @teammates = team.map {|member| member["login"] }
   end
 end

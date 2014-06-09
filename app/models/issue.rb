@@ -44,4 +44,8 @@ class Issue < ActiveRecord::Base
     issue.update_attributes(attributes)
     issue
   end
+
+  def assignee=(assignee)
+    write_attribute :assignee, assignee.present? ? assignee : nil
+  end
 end
