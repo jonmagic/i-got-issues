@@ -1,4 +1,17 @@
 <div class="row">
+  <div class="container-fluid">
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><%= link_to 'New Bucket', new_bucket_path %></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+<div class="row">
   <% @buckets.each do |bucket| %>
     <div class="col-lg-<%= @columns %> col-md-<%= @columns %> col-xs-12 bucket">
       <div class="bucket-header">
@@ -10,8 +23,4 @@
       </ul>
     </div>
   <% end %>
-</div>
-
-<div class="row-fluid">
-  <%= link_to 'New Bucket', new_bucket_path %>
 </div>

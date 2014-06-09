@@ -11,9 +11,9 @@
           <li class="<%= navbar_link_class(:buckets) %>"><%= link_to "Buckets", buckets_path %></li>
           <% if current_user.buckets.any? %>
             <li>
-              <%= form_tag prioritized_issues_path, :class => "issue-import-form" do %>
-                <%= text_field_tag :url, "https://github.com/hoytus/acme/issues/1", :class => "issue-import-url js-issue-import-url" %>
-                <%= submit_tag "Import Issue" %>
+              <%= form_tag prioritized_issues_path, :class => "issue-import-form navbar-form navbar-left" do %>
+                <%= text_field_tag :url, "https://github.com/hoytus/acme/issues/1", :class => "issue_url form-control js-issue-import-url" %>
+                <%= submit_tag "Import Issue", :class => "btn btn-default" %>
               <% end %>
             </li>
           <% end %>
