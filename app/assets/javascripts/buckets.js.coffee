@@ -77,6 +77,17 @@ focusIssueImportOnCommand = ->
     if $(".js-issue-import-url:focus").length == 0 && e.keyCode == 73
       $(".js-issue-import-url").focus()
 
+makeIssueSyncable = ->
+  $(document).on "click", ".js-issue-sync", (e) ->
+    e.preventDefault()
+    issue = $(this).parents(".issue")
+
+    request = $.ajax
+      url: issue.data("issue-sync-path")
+      type: "POST"
+      success: (html) ->
+        issue.replaceWith(html)
+
 $ ->
   makeIssuesSortable()
   makeIssuesExpandable()
@@ -84,6 +95,7 @@ $ ->
   makeIssuesStateable()
   focusIssueImportOnCommand()
   makeBucketsSortable()
+  makeIssueSyncable()
 
 $(document).on "page:load", ->
   makeIssuesSortable()

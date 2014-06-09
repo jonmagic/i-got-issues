@@ -1,5 +1,5 @@
 class PrioritizedIssuesController < ApplicationController
-  before_action :load_team, :only => :update
+  before_action :load_team, :only => [:update, :sync]
 
   def create
     if issue = issue_sync.from_url(params[:url])
@@ -38,6 +38,13 @@ class PrioritizedIssuesController < ApplicationController
     prioritized_issue.move_to_bucket(bucket, params[:prioritized_issue][:row_order_position].to_i)
 
     render :json => prioritized_issue
+  end
+
+  def sync
+    prioritized_issue = current_user.issues.find(params[:prioritized_issue_id])
+    issue_sync.from_issue(prioritized_issue.issue)
+
+    render :partial => "buckets/issue", :locals => {:issue => prioritized_issue}
   end
 
 private
