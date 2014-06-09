@@ -1,11 +1,11 @@
 Turbolinks.enableTransitionCache()
 
-makeBucketsSortable = ->
+makeIssuesSortable = ->
   $(".js-bucket-list").sortable({
     connectWith: ".js-bucket-list"
     update: (event, ui) ->
       if this == ui.item.parent()[0]
-        window.target    = $(event.target)
+        window.target = $(event.target)
         bucket_id = target.data("bucket-id")
         position  = ui.item.index()
 
@@ -14,6 +14,19 @@ makeBucketsSortable = ->
           url: ui.item.data("move-to-bucket-path")
           dataType: "json"
           data: { prioritized_issue: { bucket_id: bucket_id, row_order_position: position } }
+  }).disableSelection()
+
+makeBucketsSortable = ->
+  $(".js-buckets").sortable({
+    handle: $(".js-bucket-handle")
+    update: (event, ui) ->
+      window.target = $(event.target)
+      position  = ui.item.index()
+
+      $.ajax
+        type: "PATCH"
+        url: ui.item.data("bucket-path")
+        data: { bucket: { row_order_position: position } }
   }).disableSelection()
 
 makeIssuesExpandable = ->
@@ -65,11 +78,13 @@ focusIssueImportOnCommand = ->
       $(".js-issue-import-url").focus()
 
 $ ->
-  makeBucketsSortable()
+  makeIssuesSortable()
   makeIssuesExpandable()
   makeIssuesAssignable()
   makeIssuesStateable()
   focusIssueImportOnCommand()
+  makeBucketsSortable()
 
 $(document).on "page:load", ->
+  makeIssuesSortable()
   makeBucketsSortable()

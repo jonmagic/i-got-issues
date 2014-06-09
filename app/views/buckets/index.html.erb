@@ -1,26 +1,3 @@
-<div class="row">
-  <div class="container-fluid">
-    <nav class="navbar navbar-default" role="navigation">
-      <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li><%= link_to 'New Bucket', new_bucket_path %></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </div>
-</div>
-<div class="row">
-  <% @buckets.each do |bucket| %>
-    <div class="col-lg-<%= @columns %> col-md-<%= @columns %> col-xs-12 bucket">
-      <div class="bucket-header">
-        <h3><%= bucket.name %></h3>
-      </div>
-
-      <ul class="bucket-list js-bucket-list" data-bucket-id="<%= bucket.id %>">
-        <%= render :partial => "issue", :collection => PrioritizedIssue.bucket(bucket) %>
-      </ul>
-    </div>
-  <% end %>
+<div class="row js-buckets">
+  <%= render :partial => "bucket", :collection => @buckets %>
 </div>

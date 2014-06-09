@@ -13,7 +13,7 @@ class Bucket < ActiveRecord::Base
   # column :row_order
   # Returns an Integer.
   validates :row_order, :presence => true
-  ranks :row_order
+  ranks :row_order, :with_same => :team_id
 
   # Public: Change position of Bucket.
   #

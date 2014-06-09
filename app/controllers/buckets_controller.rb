@@ -32,11 +32,9 @@ class BucketsController < ApplicationController
   end
 
   def update
-    if @bucket.update(bucket_params)
-      redirect_to buckets_path, :notice => "Bucket was successfully updated."
-    else
-      render :edit
-    end
+    @bucket.update(bucket_params)
+
+    render :json => @bucket
   end
 
   def destroy
@@ -52,7 +50,7 @@ private
 
   # Only allow a trusted parameter "white list" through.
   def bucket_params
-    params.require(:bucket).permit(:name, :row_order)
+    params.require(:bucket).permit(:name, :row_order_position)
   end
 
   def load_team

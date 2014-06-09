@@ -4,6 +4,11 @@
 
 .bucket-header {
   text-align: center;
+  cursor: move;
+
+  a {
+    cursor: pointer;
+  }
 }
 
 .bucket-list {
