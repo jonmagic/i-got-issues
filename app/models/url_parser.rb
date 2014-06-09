@@ -1,7 +1,7 @@
 class UrlParser
   class InvalidUrl < StandardError; end
 
-  ISSUE_REGEX = /https?\:\/\/github\.(?:com|dev)\/(.+)\/(.+)\/issues\/(\d*)/
+  ISSUE_REGEX = /https?\:\/\/github\.(?:com|dev)\/(.+)\/(.+)\/(?:issues|pull)\/(\d*)/
 
   def initialize(url)
     @matches = ISSUE_REGEX.match(url)

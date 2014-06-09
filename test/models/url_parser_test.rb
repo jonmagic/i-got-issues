@@ -5,6 +5,10 @@ class UrlParserTest < ActiveSupport::TestCase
     assert_raises(UrlParser::InvalidUrl) { UrlParser.new("foo") }
   end
 
+  test "works with pull request url" do
+    assert_nothing_raised { UrlParser.new("https://github.com/jonmagic/scriptular/pull/33") }
+  end
+
   test "#owner" do
     parsed  = UrlParser.new("https://github.com/jonmagic/scriptular/issues/1")
     assert_equal "jonmagic", parsed.owner
