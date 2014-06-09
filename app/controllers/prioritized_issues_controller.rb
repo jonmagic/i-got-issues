@@ -1,18 +1,8 @@
 class PrioritizedIssuesController < ApplicationController
   before_action :load_team, :only => :update
-  
-  def create
-    if github_issue
-      issue = Issue.from_attributes({
-        :title      => github_issue["title"],
-        :owner      => parsed_url.owner,
-        :repository => parsed_url.repository,
-        :number     => parsed_url.number,
-        :state      => github_issue["state"],
-        :assignee   => github_issue["assignee"] ? github_issue["assignee"]["login"] : nil,
-        :labels     => github_issue["labels"].map {|label| label[:name] }
-      })
 
+  def create
+    if issue = issue_sync.from_url(params[:url])
       prioritized_issue = PrioritizedIssue.where(
         :bucket => current_user.buckets,
         :issue  => issue
@@ -30,6 +20,7 @@ class PrioritizedIssuesController < ApplicationController
   def update
     prioritized_issue = PrioritizedIssue.find(params[:id])
     prioritized_issue.issue.update(issue_params)
+    issue_sync.from_issue(prioritized_issue.issue)
 
     render :partial => "buckets/issue", :locals => {:issue => prioritized_issue}
   end
@@ -50,19 +41,6 @@ class PrioritizedIssuesController < ApplicationController
   end
 
 private
-
-  def parsed_url
-    UrlParser.new(params[:url]) if params[:url]
-  end
-
-  def github_issue
-    return unless parsed_url
-
-    current_user.github_client.issue \
-      "#{parsed_url.owner}/#{parsed_url.repository}",
-      parsed_url.number
-  end
-
   # Only allow a trusted parameter "white list" through.
   def issue_params
     params.require(:prioritized_issue).permit(:title, :owner, :repository, :number, :state, :assignee)
@@ -71,5 +49,9 @@ private
   def load_team
     team = current_user.github_client.team_members current_user.team_id
     @teammates = team.map {|member| member["login"] }
+  end
+
+  def issue_sync
+    @issue_sync ||= IssueSync.new(current_user.github_client)
   end
 end

@@ -34,17 +34,6 @@ class Issue < ActiveRecord::Base
   # column :created_at
   # column :updated_at
 
-  def self.from_attributes(attributes)
-    issue = where(
-      :owner      => attributes[:owner],
-      :repository => attributes[:repository],
-      :number     => attributes[:number]
-    ).first_or_initialize
-
-    issue.update_attributes(attributes)
-    issue
-  end
-
   def assignee=(assignee)
     write_attribute :assignee, assignee.present? ? assignee : nil
   end
