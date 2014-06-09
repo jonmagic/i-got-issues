@@ -59,8 +59,7 @@ private
   end
 
   def load_team
-    # team = current_user.github_client.team_members current_user.team_id
-    # @teammates = team.map {|member| member["login"] }
-    @teammates = []
+    team = current_user.github_client.team_members current_user.team_id
+    @teammates = team.map {|member| member["login"] }
   end
 end
