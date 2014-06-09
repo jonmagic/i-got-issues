@@ -18,7 +18,7 @@
             </li>
           <% end %>
           <li>
-            <a title="+Issue" href="javascript:void((function(){var%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('src','https://teams-buckets-issues.herokuapp.com/assets/bookmarklet.js');document.body.appendChild(e)})())">+Issue</a>
+            <a title="+Issue" href="javascript:void((function(){var%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('src','<%= asset_url "bookmarklet.js" %>');document.body.appendChild(e)})())">+Issue</a>
           </li>
         </ul>
 
