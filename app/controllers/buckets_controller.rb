@@ -34,7 +34,10 @@ class BucketsController < ApplicationController
   def update
     @bucket.update(bucket_params)
 
-    render :json => @bucket
+    respond_to do |format|
+      format.json { render :json => @bucket }
+      format.html { redirect_to buckets_path }
+    end
   end
 
   def destroy
@@ -54,7 +57,8 @@ private
   end
 
   def load_team
-    team = current_user.github_client.team_members current_user.team_id
-    @teammates = team.map {|member| member["login"] }
+    # team = current_user.github_client.team_members current_user.team_id
+    # @teammates = team.map {|member| member["login"] }
+    @teammates = []
   end
 end

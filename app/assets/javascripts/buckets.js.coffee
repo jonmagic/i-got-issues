@@ -26,6 +26,7 @@ makeBucketsSortable = ->
       $.ajax
         type: "PATCH"
         url: ui.item.data("bucket-path")
+        dataType: "json"
         data: { bucket: { row_order_position: position } }
   }).disableSelection()
 

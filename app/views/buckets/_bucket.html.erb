@@ -1,10 +1,7 @@
 <div class="col-lg-<%= @columns %> col-md-<%= @columns %> col-xs-12 bucket" data-bucket-path="<%= bucket_path(bucket) %>">
   <div class="bucket-header js-bucket-handle">
-    <h3><%= bucket.name %></h3>
+    <h3><%= link_to bucket.name, edit_bucket_path(bucket) %></h3>
   </div>
-  <%= form_for bucket do |f| %>
-    
-  <% end %>
 
   <ul class="bucket-list js-bucket-list" data-bucket-id="<%= bucket.id %>">
     <%= render :partial => "issue", :collection => PrioritizedIssue.bucket(bucket) %>
