@@ -59,11 +59,17 @@ makeIssuesStateable = ->
       success: (html) ->
         issue.replaceWith(html)
 
+focusIssueImportOnCommand = ->
+  $(document).on "keyup", (e) ->
+    if $(".js-issue-import-url:focus").length == 0 && e.keyCode == 73
+      $(".js-issue-import-url").focus()
+
 $ ->
   makeBucketsSortable()
   makeIssuesExpandable()
   makeIssuesAssignable()
   makeIssuesStateable()
+  focusIssueImportOnCommand()
 
 $(document).on "page:load", ->
   makeBucketsSortable()
