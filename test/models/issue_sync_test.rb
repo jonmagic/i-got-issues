@@ -27,7 +27,9 @@ class IssueSyncTest < ActiveSupport::TestCase
     VCR.use_cassette "sync to github" do
       syncer.from_issue(issue)
 
-      assert_equal issue.state, syncer.github_issue["state"]
+      syncer = IssueSync.new(github_client)
+      syncer.set_issue = issue
+      assert_equal issue.state, syncer.github_attributes[:state]
     end
   end
 

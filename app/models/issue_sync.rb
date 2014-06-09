@@ -50,10 +50,6 @@ class IssueSync
     github_attributes != local_attributes
   end
 
-  def github_issue
-    github_client.issue "#{owner}/#{repository}", number
-  end
-
   def set_issue=(issue)
     self.issue      = issue
     self.owner      = issue.owner
@@ -61,30 +57,8 @@ class IssueSync
     self.number     = issue.number
   end
 
-private
-
-  def update_local
-    issue.update_attributes(github_attributes)
-  end
-
-  def update_github
-    github_client.update_issue \
-      "#{owner}/#{repository}", number, github_attributes[:title], github_attributes[:body],
-      :state => issue.state, :assignee => issue.assignee
-  end
-
-  def issue
-    return @issue if @issue.present?
-
-    self.issue = Issue.where(
-      :owner      => owner,
-      :repository => repository,
-      :number     => number
-    ).first_or_initialize
-  end
-
   def github_attributes
-    {
+    @github_attributes ||= {
       :title      => github_issue["title"],
       :state      => github_issue["state"],
       :assignee   => github_issue["assignee"] ? github_issue["assignee"]["login"] : nil,
@@ -99,6 +73,32 @@ private
       :assignee => issue.assignee,
       :labels   => issue.labels
     }
+  end
+
+private
+
+  def github_issue
+    @github_issue ||= github_client.issue "#{owner}/#{repository}", number
+  end
+
+  def update_local
+    issue.update_attributes(github_attributes)
+  end
+
+  def update_github
+    github_client.update_issue \
+      "#{owner}/#{repository}", number, github_attributes[:title], github_attributes[:body],
+      :state => issue.state, :assignee => issue.assignee
+  end
+
+  def issue
+    return @issue if @issue.present?
+
+    self.set_issue = Issue.where(
+      :owner      => owner,
+      :repository => repository,
+      :number     => number
+    ).first_or_initialize
   end
 
   def parsed_url
