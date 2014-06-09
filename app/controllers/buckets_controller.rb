@@ -1,13 +1,15 @@
 class BucketsController < ApplicationController
   before_action :set_bucket, :only => [:edit, :update, :destroy]
-  before_action :load_team, :only => :index
 
   def index
     if current_user.buckets.any?
+      load_team
       @buckets = current_user.buckets
       @columns = 12 / (@buckets.length > 0 ? @buckets.length : 1)
-    else
+    elsif current_user.team_id.present?
       redirect_to new_bucket_path
+    else
+      redirect_to teams_path
     end
   end
 
