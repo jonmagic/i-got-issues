@@ -14,7 +14,7 @@
             <% if current_user.buckets.any? %>
               <li>
                 <%= form_tag prioritized_issues_path, :class => "issue-import-form navbar-form navbar-left" do %>
-                  <%= text_field_tag :url, "https://github.com/jonmagic/scriptular/1", :class => "issue_url form-control js-issue-import-url" %>
+                  <%= text_field_tag :url, "", :placeholder => "https://github.com/jonmagic/scriptular/issues/1", :class => "issue-url form-control js-issue-import-url" %>
                   <%= submit_tag "Import Issue", :class => "btn btn-default" %>
                 <% end %>
               </li>
