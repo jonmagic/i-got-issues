@@ -26,8 +26,8 @@ class PrioritizedIssuesController < ApplicationController
   end
 
   def destroy
-    issue = Issue.find(params[:id])
-    issue.destroy
+    prioritized_issue = PrioritizedIssue.find(params[:id])
+    prioritized_issue.destroy
 
     redirect_to buckets_path, :notice => 'Issue was successfully destroyed.'
   end

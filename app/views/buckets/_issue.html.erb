@@ -16,6 +16,9 @@
     <% issue.labels.each do |label| %>
       <span class="issue-label"><%= label %></span>
     <% end %>
+    <%= form_for issue, :method => "delete", :html => {:class => "issue-destroy-form"} do |f| %>
+      <%= f.button "remove issue" %>
+    <% end %>
   </div>
   <%= link_to image_tag("expand.png"), "#", :class => "issue-expand issue-toggle js-issue-toggle" %>
   <%= link_to image_tag("collapse.png"), "#", :class => "issue-collapse issue-toggle js-issue-toggle" %>
