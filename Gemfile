@@ -9,7 +9,7 @@ gem "jquery-ui-rails"
 gem "octokit"
 gem "omniauth-github"
 gem "pg"
-gem "pry"
+gem "rails_12factor"
 gem "ranked-model"
 gem "sass-rails"
 gem "spring", :group => :development
@@ -19,4 +19,8 @@ gem "uglifier"
 group :test do
   gem "webmock"
   gem "vcr"
+end
+
+group :test, :development do
+  gem "pry"
 end
