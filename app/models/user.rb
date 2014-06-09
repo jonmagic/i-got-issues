@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
     :primary_key => "team_id",
     :foreign_key => "team_id"
 
+  def issues
+    PrioritizedIssue.where(:bucket => buckets)
+  end
+
   # column :created_at
   # column :updated_at
 

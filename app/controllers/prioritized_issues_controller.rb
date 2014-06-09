@@ -18,7 +18,7 @@ class PrioritizedIssuesController < ApplicationController
   end
 
   def update
-    prioritized_issue = PrioritizedIssue.find(params[:id])
+    prioritized_issue = current_user.issues.find(params[:id])
     prioritized_issue.issue.update(issue_params)
     issue_sync.from_issue(prioritized_issue.issue)
 
@@ -26,15 +26,15 @@ class PrioritizedIssuesController < ApplicationController
   end
 
   def destroy
-    prioritized_issue = PrioritizedIssue.find(params[:id])
+    prioritized_issue = current_user.issues.find(params[:id])
     prioritized_issue.destroy
 
     redirect_to buckets_path, :notice => 'Issue was successfully destroyed.'
   end
 
   def move_to_bucket
-    prioritized_issue = PrioritizedIssue.find(params[:prioritized_issue_id])
-    bucket = Bucket.find(params[:prioritized_issue][:bucket_id])
+    prioritized_issue = current_user.issues.find(params[:prioritized_issue_id])
+    bucket = current_user.buckets.find(params[:prioritized_issue][:bucket_id])
     prioritized_issue.move_to_bucket(bucket, params[:prioritized_issue][:row_order_position].to_i)
 
     render :json => prioritized_issue
