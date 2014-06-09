@@ -11,7 +11,7 @@ makeBucketsSortable = ->
 
         $.ajax
           type: "POST"
-          url: ui.item.data("move-prioritized-issue-path")
+          url: ui.item.data("move-to-bucket-path")
           dataType: "json"
           data: { prioritized_issue: { bucket_id: bucket_id, row_order_position: position } }
   }).disableSelection()
@@ -34,10 +34,28 @@ makeIssuesAssignable = ->
     e.preventDefault()
     field = $(this)
     issue = $(this).parents(".issue")
+    form  = $(this).parents("form")
     request = $.ajax
+      url: form.attr("action")
       type: "PATCH"
-      url: issue.data("prioritized-issue-path")
       data: { prioritized_issue: { assignee: field.val() } }
+      success: (html) ->
+        issue.replaceWith(html)
+
+makeIssuesStateable = ->
+  $(document).on "change", ".js-issue-state-toggle", (e) ->
+    field = $(this)
+    issue = $(this).parents(".issue")
+    form  = $(this).parents("form")
+    state = if field.prop("checked")
+      "closed"
+    else
+      "open"
+
+    request = $.ajax
+      url: form.attr("action")
+      type: "PATCH"
+      data: { prioritized_issue: { state: state } }
       success: (html) ->
         issue.replaceWith(html)
 
@@ -45,6 +63,7 @@ $ ->
   makeBucketsSortable()
   makeIssuesExpandable()
   makeIssuesAssignable()
+  makeIssuesStateable()
 
 $(document).on "page:load", ->
   makeBucketsSortable()
