@@ -1,6 +1,6 @@
 module ApplicationHelper
-  def navbar_link_class(section)
-    "active" if params[:controller] == section.to_s
+  def navbar_link_class(controller, action)
+    "active" if params[:controller] == controller.to_s && params[:action] == action.to_s
   end
 
   def github_issue_url(issue)
