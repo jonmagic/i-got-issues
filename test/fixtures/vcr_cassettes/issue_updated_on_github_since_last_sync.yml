@@ -1,0 +1,83 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/octokit/octokit.rb/issues/3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.1.0
+      Authorization:
+      - token fake_access_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Mon, 09 Jun 2014 04:36:56 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4989'
+      X-Ratelimit-Reset:
+      - '1402292067'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Last-Modified:
+      - Sun, 08 Jun 2014 11:47:57 GMT
+      Etag:
+      - '"268ad6abdc7db29462a5d911a33460f9"'
+      X-Oauth-Scopes:
+      - repo, user
+      X-Accepted-Oauth-Scopes:
+      - ''
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 4C0E105B:2880:146ACBA:539539E7
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - a1d8c69b807c8e21f06cad9da377d1b0
+    body:
+      encoding: UTF-8
+      string: '{"url":"https://api.github.com/repos/octokit/octokit.rb/issues/3","labels_url":"https://api.github.com/repos/octokit/octokit.rb/issues/3/labels{/name}","comments_url":"https://api.github.com/repos/octokit/octokit.rb/issues/3/comments","events_url":"https://api.github.com/repos/octokit/octokit.rb/issues/3/events","html_url":"https://github.com/octokit/octokit.rb/issues/3","id":338156,"number":3,"title":"list_commits
+        does not return commits for private repos","user":{"login":"crazyscorpio12","id":73951,"avatar_url":"https://avatars.githubusercontent.com/u/73951?","gravatar_id":"0f94b3d0ad8fa25413b2d217a389292d","url":"https://api.github.com/users/crazyscorpio12","html_url":"https://github.com/crazyscorpio12","followers_url":"https://api.github.com/users/crazyscorpio12/followers","following_url":"https://api.github.com/users/crazyscorpio12/following{/other_user}","gists_url":"https://api.github.com/users/crazyscorpio12/gists{/gist_id}","starred_url":"https://api.github.com/users/crazyscorpio12/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/crazyscorpio12/subscriptions","organizations_url":"https://api.github.com/users/crazyscorpio12/orgs","repos_url":"https://api.github.com/users/crazyscorpio12/repos","events_url":"https://api.github.com/users/crazyscorpio12/events{/privacy}","received_events_url":"https://api.github.com/users/crazyscorpio12/received_events","type":"User","site_admin":false},"labels":[],"state":"closed","assignee":null,"milestone":null,"comments":6,"created_at":"2010-09-29T08:41:08Z","updated_at":"2011-03-29T23:54:12Z","closed_at":"2011-03-29T23:54:12Z","body":"The
+        list_commits does not pass the :query param and hence the commits for private
+        repos are not returned. Was it left out intentionally?","closed_by":{"login":"sferik","id":10308,"avatar_url":"https://avatars.githubusercontent.com/u/10308?","gravatar_id":"1f74b13f1e5c6c69cb5d7fbaabb1e2cb","url":"https://api.github.com/users/sferik","html_url":"https://github.com/sferik","followers_url":"https://api.github.com/users/sferik/followers","following_url":"https://api.github.com/users/sferik/following{/other_user}","gists_url":"https://api.github.com/users/sferik/gists{/gist_id}","starred_url":"https://api.github.com/users/sferik/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/sferik/subscriptions","organizations_url":"https://api.github.com/users/sferik/orgs","repos_url":"https://api.github.com/users/sferik/repos","events_url":"https://api.github.com/users/sferik/events{/privacy}","received_events_url":"https://api.github.com/users/sferik/received_events","type":"User","site_admin":false}}'
+    http_version: 
+  recorded_at: Mon, 09 Jun 2014 04:36:56 GMT
+recorded_with: VCR 2.9.2
