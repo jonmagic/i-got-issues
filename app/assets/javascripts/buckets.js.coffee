@@ -10,7 +10,7 @@ makeIssuesSortable = ->
         position  = ui.item.index()
 
         $.ajax
-          type: "POST"
+          type: "PATCH"
           url: ui.item.data("move-to-bucket-path")
           dataType: "json"
           data: { prioritized_issue: { bucket_id: bucket_id, row_order_position: position } }

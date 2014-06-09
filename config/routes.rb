@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :buckets, :only => [:index, :new, :edit, :create, :update, :destroy]
   resources :prioritized_issues, :only => [:create, :update, :destroy] do
-    post :move_to_bucket, :as => :move_to_bucket
+    patch :move_to_bucket, :as => :move_to_bucket
   end
   resources :teams, :only => :index
   get "/user/set_team", :to => "user#set_team", :as => :set_team
