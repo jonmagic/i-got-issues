@@ -20,6 +20,11 @@
   padding: 10px;
   line-height: 1.6;
   position: relative;
+  cursor: move;
+
+  a {
+    cursor: pointer;
+  }
 
   &.collapsed {
     .issue-collapse, .issue-details {
@@ -74,7 +79,6 @@
 
 @mixin issue-label-link($color) {
   @include issue-label($color);
-  cursor: pointer;
 
   &:hover {
     background-color: darken($color, 5);
