@@ -1,3 +1,7 @@
 <h1>Editing bucket</h1>
 
 <%= render 'form' %>
+
+<%= form_for @bucket, :method => "delete" do |f| %>
+  <%= f.submit "Delete Bucket" %>
+<% end %>

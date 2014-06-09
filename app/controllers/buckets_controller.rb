@@ -41,6 +41,8 @@ class BucketsController < ApplicationController
   end
 
   def destroy
+    new_bucket = current_user.buckets.where.not(:id => @bucket.id).last
+    @bucket.issues.each {|issue| issue.move_to_bucket(new_bucket) }
     @bucket.destroy
     redirect_to buckets_path, :notice => "Bucket was successfully destroyed."
   end
