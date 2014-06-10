@@ -1,4 +1,5 @@
 class PrioritizedIssuesController < ApplicationController
+  skip_before_filter :verify_authenticity_token, :only => :create
   before_action :load_team, :only => [:update, :sync]
 
   def create
