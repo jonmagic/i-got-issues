@@ -15,7 +15,11 @@ class PrioritizedIssuesController < ApplicationController
       ) if prioritized_issue.new_record?
     end
 
-    redirect_to buckets_path
+    if params[:return]
+      redirect_to params[:url]
+    else
+      redirect_to buckets_path
+    end
   end
 
   def update
