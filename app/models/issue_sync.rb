@@ -87,7 +87,7 @@ private
 
   def update_github
     github_client.update_issue \
-      "#{owner}/#{repository}", number, github_attributes[:title], github_attributes[:body],
+      "#{owner}/#{repository}", number, github_issue[:title], github_issue[:body],
       :state => issue.state, :assignee => issue.assignee
   end
 
