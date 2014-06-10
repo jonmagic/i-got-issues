@@ -92,9 +92,9 @@ makeIssueSyncable = ->
 makeIssuesArchivable = ->
   $(document).on "click", ".js-issues-archive", (e) ->
     e.preventDefault()
-
+    button = $(this)
     request = $.ajax
-      url: "/prioritized_issues/archive"
+      url: button.attr "href"
       type: "POST"
       success: (html) ->
         $("[name=prioritized_issue\\[state\\]]:checked").closest(".issue").hide()
