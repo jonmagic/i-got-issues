@@ -11,7 +11,11 @@ class PrioritizedIssue < ActiveRecord::Base
   validates :bucket_id, :presence => true
   belongs_to :bucket
 
-  scope :bucket, ->(bucket) { where(:bucket => bucket).rank(:row_order) }
+  # Public: Finds non-archived PrioritizedIssues for `bucket`.
+  scope :bucket, ->(bucket) { where(:bucket => bucket, :archived_at => nil).rank(:row_order) }
+
+  # Public: Finds PrioritizedIssues whose associated isues are closed.
+  scope :closed, -> { joins(:issue).where(["issues.state = ?", Issue.states["closed"]]) }
 
   # Public: Priority of issue in bucket.
   # column :row_order
