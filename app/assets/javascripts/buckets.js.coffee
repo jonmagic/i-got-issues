@@ -89,6 +89,16 @@ makeIssueSyncable = ->
       success: (html) ->
         issue.replaceWith(html)
 
+makeIssuesArchivable = ->
+  $(document).on "click", ".js-issues-archive", (e) ->
+    e.preventDefault()
+
+    request = $.ajax
+      url: "/prioritized_issues/archive"
+      type: "POST"
+      success: (html) ->
+        $("[name=prioritized_issue\\[state\\]]:checked").closest(".issue").hide()
+
 $ ->
   makeIssuesSortable()
   makeIssuesExpandable()
@@ -97,6 +107,7 @@ $ ->
   focusIssueImportOnCommand()
   makeBucketsSortable()
   makeIssueSyncable()
+  makeIssuesArchivable()
 
 $(document).on "page:load", ->
   makeIssuesSortable()

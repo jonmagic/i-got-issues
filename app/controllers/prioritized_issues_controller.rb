@@ -32,6 +32,16 @@ class PrioritizedIssuesController < ApplicationController
     redirect_to buckets_path, :notice => 'Issue was successfully destroyed.'
   end
 
+  # Archives all closed, non-archived issues for the current user.
+  #
+  # Note: In the future, when issues aren't limited to the user's team ID,
+  # this will have to be scoped to the current team.
+  def archive
+    current_user.issues.closed.where(:archived_at => nil).update_all :archived_at => Time.now
+
+    head :ok
+  end
+
   def move_to_bucket
     prioritized_issue = current_user.issues.find(params[:prioritized_issue_id])
     bucket = current_user.buckets.find(params[:prioritized_issue][:bucket_id])
