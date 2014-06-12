@@ -5,10 +5,7 @@
     <% end %>
     <%= link_to issue.title, github_issue_url(issue), :class => "issue-link" %>
     <%= link_to "<span class='glyphicon glyphicon-refresh'></span>".html_safe, "#", :class => "issue-sync js-issue-sync" %>
-    <%= link_to image_tag("expand.png"), "#", :class => "issue-expand issue-toggle js-issue-toggle" %>
-  </div>
-  <div class="panel-body issue-details">
-    <%= link_to "#{issue.owner} / #{issue.repository}", github_repository_url(issue), :class => "issue-repository-label" %>
+
     <% if issue.assignee %>
       <%= link_to "@#{issue.assignee}", "#", :class => "issue-assignee js-issue-assignee-link" %>
     <% else %>
@@ -23,6 +20,5 @@
     <%= form_for issue, :method => "delete", :html => {:class => "issue-destroy-form"} do |f| %>
       <%= f.button "remove issue" %>
     <% end %>
-    <%= link_to image_tag("collapse.png"), "#", :class => "issue-collapse issue-toggle js-issue-toggle" %>
   </div>
 </li>

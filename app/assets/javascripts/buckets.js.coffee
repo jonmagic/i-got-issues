@@ -30,13 +30,6 @@ makeBucketsSortable = ->
         data: { bucket: { row_order_position: position } }
   }).disableSelection()
 
-makeIssuesExpandable = ->
-  $(document).on "click", ".js-issue-toggle", (e) ->
-    e.preventDefault()
-    link = $(this)
-    issue = $(this).parents(".issue")
-    issue.toggleClass("collapsed")
-
 makeIssuesAssignable = ->
   $(document).on "click", ".js-issue-assignee-link", (e) ->
     e.preventDefault()
@@ -101,7 +94,6 @@ makeIssuesArchivable = ->
 
 $ ->
   makeIssuesSortable()
-  makeIssuesExpandable()
   makeIssuesAssignable()
   makeIssuesStateable()
   focusIssueImportOnCommand()

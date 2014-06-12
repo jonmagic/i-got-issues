@@ -27,21 +27,6 @@
     cursor: pointer;
   }
 
-  &.collapsed {
-    .issue-collapse, .issue-details {
-      display: none;
-    }
-    .issue-expand {
-      display: block;
-    }
-  }
-
-  &:not(.collapsed) {
-    .issue-expand {
-      display: none;
-    }
-  }
-
   &.assigning {
     .issue-assignee {
       display: none;
@@ -64,10 +49,6 @@
   margin-right: 6px;
 }
 
-.issue-details {
-  margin: 10px 0 8px;
-}
-
 @mixin issue-label($color) {
   display: inline-block;
   background-color: $color;
@@ -88,32 +69,12 @@
   }
 }
 
-.issue-repository-label {
-  @include issue-label-link(rgb(223, 240, 216));
-}
-
 .issue-assignee {
   @include issue-label-link(rgb(217, 237, 247));
 }
 
 .issue-label {
   @include issue-label(rgb(242, 222, 222));
-}
-
-.issue-toggle {
-  display: block;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 8px;
-
-  img {
-    position: absolute;
-    left: 50%;
-    margin-left: -25px;
-    opacity: 0.1;
-  }
 }
 
 .issue-assignee-form {
