@@ -1,4 +1,5 @@
 class PrioritizedIssuesController < ApplicationController
+  skip_before_filter :verify_authenticity_token, :only => :create
   before_action :load_team, :only => [:update, :sync]
 
   def create
@@ -14,7 +15,11 @@ class PrioritizedIssuesController < ApplicationController
       ) if prioritized_issue.new_record?
     end
 
-    redirect_to buckets_path
+    if params[:return]
+      redirect_to params[:url]
+    else
+      redirect_to buckets_path
+    end
   end
 
   def update
