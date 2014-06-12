@@ -14,4 +14,8 @@ module ApplicationHelper
   def github_repository_url(issue)
     "https://github.com/#{issue.owner}/#{issue.repository}"
   end
+
+  def octicon(code)
+    content_tag :span, '', :class => "octicon octicon-#{code.to_s.dasherize}"
+  end
 end
