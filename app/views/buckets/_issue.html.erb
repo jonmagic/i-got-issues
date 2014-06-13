@@ -20,7 +20,7 @@
       <% end %>
     </div>
     <%= form_for issue, :method => "delete", :html => {:class => "issue-destroy-form"} do |f| %>
-      <%= f.button octicon("x"), :class => "button danger" %>
+      <%= f.button octicon("x"), :class => "button danger", :data => { :confirm => "Are you sure you want to remove this issue?" } %>
     <% end %>
   </div>
 </li>
