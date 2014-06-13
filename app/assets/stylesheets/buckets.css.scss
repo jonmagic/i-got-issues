@@ -38,6 +38,23 @@
       display: none;
     }
   }
+
+  .panel-heading {
+    @include clearfix;
+
+    position: relative;
+
+    .issue-data {
+      display: block;
+      float: left;
+      width: calc( 100% - 40px );
+    }
+
+    .issue-destroy-form {
+      display: block;
+      float: right;
+    }
+  }
 }
 
 .issue-state-toggle {
