@@ -40,4 +40,9 @@ class Issue < ActiveRecord::Base
   def assignee=(assignee)
     write_attribute :assignee, assignee.present? ? assignee : nil
   end
+
+  # Public: Find issue by owner, repository, and number.
+  scope :by_owner_repo_number, -> (owner, repository, number) {
+    where(:owner => owner, :repository => repository, :number => number)
+  }
 end
