@@ -7,7 +7,7 @@ class BucketsController < ApplicationController
       @buckets = current_user.buckets
       @columns = 12 / (@buckets.length > 0 ? @buckets.length : 1)
     elsif current_user.team_id.present?
-      redirect_to new_bucket_path
+      redirect_to new_team_bucket_path(current_user.team)
     else
       redirect_to teams_path
     end
@@ -25,7 +25,7 @@ class BucketsController < ApplicationController
     @bucket.team_id = current_user.team_id
 
     if @bucket.save
-      redirect_to buckets_path, :notice => "Bucket was successfully created."
+      redirect_to team_buckets_path(current_user.team), :notice => "Bucket was successfully created."
     else
       render :new
     end
@@ -36,7 +36,7 @@ class BucketsController < ApplicationController
 
     respond_to do |format|
       format.json { render :json => @bucket }
-      format.html { redirect_to buckets_path }
+      format.html { redirect_to team_buckets_path(current_user.team) }
     end
   end
 
@@ -44,7 +44,7 @@ class BucketsController < ApplicationController
     new_bucket = current_user.buckets.where.not(:id => @bucket.id).last
     @bucket.issues.each {|issue| issue.move_to_bucket(new_bucket) }
     @bucket.destroy
-    redirect_to buckets_path, :notice => "Bucket was successfully destroyed."
+    redirect_to team_buckets_path(current_user.team), :notice => "Bucket was successfully destroyed."
   end
 
 private

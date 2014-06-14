@@ -2,6 +2,6 @@
 
 <%= render 'form' %>
 
-<%= form_for @bucket, :method => "delete" do |f| %>
+<%= form_for @bucket, :url => team_bucket_path(current_user.team, @bucket), :method => "delete" do |f| %>
   <%= f.submit "Delete Bucket" %>
 <% end %>
