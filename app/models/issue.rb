@@ -34,6 +34,9 @@ class Issue < ActiveRecord::Base
   # column :created_at
   # column :updated_at
 
+  # Public: Set assignee.
+  #
+  # assignee - String users GitHub login.
   def assignee=(assignee)
     write_attribute :assignee, assignee.present? ? assignee : nil
   end
