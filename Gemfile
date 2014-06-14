@@ -6,6 +6,7 @@ gem "coffee-rails"
 gem "dotenv-rails", :groups => [:development, :test]
 gem "jquery-rails"
 gem "jquery-ui-rails"
+gem "newrelic_rpm"
 gem "octokit"
 gem "omniauth-github"
 gem "pg"
