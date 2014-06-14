@@ -3,7 +3,7 @@ class PrioritizedIssuesController < ApplicationController
   before_action :load_team, :only => [:update, :sync]
 
   def create
-    if issue = issue_sync.from_url(params[:url])
+    if issue = issue_importer.from_url(params[:url])
       prioritized_issue = PrioritizedIssue.where(
         :bucket => current_user.buckets,
         :issue  => issue
@@ -25,7 +25,8 @@ class PrioritizedIssuesController < ApplicationController
   def update
     prioritized_issue = current_user.issues.find(params[:id])
     prioritized_issue.issue.update(issue_params)
-    issue_sync.from_issue(prioritized_issue.issue)
+    issue_updater.from_issue(prioritized_issue.issue)
+    prioritized_issue.reload
 
     render :partial => "buckets/issue", :locals => {:issue => prioritized_issue}
   end
@@ -57,7 +58,8 @@ class PrioritizedIssuesController < ApplicationController
 
   def sync
     prioritized_issue = current_user.issues.find(params[:prioritized_issue_id])
-    issue_sync.from_issue(prioritized_issue.issue)
+    issue_importer.from_issue(prioritized_issue.issue)
+    prioritized_issue.reload
 
     render :partial => "buckets/issue", :locals => {:issue => prioritized_issue}
   end
@@ -73,7 +75,11 @@ private
     @teammates = team.map {|member| member["login"] }
   end
 
-  def issue_sync
-    @issue_sync ||= IssueSync.new(current_user.github_client)
+  def issue_importer
+    @issue_importer ||= IssueImporter.new(current_user.github_client)
+  end
+
+  def issue_updater
+    @issue_updater ||= IssueUpdater.new(current_user.github_client)
   end
 end
