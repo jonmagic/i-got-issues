@@ -54,6 +54,15 @@ I setup the app on Heroku in a matter of minutes. You shouldn't have any problem
 
 Fire it up in your browser and see if it worked.
 
+## Contributing
+
+Read the [guide to contributing](https://github.com/jonmagic/i-got-issues/blob/master/CONTRIBUTING.md).
+
+### Contributors
+
+* [@jonmagic](https://github.com/jonmagic)
+* [@juliamae](https://github.com/juliamae)
+
 ## License
 
 See [LICENSE](https://github.com/jonmagic/i-got-issues/blob/master/LICENSE).
