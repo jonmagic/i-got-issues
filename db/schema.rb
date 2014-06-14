@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140609223855) do
+ActiveRecord::Schema.define(version: 20140614190256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20140609223855) do
     t.datetime "updated_at"
     t.integer  "team_id"
   end
+
+  add_index "buckets", ["team_id", "row_order"], name: "index_buckets_on_team_id_and_row_order", using: :btree
 
   create_table "issues", force: true do |t|
     t.string   "title",      null: false
@@ -37,6 +39,8 @@ ActiveRecord::Schema.define(version: 20140609223855) do
     t.datetime "synced_at"
   end
 
+  add_index "issues", ["owner", "repository", "number"], name: "index_issues_on_owner_and_repository_and_number", unique: true, using: :btree
+
   create_table "prioritized_issues", force: true do |t|
     t.integer  "issue_id",                null: false
     t.integer  "bucket_id",               null: false
@@ -46,6 +50,9 @@ ActiveRecord::Schema.define(version: 20140609223855) do
     t.datetime "archived_at"
   end
 
+  add_index "prioritized_issues", ["bucket_id", "issue_id"], name: "index_prioritized_issues_on_bucket_id_and_issue_id", unique: true, using: :btree
+  add_index "prioritized_issues", ["bucket_id", "row_order"], name: "index_prioritized_issues_on_bucket_id_and_row_order", using: :btree
+
   create_table "services", force: true do |t|
     t.integer  "user_id"
     t.string   "provider"
@@ -54,6 +61,7 @@ ActiveRecord::Schema.define(version: 20140609223855) do
     t.datetime "updated_at"
   end
 
+  add_index "services", ["provider", "uid"], name: "index_services_on_provider_and_uid", unique: true, using: :btree
   add_index "services", ["user_id"], name: "index_services_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
@@ -63,5 +71,7 @@ ActiveRecord::Schema.define(version: 20140609223855) do
     t.datetime "updated_at"
     t.integer  "team_id"
   end
+
+  add_index "users", ["login"], name: "index_users_on_login", unique: true, using: :btree
 
 end
