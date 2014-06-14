@@ -1,28 +1,26 @@
 <li class="ui-state-default panel panel-default issue collapsed" data-prioritized-issue-path="<%= prioritized_issue_path(issue) %>" data-move-to-bucket-path="<%= prioritized_issue_move_to_bucket_path(issue) %>" data-issue-sync-path="<%= prioritized_issue_sync_path(issue) %>">
   <div class="panel-heading">
-    <%= form_for issue, :html => {:class => "issue-state-toggle"} do |f| %>
-      <%= f.check_box :state, {:checked => issue.closed?, :class => "js-issue-state-toggle"}, "closed", "open" %>
-    <% end %>
-    <%= link_to issue.title, github_issue_url(issue), :class => "issue-link" %>
-    <%= link_to "<span class='glyphicon glyphicon-refresh'></span>".html_safe, "#", :class => "issue-sync js-issue-sync" %>
-    <%= link_to image_tag("expand.png"), "#", :class => "issue-expand issue-toggle js-issue-toggle" %>
-  </div>
-  <div class="panel-body issue-details">
-    <%= link_to "#{issue.owner} / #{issue.repository}", github_repository_url(issue), :class => "issue-repository-label" %>
-    <% if issue.assignee %>
-      <%= link_to "@#{issue.assignee}", "#", :class => "issue-assignee js-issue-assignee-link" %>
-    <% else %>
-      <%= link_to "claim or assign", "#", :class => "issue-assignee js-issue-assignee-link" %>
-    <% end %>
-    <%= form_for issue, :html => {:class => "issue-assignee-form"} do |f| %>
-      <%= f.select :assignee, @teammates, {:include_blank => true}, :class => "js-issue-assignee-select" %>
-    <% end %>
-    <% issue.labels.each do |label| %>
-      <span class="issue-label"><%= label %></span>
-    <% end %>
+    <div class="issue-data">
+      <%= form_for issue, :html => {:class => "issue-state-toggle"} do |f| %>
+        <%= f.check_box :state, {:checked => issue.closed?, :class => "js-issue-state-toggle"}, "closed", "open" %>
+      <% end %>
+      <%= link_to issue.title, github_issue_url(issue), :class => "issue-link" %>
+      <%= link_to "<span class='glyphicon glyphicon-refresh'></span>".html_safe, "#", :class => "issue-sync js-issue-sync" %>
+
+      <% if issue.assignee %>
+        <%= link_to "@#{issue.assignee}", "#", :class => "issue-assignee js-issue-assignee-link" %>
+      <% else %>
+        <%= link_to "claim or assign", "#", :class => "issue-assignee js-issue-assignee-link" %>
+      <% end %>
+      <%= form_for issue, :html => {:class => "issue-assignee-form"} do |f| %>
+        <%= f.select :assignee, @teammates, {:include_blank => true}, :class => "js-issue-assignee-select" %>
+      <% end %>
+      <% issue.labels.each do |label| %>
+        <span class="issue-label"><%= label %></span>
+      <% end %>
+    </div>
     <%= form_for issue, :method => "delete", :html => {:class => "issue-destroy-form"} do |f| %>
-      <%= f.button "remove issue" %>
+      <%= f.button octicon("x"), :class => "button danger", :data => { :confirm => "Are you sure you want to remove this issue?" } %>
     <% end %>
-    <%= link_to image_tag("collapse.png"), "#", :class => "issue-collapse issue-toggle js-issue-toggle" %>
   </div>
 </li>

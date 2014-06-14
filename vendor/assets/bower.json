@@ -1,0 +1,6 @@
+{
+  "name": "i-got-issues",
+  "dependencies": {
+    "octicons": "git@github.com:github/octicons.git"
+  }
+}

@@ -1,0 +1,9 @@
+/.bundle
+/.rbenv-version
+/node_modules
+/bin
+/build
+/tmp
+/font
+/support/font-builder/support
+/site/_site/
