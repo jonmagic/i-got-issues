@@ -29,4 +29,7 @@ class Bucket < ActiveRecord::Base
 
   # column :created_at
   # column :updated_at
+
+  # Buckets by team id.
+  scope :by_team_id, -> (team_id) { where(:team_id => team_id) }
 end
