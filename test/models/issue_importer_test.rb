@@ -9,12 +9,12 @@ class IssueImporterTest < ActiveSupport::TestCase
   test "#from_url imports new issue" do
     VCR.use_cassette "imports new issue" do
       importer = IssueImporter.new(github_client)
+      issue = nil
 
       assert_difference "Issue.count", 1 do
-        importer.from_url "https://github.com/octokit/octokit.rb/issues/3"
+        issue = importer.from_url "https://github.com/octokit/octokit.rb/issues/3"
       end
 
-      issue = Issue.by_owner_repo_number("octokit", "octokit.rb", 3).first
       assert_equal "list_commits does not return commits for private repos", issue.title
       assert_equal nil, issue.assignee
       assert_equal [], issue.labels
@@ -30,8 +30,7 @@ class IssueImporterTest < ActiveSupport::TestCase
       assert_equal "jonmagic", issue.assignee
       assert_equal "open", issue.state
       assert_equal ["bug"], issue.labels
-      importer.from_url "https://github.com/jonmagic/scriptular/issues/10"
-      issue.reload
+      issue = importer.from_url "https://github.com/jonmagic/scriptular/issues/10"
       assert_equal "Add share-able link to output section", issue.title
       assert_equal nil, issue.assignee
       assert_equal "closed", issue.state
@@ -48,8 +47,7 @@ class IssueImporterTest < ActiveSupport::TestCase
       assert_equal "jonmagic", issue.assignee
       assert_equal "open", issue.state
       assert_equal ["bug"], issue.labels
-      importer.from_issue issue
-      issue.reload
+      issue = importer.from_issue issue
       assert_equal "Add share-able link to output section", issue.title
       assert_equal nil, issue.assignee
       assert_equal "closed", issue.state

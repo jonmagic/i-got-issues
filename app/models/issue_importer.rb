@@ -33,5 +33,7 @@ private
       :state      => github_issue["state"],
       :assignee   => github_issue["assignee"] ? github_issue["assignee"]["login"] : nil,
       :labels     => github_issue["labels"].map {|label| label[:name] }
+
+    issue
   end
 end
