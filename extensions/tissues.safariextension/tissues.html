@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tissues</title>
+  <script type="text/javascript">
+    function onCommand(event) {
+      if(event.command === "importIssue"){
+        safari.application.activeBrowserWindow.activeTab.page.dispatchMessage(event.command);
+      }
+    }
+    safari.application.addEventListener("command", onCommand, false);
+  </script>
+</head>
+  <body>
+  </body>
+</html>
