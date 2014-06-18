@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
   def new
     if current_user
-      redirect_to team_buckets_path(current_user.team)
+      redirect_to team_path(current_user.team)
     else
       render :layout => false
     end

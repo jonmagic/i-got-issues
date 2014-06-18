@@ -4,6 +4,6 @@ class UserController < ApplicationController
       current_user.update_attribute :team_id, params[:team_id]
     end
 
-    redirect_to team_buckets_path(current_user.team)
+    redirect_to team_path(current_user.team)
   end
 end

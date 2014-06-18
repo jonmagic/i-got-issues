@@ -25,7 +25,7 @@ class BucketsController < ApplicationController
     @bucket.team_id = current_user.team_id
 
     if @bucket.save
-      redirect_to team_buckets_path(current_user.team), :notice => "Bucket was successfully created."
+      redirect_to team_path(current_user.team), :notice => "Bucket was successfully created."
     else
       render :new
     end
@@ -36,7 +36,7 @@ class BucketsController < ApplicationController
 
     respond_to do |format|
       format.json { render :json => @bucket }
-      format.html { redirect_to team_buckets_path(current_user.team) }
+      format.html { redirect_to team_path(current_user.team) }
     end
   end
 
@@ -44,7 +44,7 @@ class BucketsController < ApplicationController
     new_bucket = current_user.buckets.where.not(:id => @bucket.id).last
     @bucket.issues.each {|issue| issue.move_to_bucket(new_bucket) }
     @bucket.destroy
-    redirect_to team_buckets_path(current_user.team), :notice => "Bucket was successfully destroyed."
+    redirect_to team_path(current_user.team), :notice => "Bucket was successfully destroyed."
   end
 
 private

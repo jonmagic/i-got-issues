@@ -9,7 +9,7 @@
         <ul class="nav navbar-nav">
           <li class="<%= navbar_link_class(:teams, :index) %>"><%= link_to "Teams", teams_path %></li>
           <% if current_user.team_id.present? %>
-            <li class="<%= navbar_link_class(:buckets, :index) %>"><%= link_to "Buckets", team_buckets_path(current_user.team) %></li>
+            <li class="<%= navbar_link_class(:buckets, :index) %>"><%= link_to "Buckets", team_path(current_user.team) %></li>
             <li class="<%= navbar_link_class(:buckets, :new) %>"><%= link_to "New Bucket", new_team_bucket_path(current_user.team) %></li>
             <% if current_user.buckets.any? %>
               <li>

@@ -18,7 +18,7 @@ class PrioritizedIssuesController < ApplicationController
     if params[:return]
       redirect_to params[:url]
     else
-      redirect_to team_buckets_path(current_user.team)
+      redirect_to team_path(current_user.team)
     end
   end
 
@@ -35,7 +35,7 @@ class PrioritizedIssuesController < ApplicationController
     prioritized_issue = current_user.issues.find(params[:id])
     prioritized_issue.destroy
 
-    redirect_to team_buckets_path(current_user.team), :notice => 'Issue was successfully destroyed.'
+    redirect_to team_path(current_user.team), :notice => 'Issue was successfully destroyed.'
   end
 
   # Archives all closed, non-archived issues for the current user.

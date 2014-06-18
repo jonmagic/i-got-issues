@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :teams, :only => :index do
-    resources :buckets, :only => [:index, :new, :edit, :create, :update, :destroy]
+    get "/" => "buckets#index"
+    resources :buckets, :only => [:new, :edit, :create, :update, :destroy]
   end
 
   resources :prioritized_issues, :only => [:create, :update, :destroy] do
