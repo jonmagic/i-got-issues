@@ -27,6 +27,13 @@ class Bucket < ActiveRecord::Base
   # Returns an Integer.
   validates :team_id, :presence => true
 
+  # Public: Team this bucket belongs to.
+  #
+  # Returns a Team.
+  def team
+    Team.new(team_id)
+  end
+
   # column :created_at
   # column :updated_at
 

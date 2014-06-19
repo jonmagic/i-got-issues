@@ -3,7 +3,7 @@
 </div>
 <div class="row">
   <div class="col-lg-12">
-    <button class="js-issues-archive" href="<%= archive_prioritized_issues_path %>">Archive closed issues</button>
+    <button class="js-issues-archive" href="<%= archive_closed_issues_team_buckets_path(@team) %>">Archive closed issues</button>
     <%= link_to "Set this as your default team", set_team_path(:team_id => @team.id) %>
   </div>
 </div>

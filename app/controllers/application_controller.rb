@@ -53,4 +53,8 @@ class ApplicationController < ActionController::Base
     team_members = current_user.github_client.team_members @team.id
     @team_members = team_members.map {|member| member["login"] }
   end
+
+  def set_team
+    @team = Team.new(params[:team_id])
+  end
 end

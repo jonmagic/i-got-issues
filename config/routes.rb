@@ -7,7 +7,6 @@ Rails.application.routes.draw do
         patch :move
       end
 
-
       collection do
         post :archive_closed_issues
       end
