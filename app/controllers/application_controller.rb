@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
     if session.has_key?(:user_id)
       current_user
     else
-      redirect_to root_url
+      redirect_to root_path
     end
   end
 
@@ -49,12 +49,33 @@ class ApplicationController < ActionController::Base
     reset_session
   end
 
-  def set_team_members
-    team_members = current_user.github_client.team_members @team.id
-    @team_members = team_members.map {|member| member["login"] }
+  def team_members
+    @team_members ||= begin
+      team_members = current_user.github_client.team_members team.id
+      team_members.map {|member| member["login"] }
+    end
+
+  rescue Octokit::NotFound
+    redirect_to root_path
   end
 
-  def set_team
-    @team = Team.new(params[:team_id])
+  def team
+    @team ||= Team.new(params[:team_id])
+  end
+
+  def authorize_read_team!
+    unless team_members
+      redirect_to teams_path
+    end
+  end
+
+  def team_member?
+    team_members.detect {|team_member| team_member == current_user.login }
+  end
+
+  def authorize_write_team!
+    unless team_member?
+      redirect_to team_path(team)
+    end
   end
 end

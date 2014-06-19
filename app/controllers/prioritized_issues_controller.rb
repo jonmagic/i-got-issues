@@ -1,8 +1,6 @@
 class PrioritizedIssuesController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :create
-  before_action :set_team
-  before_action :set_team_members, :only => [:update, :sync]
-
+  before_filter :authorize_write_team!
 
   def create
     if issue = issue_importer.from_url(params[:url])

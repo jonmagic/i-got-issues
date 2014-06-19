@@ -1,14 +1,19 @@
 class BucketsController < ApplicationController
+  before_filter :authorize_read_team!
+  before_filter :authorize_write_team!, :only => [:create, :update, :destroy, :archive_closed_issues]
   before_action :set_bucket, :only => [:edit, :update, :destroy]
-  before_action :set_team
 
   def index
     if @team.buckets.any?
-      set_team_members
+      team_members
       @buckets = @team.buckets
       @columns = 12 / (@buckets.length > 0 ? @buckets.length : 1)
     elsif @team.present?
-      redirect_to new_team_bucket_path(@team)
+      if team_member?
+        redirect_to new_team_bucket_path(@team)
+      else
+        redirect_to teams_path
+      end
     else
       redirect_to teams_path
     end
@@ -24,6 +29,7 @@ class BucketsController < ApplicationController
   def create
     @bucket = Bucket.new(bucket_params)
     @bucket.team_id = @team.id
+    @bucket.row_order_position = :last
 
     if @bucket.save
       redirect_to team_path(@team), :notice => "Bucket was successfully created."

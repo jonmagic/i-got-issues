@@ -38,5 +38,5 @@ class Bucket < ActiveRecord::Base
   # column :updated_at
 
   # Buckets by team id.
-  scope :by_team_id, -> (team_id) { where(:team_id => team_id) }
+  scope :by_team_id, -> (team_id) { where(:team_id => team_id).rank(:row_order) }
 end
