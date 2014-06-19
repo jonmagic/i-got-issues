@@ -23,5 +23,6 @@ group :test do
 end
 
 group :test, :development do
+  gem "capybara"
   gem "pry"
 end
