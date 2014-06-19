@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
   resources :teams, :only => :index do
     get "/" => "buckets#index"
-    resources :buckets, :only => [:new, :edit, :create, :update, :destroy]
-  end
+    resources :buckets, :only => [:new, :edit, :create, :update, :destroy] do
+      resources :prioritized_issues, :only => [:create, :update, :destroy] do
+        post :sync, :as => :sync
+        patch :move
+      end
 
-  resources :prioritized_issues, :only => [:create, :update, :destroy] do
-    patch :move_to_bucket, :as => :move_to_bucket
-    post :sync, :as => :sync
 
-    collection do
-      post :archive
+      collection do
+        post :archive_closed_issues
+      end
     end
   end
 
