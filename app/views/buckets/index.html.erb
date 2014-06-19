@@ -1,4 +1,8 @@
-<button class="js-issues-archive" href="<%= archive_prioritized_issues_path %>">Archive closed issues</button>
 <div class="row js-buckets">
   <%= render :partial => "bucket", :collection => @buckets %>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <button class="js-issues-archive" href="<%= archive_prioritized_issues_path %>">Archive closed issues</button>
+  </div>
 </div>
