@@ -3,7 +3,11 @@ class SessionsController < ApplicationController
 
   def new
     if current_user
-      redirect_to team_path(current_user.team)
+      if current_user.team
+        redirect_to team_path(:team_id => current_user.team.id)
+      else
+        redirect_to teams_path
+      end
     else
       render :layout => false
     end
