@@ -83,7 +83,7 @@ makeIssueSyncable = ->
         issue.replaceWith(html)
 
 makeIssuesArchivable = ->
-  $(document).on "click", ".js-issues-archive", (e) ->
+  $(document).on "click", ".editable .js-issues-archive", (e) ->
     e.preventDefault()
     button = $(this)
     request = $.ajax
