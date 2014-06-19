@@ -29,6 +29,6 @@ class User < ActiveRecord::Base
   attr_accessor :github_client
 
   def team
-    Team.new(team_id)
+    Team.new(team_id) if team_id
   end
 end
