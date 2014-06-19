@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
   helper_method :current_service
   helper_method :team_member?
 
+  rescue_from "Octokit::NotFound" do |exception|
+    redirect_to root_path
+  end
+
   protected
   def current_user
     @current_user ||= begin
@@ -69,8 +73,6 @@ class ApplicationController < ActionController::Base
 
   def team_member?
     team_members.detect {|team_member| team_member == current_user.login }
-  rescue Octokit::NotFound
-    redirect_to root_path
   end
 
   def authorize_write_team!
