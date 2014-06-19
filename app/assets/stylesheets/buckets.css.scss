@@ -4,7 +4,9 @@
 
 .bucket-header {
   text-align: center;
-  cursor: move;
+  .editable & {
+    cursor: move;
+  }
 
   a {
     cursor: pointer;
@@ -18,7 +20,9 @@
 }
 
 .issue {
-  cursor: move;
+  .editable & {
+    cursor: move;
+  }
   list-style: none;
   margin-bottom: 5px;
   position: relative;

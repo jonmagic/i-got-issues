@@ -1,3 +1,6 @@
+<% content_for :navbar do %>
+  <%= render "navbar" %>
+<% end %>
 <div class="row js-buckets">
   <%= render :partial => "bucket", :collection => @buckets %>
 </div>

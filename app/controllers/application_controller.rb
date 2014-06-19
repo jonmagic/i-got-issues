@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
   helper_method :current_user
   helper_method :current_service
+  helper_method :team_member?
 
   protected
   def current_user
@@ -54,9 +55,6 @@ class ApplicationController < ActionController::Base
       team_members = current_user.github_client.team_members team.id
       team_members.map {|member| member["login"] }
     end
-
-  rescue Octokit::NotFound
-    redirect_to root_path
   end
 
   def team
@@ -71,6 +69,8 @@ class ApplicationController < ActionController::Base
 
   def team_member?
     team_members.detect {|team_member| team_member == current_user.login }
+  rescue Octokit::NotFound
+    redirect_to root_path
   end
 
   def authorize_write_team!

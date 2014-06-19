@@ -1,0 +1,15 @@
+<li class="<%= navbar_link_class(:buckets, :index) %>"><%= link_to "Buckets", team_path(@team) %></li>
+<% if team_member? %>
+  <li class="<%= navbar_link_class(:buckets, :new) %>"><%= link_to "New Bucket", new_team_bucket_path(@team) %></li>
+  <% if @team.buckets.any? %>
+    <li>
+      <%= form_tag team_bucket_prioritized_issues_path(@team, @team.buckets.last), :class => "issue-import-form navbar-form navbar-left" do %>
+        <%= text_field_tag :url, "", :placeholder => "https://github.com/jonmagic/i-got-issues/issues/1", :class => "issue-url form-control js-issue-import-url" %>
+        <%= submit_tag "Import Issue", :class => "btn btn-default" %>
+      <% end %>
+    </li>
+  <% end %>
+<% end %>
+<li>
+  <%= link_to "Chrome Extension", "https://chrome.google.com/webstore/detail/tissues/amppomcpploimdoanchlddlimnaiecji" %>
+</li>

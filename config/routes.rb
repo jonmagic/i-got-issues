@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :buckets, :only => [:new, :edit, :create, :update, :destroy] do
       resources :prioritized_issues, :only => [:create, :update, :destroy] do
         post :sync, :as => :sync
-        patch :move
+        patch "move" => "prioritized_issues#move_to_bucket"
       end
 
       collection do
