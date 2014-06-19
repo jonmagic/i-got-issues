@@ -3,7 +3,7 @@ class BucketsController < ApplicationController
 
   def index
     if current_user.buckets.any?
-      load_team
+      set_team_members
       @buckets = current_user.buckets
       @columns = 12 / (@buckets.length > 0 ? @buckets.length : 1)
     elsif current_user.team_id.present?
@@ -56,10 +56,5 @@ private
   # Only allow a trusted parameter "white list" through.
   def bucket_params
     params.require(:bucket).permit(:name, :row_order_position)
-  end
-
-  def load_team
-    team = current_user.github_client.team_members current_user.team_id
-    @teammates = team.map {|member| member["login"] }
   end
 end

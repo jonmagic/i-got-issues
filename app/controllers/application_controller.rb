@@ -48,4 +48,9 @@ class ApplicationController < ActionController::Base
     @current_user = nil
     reset_session
   end
+
+  def set_team_members
+    team_members = current_user.github_client.team_members @team.id
+    @team_members = team_members.map {|member| member["login"] }
+  end
 end

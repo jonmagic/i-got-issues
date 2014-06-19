@@ -1,6 +1,6 @@
 class PrioritizedIssuesController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :create
-  before_action :load_team, :only => [:update, :sync]
+  before_action :set_team_members, :only => [:update, :sync]
 
   def create
     if issue = issue_importer.from_url(params[:url])
@@ -69,12 +69,7 @@ private
   def issue_params
     params.require(:prioritized_issue).permit(:title, :owner, :repository, :number, :state, :assignee)
   end
-
-  def load_team
-    team = current_user.github_client.team_members current_user.team_id
-    @teammates = team.map {|member| member["login"] }
-  end
-
+  
   def issue_importer
     @issue_importer ||= IssueImporter.new(current_user.github_client)
   end
