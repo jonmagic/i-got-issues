@@ -1,6 +1,5 @@
 class TeamsController < ApplicationController
   def index
-    puts "--------------------------------------------"
     @teams = current_user.
       github_client.
       user_teams.
