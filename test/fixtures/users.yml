@@ -8,7 +8,7 @@ jonmagic:
   login: jonmagic
   email: jonmagic@test.com
 
-juliamae:
-  login: juliamae
-  email: juliamae@test.com
-  team_id: 864031
+jonmagic-test:
+  login: jonmagic-test
+  email: jonmagic-test@test.com
+  team_id: 203770

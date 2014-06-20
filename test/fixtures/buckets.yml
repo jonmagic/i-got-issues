@@ -1,11 +1,14 @@
 current:
   name: Current
   row_order: 0
+  team_id: 203770
 
 backlog:
   name: Backlog
   row_order: 1
+  team_id: 203770
 
 icebox:
   name: Icebox
   row_order: 2
+  team_id: 203770
