@@ -23,6 +23,7 @@ group :test do
 end
 
 group :test, :development do
-  gem "capybara"
+  gem "minitest-rails-capybara"
   gem "pry"
+  gem "rack_session_access"
 end
