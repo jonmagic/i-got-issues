@@ -16,6 +16,7 @@ gem "sass-rails"
 gem "spring", :group => :development
 gem "turbolinks"
 gem "uglifier"
+gem "unicorn"
 
 group :test do
   gem "webmock"
