@@ -36,4 +36,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Middleware to make integration testing easier. Let's you set the session
+  # programmatically.
+  config.middleware.use RackSessionAccess::Middleware
 end

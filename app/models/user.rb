@@ -27,4 +27,8 @@ class User < ActiveRecord::Base
   has_many :services
 
   attr_accessor :github_client
+
+  def team
+    Team.new(team_id) if team_id
+  end
 end

@@ -1,6 +1,6 @@
-<div class="col-lg-<%= @columns %> col-md-<%= @columns %> col-xs-12 bucket" data-bucket-path="<%= bucket_path(bucket) %>">
+<div class="col-lg-<%= @columns %> col-md-<%= @columns %> col-xs-12 bucket" data-bucket-path="<%= team_bucket_path(@team, bucket) %>">
   <div class="bucket-header js-bucket-handle">
-    <h3><%= link_to bucket.name, edit_bucket_path(bucket) %></h3>
+    <h3><%= link_to bucket.name, edit_team_bucket_path(@team, bucket) %></h3>
   </div>
 
   <ul class="bucket-list js-bucket-list" data-bucket-id="<%= bucket.id %>">

@@ -4,7 +4,9 @@
 
 .bucket-header {
   text-align: center;
-  cursor: move;
+  .js-write-access & {
+    cursor: move;
+  }
 
   a {
     cursor: pointer;
@@ -18,7 +20,9 @@
 }
 
 .issue {
-  cursor: move;
+  .js-write-access & {
+    cursor: move;
+  }
   list-style: none;
   margin-bottom: 5px;
   position: relative;

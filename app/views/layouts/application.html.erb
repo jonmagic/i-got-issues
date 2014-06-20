@@ -3,26 +3,12 @@
   <head>
     <%= render :partial => "shared/head" %>
   </head>
-  <body>
+  <body class="<%= 'js-write-access' if @team && team_member? %>">
     <nav class="navbar navbar-default" role="navigation">
       <div class="container-fluid">
         <ul class="nav navbar-nav">
           <li class="<%= navbar_link_class(:teams, :index) %>"><%= link_to "Teams", teams_path %></li>
-          <% if current_user.team_id.present? %>
-            <li class="<%= navbar_link_class(:buckets, :index) %>"><%= link_to "Buckets", buckets_path %></li>
-            <li class="<%= navbar_link_class(:buckets, :new) %>"><%= link_to "New Bucket", new_bucket_path %></li>
-            <% if current_user.buckets.any? %>
-              <li>
-                <%= form_tag prioritized_issues_path, :class => "issue-import-form navbar-form navbar-left" do %>
-                  <%= text_field_tag :url, "", :placeholder => "https://github.com/jonmagic/i-got-issues/issues/1", :class => "issue-url form-control js-issue-import-url" %>
-                  <%= submit_tag "Import Issue", :class => "btn btn-default" %>
-                <% end %>
-              </li>
-            <% end %>
-          <% end %>
-          <li>
-            <%= link_to "Chrome Extension", "https://chrome.google.com/webstore/detail/tissues/amppomcpploimdoanchlddlimnaiecji" %>
-          </li>
+          <%= yield :navbar %>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">

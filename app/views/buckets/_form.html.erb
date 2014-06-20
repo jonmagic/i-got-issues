@@ -1,4 +1,6 @@
-<%= form_for(@bucket) do |f| %>
+<% url = @bucket.new_record? ? team_buckets_path(@team) : team_bucket_path(@team, @bucket) %>
+
+<%= form_for @bucket, :url => url do |f| %>
   <% if @bucket.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@bucket.errors.count, "error") %> prohibited this bucket from being saved:</h2>
@@ -15,7 +17,7 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  
+
   <div class="actions">
     <%= f.submit %>
   </div>

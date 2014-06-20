@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
-  resources :buckets, :only => [:index, :new, :edit, :create, :update, :destroy]
-  resources :prioritized_issues, :only => [:create, :update, :destroy] do
-    patch :move_to_bucket, :as => :move_to_bucket
-    post :sync, :as => :sync
+  resources :teams, :only => :index do
+    get "/" => "buckets#index"
+    resources :buckets, :only => [:new, :edit, :create, :update, :destroy] do
+      resources :prioritized_issues, :only => [:create, :update, :destroy] do
+        post :sync, :as => :sync
+        patch "move" => "prioritized_issues#move_to_bucket"
+      end
 
-    collection do
-      post :archive
+      collection do
+        post :archive_closed_issues
+      end
     end
   end
-  resources :teams, :only => :index
+
   get "/user/set_team", :to => "user#set_team", :as => :set_team
 
   match "/auth/:service/callback" => "services#create", :via => %i(get post)

@@ -41,7 +41,7 @@ class ServicesController < ApplicationController
     end
 
     if current_user.team_id.present?
-      redirect_to buckets_path
+      redirect_to team_path(current_user.team)
     else
       redirect_to teams_path
     end
