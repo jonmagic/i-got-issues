@@ -1,7 +1,7 @@
 Turbolinks.enableTransitionCache()
 
 makeIssuesSortable = ->
-  $(".editable .js-bucket-list").sortable({
+  $(".js-write-access .js-bucket-list").sortable({
     connectWith: ".js-bucket-list"
     update: (event, ui) ->
       if this == ui.item.parent()[0]
@@ -17,7 +17,7 @@ makeIssuesSortable = ->
   }).disableSelection()
 
 makeBucketsSortable = ->
-  $(".editable .js-buckets").sortable({
+  $(".js-write-access .js-buckets").sortable({
     handle: $(".js-bucket-handle")
     update: (event, ui) ->
       window.target = $(event.target)
@@ -31,13 +31,13 @@ makeBucketsSortable = ->
   }).disableSelection()
 
 makeIssuesAssignable = ->
-  $(document).on "click", ".editable .js-issue-assignee-link", (e) ->
+  $(document).on "click", ".js-write-access .js-issue-assignee-link", (e) ->
     e.preventDefault()
     link = $(this)
     issue = $(this).parents(".issue")
     issue.toggleClass("assigning")
 
-  $(document).on "change", ".editable .js-issue-assignee-select", (e) ->
+  $(document).on "change", ".js-write-access .js-issue-assignee-select", (e) ->
     e.preventDefault()
     field = $(this)
     issue = $(this).parents(".issue")
@@ -50,7 +50,7 @@ makeIssuesAssignable = ->
         issue.replaceWith(html)
 
 makeIssuesStateable = ->
-  $(document).on "change", ".editable .js-issue-state-toggle", (e) ->
+  $(document).on "change", ".js-write-access .js-issue-state-toggle", (e) ->
     field = $(this)
     issue = $(this).parents(".issue")
     form  = $(this).parents("form")
@@ -83,7 +83,7 @@ makeIssueSyncable = ->
         issue.replaceWith(html)
 
 makeIssuesArchivable = ->
-  $(document).on "click", ".editable .js-issues-archive", (e) ->
+  $(document).on "click", ".js-write-access .js-issues-archive", (e) ->
     e.preventDefault()
     button = $(this)
     request = $.ajax

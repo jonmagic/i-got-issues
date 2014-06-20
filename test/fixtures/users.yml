@@ -12,3 +12,7 @@ jonmagic-test:
   login: jonmagic-test
   email: jonmagic-test@test.com
   team_id: 203770
+
+juliamae:
+  login: juliamae
+  email: juliamae@test.com

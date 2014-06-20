@@ -35,6 +35,7 @@ class AccessTest < Capybara::Rails::TestCase
       assert page.has_content? "fix the copy"
       assert page.has_content? "Fails when .env file doesn't exist"
       assert page.has_content? "It's dangerous to go alone. Take this!"
+      assert page.has_css? ".js-write-access"
     end
   end
 
@@ -56,6 +57,7 @@ class AccessTest < Capybara::Rails::TestCase
       assert page.has_content? "fix the copy"
       assert page.has_content? "Fails when .env file doesn't exist"
       assert page.has_content? "It's dangerous to go alone. Take this!"
+      assert page.has_css? ".js-write-access"
     end
   end
 
@@ -64,6 +66,14 @@ class AccessTest < Capybara::Rails::TestCase
       login users("jonmagic")
       visit "/teams/15000"
       assert page.has_content? "Team B"
+    end
+  end
+
+  test "authenticated user can read but not write to team they don't belong to" do
+    VCR.use_cassette __name__ do
+      login users("juliamae")
+      visit "/teams/203770"
+      refute page.has_css? ".js-write-access"
     end
   end
 end

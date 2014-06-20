@@ -4,7 +4,7 @@
 
 .bucket-header {
   text-align: center;
-  .editable & {
+  .js-write-access & {
     cursor: move;
   }
 
@@ -20,7 +20,7 @@
 }
 
 .issue {
-  .editable & {
+  .js-write-access & {
     cursor: move;
   }
   list-style: none;

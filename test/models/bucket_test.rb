@@ -5,9 +5,10 @@ class BucketTest < ActiveSupport::TestCase
     current = buckets(:current)
     backlog = buckets(:backlog)
     icebox  = buckets(:icebox)
-    assert_equal [current, backlog, icebox], Bucket.rank(:row_order).all
+    team = Team.new(current.team_id)
+    assert_equal [current, backlog, icebox], team.buckets.all
 
     current.change_position(:last)
-    assert_equal [backlog, icebox, current], Bucket.rank(:row_order).all
+    assert_equal [backlog, icebox, current], team.buckets.all
   end
 end
