@@ -9,7 +9,7 @@ class ActiveSupport::TestCase
   #
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
   # -- they do not yet inherit this setting
-  fixtures :buckets, :issues, :prioritized_issues
+  fixtures :buckets, :issues, :prioritized_issues, :users
 
   # Add more helper methods to be used by all tests here...
 end
