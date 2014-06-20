@@ -1,5 +1,6 @@
 class PrioritizedIssuesController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :create
+  before_filter :authorize_read_team!
   before_filter :authorize_write_team!, :except => :sync
 
   def create
