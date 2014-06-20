@@ -26,7 +26,7 @@ class PrioritizedIssuesController < ApplicationController
   end
 
   def update
-    prioritized_issue = current_user.issues.find(params[:id])
+    prioritized_issue = @team.issues.find(params[:id])
     prioritized_issue.issue.update(issue_params)
     issue_updater.from_issue(prioritized_issue.issue)
     prioritized_issue.reload
@@ -42,7 +42,7 @@ class PrioritizedIssuesController < ApplicationController
   end
 
   def move_to_bucket
-    prioritized_issue = current_user.issues.find(params[:prioritized_issue_id])
+    prioritized_issue = @team.issues.find(params[:prioritized_issue_id])
     bucket = @team.buckets.find(params[:prioritized_issue][:bucket_id])
     prioritized_issue.move_to_bucket(bucket, params[:prioritized_issue][:row_order_position].to_i)
 
@@ -50,7 +50,7 @@ class PrioritizedIssuesController < ApplicationController
   end
 
   def sync
-    prioritized_issue = current_user.issues.find(params[:prioritized_issue_id])
+    prioritized_issue = @team.issues.find(params[:prioritized_issue_id])
     issue_importer.from_issue(prioritized_issue.issue)
     prioritized_issue.reload
 
