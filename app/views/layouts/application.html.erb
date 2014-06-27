@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <ul class="nav navbar-nav">
           <li class="<%= navbar_link_class(:teams, :index) %>"><%= link_to "Teams", teams_path %></li>
-          <%= yield :navbar %>
+          <%= yield :header_nav %>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
@@ -20,9 +20,12 @@
 
     <div class="container-fluid">
       <%= yield %>
-
-      <footer>
-      </footer>
     </div>
+
+    <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+      <div class="container-fluid">
+        <%= yield :footer_nav %>
+      </div>
+    </nav>
   </body>
 </html>
