@@ -59,7 +59,7 @@ class BucketsController < ApplicationController
   # Note: In the future, when issues aren't limited to the user's team ID,
   # this will have to be scoped to the current team.
   def archive_closed_issues
-    @team.issues.closed.where(:archived_at => nil).update_all :archived_at => Time.now
+    @team.issues.closed.where(:archived_at => nil).update_all :archived_at => Time.now.beginning_of_minute
 
     head :ok
   end
