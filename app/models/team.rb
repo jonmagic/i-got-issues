@@ -1,8 +1,8 @@
 class Team
   extend ActiveModel::Naming
 
-  def initialize(id)
-    @id = id
+  def initialize(params={})
+    @id           = params[:id]
   end
 
   attr_reader :id
