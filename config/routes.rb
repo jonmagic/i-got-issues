@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :teams, :only => :index do
     get "/" => "buckets#index"
+    
     resources :buckets, :only => [:new, :edit, :create, :update, :destroy] do
       resources :prioritized_issues, :only => [:create, :update, :destroy] do
         post :sync, :as => :sync
@@ -11,6 +12,8 @@ Rails.application.routes.draw do
         post :archive_closed_issues
       end
     end
+
+    resources :ship_lists, :only => [:index, :show]
   end
 
   get "/user/set_team", :to => "user#set_team", :as => :set_team

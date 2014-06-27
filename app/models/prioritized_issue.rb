@@ -17,6 +17,15 @@ class PrioritizedIssue < ActiveRecord::Base
   # Public: Finds PrioritizedIssues whose associated isues are closed.
   scope :closed, -> { joins(:issue).where(["issues.state = ?", Issue.states["closed"]]) }
 
+  # Public: Finds archived issues for bucket(s).
+  scope :archived, ->(bucket) { where(:bucket => bucket).where.not(:archived_at => nil) }
+
+  # Public: Finds distinct archived_at timestamps for bucket(s).
+  scope :archives, ->(bucket) { archived(bucket).select(:archived_at).distinct.pluck(:archived_at) }
+
+  # Public: Finds issues with same archived_at for bucket(s).
+  scope :archive, ->(bucket, timestamp) { archived(bucket).where(:archived_at => timestamp) }
+
   # Public: Priority of issue in bucket.
   # column :row_order
   validates :row_order, :presence => true

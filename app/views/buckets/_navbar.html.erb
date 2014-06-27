@@ -1,4 +1,5 @@
 <li class="<%= navbar_link_class(:buckets, :index) %>"><%= link_to "Buckets", team_path(@team) %></li>
+<li class="<%= navbar_link_class(:ship_lists, [:index, :show]) %>"><%= link_to "Ship Lists", team_ship_lists_path(@team) %></li>
 <% if team_member? %>
   <li class="<%= navbar_link_class(:buckets, :new) %>"><%= link_to "New Bucket", new_team_bucket_path(@team) %></li>
   <% if @team.buckets.any? %>

@@ -1,0 +1,12 @@
+<% content_for :header_nav do %>
+  <%= render "buckets/navbar" %>
+<% end %>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="list-group">
+      <% @ship_lists.each do |ship_list| %>
+        <%= link_to ship_list, team_ship_list_path(@team, ship_list), :class => "list-group-item" %>
+      <% end %>
+    </div>
+  </div>
+</div>
