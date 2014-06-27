@@ -21,4 +21,13 @@ class Team
   def issues
     PrioritizedIssue.bucket(buckets)
   end
+
+  def ship_lists
+    PrioritizedIssue.archives(buckets).map {|timestamp| ShipList.new(:timestamp => timestamp) }
+  end
+
+  def ship_list(timestamp)
+    issues = PrioritizedIssue.archive(buckets, timestamp.to_time)
+    ShipList.new(:timestamp => timestamp, :issues => issues)
+  end
 end

@@ -1,0 +1,11 @@
+<% content_for :header_nav do %>
+  <%= render "buckets/navbar" %>
+<% end %>
+<div class="row">
+  <div class="col-lg-12">
+    <p># Ship List for <%= @ship_list %></p>
+    <% @ship_list.issues.each do |issue| %>
+      <p>* [<%= issue.title %>](<%= github_issue_url(issue) %>)</p>
+    <% end %>
+  </div>
+</div>
