@@ -1,11 +1,16 @@
-<div class="row">
-  <% @teams.each do |team| %>
-    <div class="col-lg-4 col-md-4 col-sm-6">
-      <a href="<%= team_path(team["id"]) %>" class="team">
-        <img src="<%= "#{team["organization"]["avatar_url"]}size=48" %>" class="team-avatar">
-        <p class="team-organization-name"><%= team["organization"]["login"] %></p>
-        <h4 class="team-name"><%= team["name"] %></h4>
-      </a>
+<% @organizations.each do |organization, teams| %>
+  <div class="row">
+    <div class="col-lg-12">
+      <h3><%= organization %></h3>
+      <% teams.each do |team| %>
+        <div class="col-lg-3 col-md-3 col-sm-6">
+          <a href="<%= team_path(team) %>" class="team">
+            <img src="<%= "#{team.avatar_url}?size=48" %>" class="team-avatar">
+            <span class="team-name"><%= team.name %></span>
+            <div class="clearfix"></div>
+          </a>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>

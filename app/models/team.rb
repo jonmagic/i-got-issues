@@ -3,9 +3,12 @@ class Team
 
   def initialize(params={})
     @id           = params[:id]
+    @name         = params[:name]
+    @organization = params[:organization] ? params[:organization][:login] : nil
+    @avatar_url   = params[:organization] ? params[:organization][:avatar_url] : nil
   end
 
-  attr_reader :id
+  attr_reader :id, :name, :organization, :avatar_url
 
   def to_param
     id.to_s
