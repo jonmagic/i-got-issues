@@ -40,7 +40,10 @@ class ServicesController < ApplicationController
       end
     end
 
-    if current_user.team_id.present?
+    if path = session[:redirect_to]
+      session[:redirect_to] = nil
+      redirect_to path
+    elsif current_user.team_id.present?
       redirect_to team_path(current_user.team)
     else
       redirect_to teams_path
