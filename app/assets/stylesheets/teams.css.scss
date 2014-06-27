@@ -3,7 +3,12 @@
   border: 1px solid rgb(231,231,231);
   display: block;
   margin: 10px;
-  padding: 10px 10px 0 10px;
+  padding: 10px 10px 10px 10px;
+}
+
+.team-name {
+  line-height: 50px;
+  font-size: 20px;
 }
 
 .team-avatar {

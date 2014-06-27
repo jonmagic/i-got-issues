@@ -1,8 +1,10 @@
 class TeamsController < ApplicationController
   def index
-    @teams = current_user.
+    @organizations = current_user.
       github_client.
       user_teams.
-      sort {|a,b| a["organization"]["login"] <=> b["organization"]["login"] }
+      map {|t| Team.new(t) }.
+      group_by {|t| t.organization.downcase }.
+      sort
   end
 end

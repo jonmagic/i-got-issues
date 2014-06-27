@@ -62,7 +62,7 @@ class ApplicationController < ActionController::Base
   end
 
   def team
-    @team ||= Team.new(params[:team_id])
+    @team ||= Team.new(:id => params[:team_id])
   end
 
   def authorize_read_team!

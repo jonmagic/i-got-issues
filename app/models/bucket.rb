@@ -31,7 +31,7 @@ class Bucket < ActiveRecord::Base
   #
   # Returns a Team.
   def team
-    Team.new(team_id)
+    Team.new(:id => team_id)
   end
 
   # column :created_at
