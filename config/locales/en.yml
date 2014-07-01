@@ -12,3 +12,5 @@ en:
     provider_unlinked: 'Your %{provider} account has been unlinked!.'
     authentication_error: 'There was an error at the remote authentication service!.'
     logged_in: "Successfully logged in."
+  import_issues:
+    select_a_team: "Select a team to import issue into."

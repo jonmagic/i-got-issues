@@ -59,7 +59,9 @@ class PrioritizedIssuesController < ApplicationController
   end
 
   def bookmarklet_legacy
-    redirect_to new_prioritized_issue_path(:url => params[:url], :return => params[:return])
+    redirect_to \
+      new_prioritized_issue_path(:url => params[:url], :return => params[:return]),
+      :notice => I18n.t("import_issues.select_a_team")
   end
 
   def new
