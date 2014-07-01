@@ -10,9 +10,7 @@
             <%= hidden_field_tag :url, @url %>
             <%= hidden_field_tag :return, @return %>
             <button class="team">
-              <img src="<%= "#{team.avatar_url}?size=48" %>" class="team-avatar">
-              <span class="team-name"><%= team.name %></span>
-              <div class="clearfix"></div>
+              <%= render :partial => "teams/team_preview", :locals => {:team => team} %>
             </button>
           <% end %>
         </div>

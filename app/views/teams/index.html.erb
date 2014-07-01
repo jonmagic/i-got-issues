@@ -5,9 +5,7 @@
       <% teams.each do |team| %>
         <div class="col-lg-3 col-md-3 col-sm-6">
           <a href="<%= team_path(team) %>" class="team">
-            <img src="<%= "#{team.avatar_url}?size=48" %>" class="team-avatar">
-            <span class="team-name"><%= team.name %></span>
-            <div class="clearfix"></div>
+            <%= render :partial => "teams/team_preview", :locals => {:team => team} %>
           </a>
         </div>
       <% end %>
