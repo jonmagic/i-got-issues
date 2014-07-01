@@ -11,3 +11,4 @@ en:
     provider_added: 'Your %{provider} account has been added for logging in!.'
     provider_unlinked: 'Your %{provider} account has been unlinked!.'
     authentication_error: 'There was an error at the remote authentication service!.'
+    logged_in: "Successfully logged in."
