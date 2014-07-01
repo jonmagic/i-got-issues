@@ -1,0 +1,22 @@
+<% @organizations.each do |organization, teams| %>
+  <% next unless teams.inject(0) {|num, team| num += team.buckets.count } > 0 %>
+  <div class="row">
+    <div class="col-lg-12">
+      <h3><%= organization %></h3>
+      <% teams.each do |team| %>
+        <% next unless team.buckets.any? %>
+        <div class="col-lg-3 col-md-3 col-sm-6">
+          <%= form_tag team_bucket_prioritized_issues_path(team, team.buckets.last) do %>
+            <%= hidden_field_tag :url, @url %>
+            <%= hidden_field_tag :return, @return %>
+            <button class="team">
+              <img src="<%= "#{team.avatar_url}?size=48" %>" class="team-avatar">
+              <span class="team-name"><%= team.name %></span>
+              <div class="clearfix"></div>
+            </button>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

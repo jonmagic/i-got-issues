@@ -1,7 +1,7 @@
 class PrioritizedIssuesController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :create
-  before_filter :authorize_read_team!
-  before_filter :authorize_write_team!, :except => :sync
+  before_filter :authorize_read_team!, :except => :new
+  before_filter :authorize_write_team!, :except => [:sync, :new]
 
   def create
     if issue = issue_importer.from_url(params[:url])
@@ -56,6 +56,21 @@ class PrioritizedIssuesController < ApplicationController
     prioritized_issue.reload
 
     render :partial => "buckets/issue", :locals => {:issue => prioritized_issue}
+  end
+
+  def bookmarklet_legacy
+    redirect_to new_prioritized_issue_path(:url => params[:url], :return => params[:return])
+  end
+
+  def new
+    @url = params[:url]
+    @return = params[:return]
+    @organizations = current_user.
+      github_client.
+      user_teams.
+      map {|t| Team.new(t) }.
+      group_by {|t| t.organization.downcase }.
+      sort
   end
 
 private
