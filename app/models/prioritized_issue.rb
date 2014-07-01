@@ -21,7 +21,7 @@ class PrioritizedIssue < ActiveRecord::Base
   scope :archived, ->(bucket) { where(:bucket => bucket).where.not(:archived_at => nil) }
 
   # Public: Finds distinct archived_at timestamps for bucket(s).
-  scope :archives, ->(bucket) { archived(bucket).select(:archived_at).distinct.pluck(:archived_at) }
+  scope :archives, ->(bucket) { archived(bucket).select(:archived_at).order(:archived_at).distinct.pluck(:archived_at) }
 
   # Public: Finds issues with same archived_at for bucket(s).
   scope :archive, ->(bucket, timestamp) { archived(bucket).where(:archived_at => timestamp) }
