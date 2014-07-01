@@ -1,7 +1,7 @@
 class PrioritizedIssuesController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:create, :bookmarklet_legacy]
-  before_filter :authorize_read_team!, :except => :new
-  before_filter :authorize_write_team!, :except => [:sync, :new]
+  before_filter :authorize_read_team!, :except => [:bookmarklet_legacy, :new]
+  before_filter :authorize_write_team!, :except => [:sync, :bookmarklet_legacy, :new]
 
   def create
     if issue = issue_importer.from_url(params[:url])
