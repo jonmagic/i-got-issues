@@ -1,5 +1,5 @@
 class PrioritizedIssuesController < ApplicationController
-  skip_before_filter :verify_authenticity_token, :only => :bookmarklet_legacy, :create
+  skip_before_filter :verify_authenticity_token, :only => [:create, :bookmarklet_legacy]
   before_filter :authorize_read_team!, :except => :new
   before_filter :authorize_write_team!, :except => [:sync, :new]
 

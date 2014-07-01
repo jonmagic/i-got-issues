@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :ship_lists, :only => [:index, :show]
   end
 
-  post "/prioritized_issues" => "prioritized_issues#bookmarklet_legacy"
+  post "/prioritized_issues"     => "prioritized_issues#bookmarklet_legacy"
   get  "/prioritized_issues/new" => "prioritized_issues#new", :as => :new_prioritized_issue
 
   get "/user/set_team", :to => "user#set_team", :as => :set_team
