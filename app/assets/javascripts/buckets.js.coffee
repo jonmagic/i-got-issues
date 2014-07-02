@@ -105,7 +105,6 @@ $ ->
   makeBucketsSortable()
   makeIssueSyncable()
   makeIssuesArchivable()
-  $(".alert").alert()
 
 $(document).on "page:load", ->
   makeIssuesSortable()
