@@ -3,6 +3,10 @@ Turbolinks.enableTransitionCache()
 makeIssuesSortable = ->
   $(".js-write-access .js-bucket-list").sortable({
     connectWith: ".js-bucket-list"
+    over: (event, ui) ->
+      $(event.target).addClass("highlight")
+    out: (event, ui) ->
+      $(event.target).removeClass("highlight")
     update: (event, ui) ->
       if this == ui.item.parent()[0]
         window.target = $(event.target)
