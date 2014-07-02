@@ -18,4 +18,17 @@ module ApplicationHelper
   def octicon(code)
     content_tag :span, '', :class => "octicon octicon-#{code.to_s.dasherize}"
   end
+
+  def teams_link(team)
+    text, css_class = if team.present? && team.name.present?
+      string  = content_tag :div, team.organization, :class => "teams-link-organization"
+      string += content_tag :div, team.name, :class => "teams-link-name"
+      string += content_tag :div, "(change team)", :class => "teams-link-change"
+      [string, "teams-link"]
+    else
+      ["Teams", ""]
+    end
+
+    link_to text, teams_path, :class => css_class
+  end
 end

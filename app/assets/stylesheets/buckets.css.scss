@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.highlight {
+  background-color: rgba(255,255,134,0.34);
+  transition: background 0.5s ease-in-out;
+}
+
 .bucket-header {
   text-align: center;
   .js-write-access & {
@@ -14,9 +19,11 @@
 }
 
 .bucket-list {
+  border-radius: 10px;
   min-height: 40px;
   margin: 0;
-  padding: 0;
+  padding: 10px 10px 100px;
+  transition: background 0.5s ease-in-out;
 }
 
 .issue {

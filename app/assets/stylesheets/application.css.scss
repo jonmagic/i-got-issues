@@ -1,6 +1,9 @@
 /*
 = require octicons
 */
+
+$grid-gutter-width: 5px;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap/theme";
@@ -11,5 +14,5 @@
 @import "shared/clearfix";
 
 .primary-content {
-  padding-bottom: 60px;
+  padding: 0 8px 60px;
 }
