@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.github.com/teams/15000/members?per_page=100
+    uri: https://api.github.com/teams/15000
     body:
       encoding: US-ASCII
       string: ''
@@ -12,7 +12,7 @@ http_interactions:
       User-Agent:
       - Octokit Ruby Gem 3.1.0
       Authorization:
-      - token fake_access_token
+      - token a96a41e50cb48a29394dcbbfdf4567ca504750b2
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Fri, 20 Jun 2014 05:50:43 GMT
+      - Fri, 18 Jul 2014 06:23:45 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -33,9 +33,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4962'
+      - '4991'
       X-Ratelimit-Reset:
-      - '1403246503'
+      - '1405668222'
       X-Oauth-Scopes:
       - admin:org, admin:public_key, admin:repo_hook, delete_repo, gist, notifications,
         repo, user
@@ -57,16 +57,16 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Github-Request-Id:
-      - 4C0E105B:410B:F466C3F:53A3CBB3
+      - 4C0E105B:4058:5F9FF8:53C8BD71
       Strict-Transport-Security:
-      - max-age=31536000
+      - max-age=31536000; includeSubdomains
       X-Content-Type-Options:
       - nosniff
     body:
       encoding: UTF-8
       string: '{"message":"Not Found","documentation_url":"https://developer.github.com/v3"}'
     http_version: 
-  recorded_at: Fri, 20 Jun 2014 05:50:43 GMT
+  recorded_at: Fri, 18 Jul 2014 06:23:45 GMT
 - request:
     method: get
     uri: https://api.github.com/user/teams?per_page=100
@@ -79,7 +79,7 @@ http_interactions:
       User-Agent:
       - Octokit Ruby Gem 3.1.0
       Authorization:
-      - token fake_access_token
+      - token a96a41e50cb48a29394dcbbfdf4567ca504750b2
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -90,7 +90,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Fri, 20 Jun 2014 05:50:43 GMT
+      - Fri, 18 Jul 2014 06:23:46 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -100,13 +100,13 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4961'
+      - '4990'
       X-Ratelimit-Reset:
-      - '1403246503'
+      - '1405668222'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Etag:
-      - '"a7552926ff721160e7d6451ffbaddddc"'
+      - '"3ffddacb7a17ea7a04172c6418686b0d"'
       X-Oauth-Scopes:
       - admin:org, admin:public_key, admin:repo_hook, delete_repo, gist, notifications,
         repo, user
@@ -131,16 +131,16 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Github-Request-Id:
-      - 4C0E105B:4109:9789F86:53A3CBB3
+      - 4C0E105B:4057:324EEE:53C8BD71
       Strict-Transport-Security:
-      - max-age=31536000
+      - max-age=31536000; includeSubdomains
       X-Content-Type-Options:
       - nosniff
       X-Served-By:
-      - 971af40390ac4398fcdd45c8dab0fbe7
+      - c436b2b44345c72ff906059f604991e7
     body:
       encoding: UTF-8
       string: '[{"name":"Team B","id":203770,"slug":"team-b","permission":"admin","url":"https://api.github.com/teams/203770","members_url":"https://api.github.com/teams/203770/members{/member}","repositories_url":"https://api.github.com/teams/203770/repos","members_count":2,"repos_count":1,"organization":{"login":"hoytus","id":1892126,"url":"https://api.github.com/orgs/hoytus","repos_url":"https://api.github.com/orgs/hoytus/repos","events_url":"https://api.github.com/orgs/hoytus/events","members_url":"https://api.github.com/orgs/hoytus/members{/member}","public_members_url":"https://api.github.com/orgs/hoytus/public_members{/member}","avatar_url":"https://avatars.githubusercontent.com/u/1892126?","public_repos":0,"public_gists":0,"followers":0,"following":0,"html_url":"https://github.com/hoytus","created_at":"2012-06-26T01:06:43Z","updated_at":"2014-03-13T21:52:51Z","type":"Organization"}}]'
     http_version: 
-  recorded_at: Fri, 20 Jun 2014 05:50:43 GMT
+  recorded_at: Fri, 18 Jul 2014 06:23:46 GMT
 recorded_with: VCR 2.9.2
