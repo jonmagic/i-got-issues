@@ -64,9 +64,13 @@
     }
 
     .issue-destroy-form {
-      display: block;
+      display: none;
       float: right;
     }
+  }
+
+  &:hover .issue-destroy-form {
+    display: block;
   }
 }
 
