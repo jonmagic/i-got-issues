@@ -40,8 +40,6 @@ class ServicesController < ApplicationController
       end
     end
 
-    flash[:notice] = I18n.t("notifications.logged_in")
-    
     if path = session[:redirect_to]
       session[:redirect_to] = nil
       redirect_to path

@@ -9,7 +9,8 @@
 
 .bucket-header {
   text-align: center;
-  .js-write-access & {
+
+  .write-access & {
     cursor: move;
   }
 
@@ -27,9 +28,10 @@
 }
 
 .issue {
-  .js-write-access & {
+  .write-access & {
     cursor: move;
   }
+
   list-style: none;
   margin-bottom: 5px;
   position: relative;
@@ -62,9 +64,13 @@
     }
 
     .issue-destroy-form {
-      display: block;
+      display: none;
       float: right;
     }
+  }
+
+  &:hover .issue-destroy-form {
+    display: block;
   }
 }
 
