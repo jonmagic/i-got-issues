@@ -1,0 +1,89 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/jonmagic/scriptular/issues/10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.1.0
+      Authorization:
+      - token fake_access_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Fri, 18 Jul 2014 06:37:54 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4987'
+      X-Ratelimit-Reset:
+      - '1405668222'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Last-Modified:
+      - Thu, 17 Jul 2014 13:53:48 GMT
+      Etag:
+      - '"6be2d31ede8eaa8fc1b641f0eaa37be0"'
+      X-Oauth-Scopes:
+      - admin:org, admin:public_key, admin:repo_hook, delete_repo, gist, notifications,
+        repo, user
+      X-Accepted-Oauth-Scopes:
+      - ''
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 4C0E105B:2EB4:2B7A4F:53C8C0C1
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - a8d8e492d6966f0c23dee2eed64c678a
+    body:
+      encoding: UTF-8
+      string: '{"url":"https://api.github.com/repos/jonmagic/scriptular/issues/10","labels_url":"https://api.github.com/repos/jonmagic/scriptular/issues/10/labels{/name}","comments_url":"https://api.github.com/repos/jonmagic/scriptular/issues/10/comments","events_url":"https://api.github.com/repos/jonmagic/scriptular/issues/10/events","html_url":"https://github.com/jonmagic/scriptular/pull/10","id":3750878,"number":10,"title":"Add
+        share-able link to output section","user":{"login":"johnkpaul","id":475621,"avatar_url":"https://avatars.githubusercontent.com/u/475621?","gravatar_id":"eee585a10c1d7c4f1f30e28077ffa720","url":"https://api.github.com/users/johnkpaul","html_url":"https://github.com/johnkpaul","followers_url":"https://api.github.com/users/johnkpaul/followers","following_url":"https://api.github.com/users/johnkpaul/following{/other_user}","gists_url":"https://api.github.com/users/johnkpaul/gists{/gist_id}","starred_url":"https://api.github.com/users/johnkpaul/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/johnkpaul/subscriptions","organizations_url":"https://api.github.com/users/johnkpaul/orgs","repos_url":"https://api.github.com/users/johnkpaul/repos","events_url":"https://api.github.com/users/johnkpaul/events{/privacy}","received_events_url":"https://api.github.com/users/johnkpaul/received_events","type":"User","site_admin":false},"labels":[],"state":"closed","assignee":null,"milestone":null,"comments":7,"created_at":"2012-03-21T18:27:40Z","updated_at":"2014-06-14T19:58:37Z","closed_at":"2012-03-23T01:42:10Z","pull_request":{"url":"https://api.github.com/repos/jonmagic/scriptular/pulls/10","html_url":"https://github.com/jonmagic/scriptular/pull/10","diff_url":"https://github.com/jonmagic/scriptular/pull/10.diff","patch_url":"https://github.com/jonmagic/scriptular/pull/10.patch"},"body":"In
+        working with someone remotely on javascript regular expressions, I really
+        wanted the ability to share what I just worked on from within scriptular.
+        Rather than copy and pasting each individual box, I figured it''d be useful
+        to have a link. \r\n\r\nThe code changes should be pretty straightforward.
+        I did have to change CSS to make the look and feel match the other output.
+        Perhaps, additionally, we could add a \"share this\" widget and send the page
+        to twitter/facebook and others.","closed_by":{"login":"jonmagic","id":623,"avatar_url":"https://avatars.githubusercontent.com/u/623?","gravatar_id":"0a5a5f09f2c85cc425f7b8db4c5e61c1","url":"https://api.github.com/users/jonmagic","html_url":"https://github.com/jonmagic","followers_url":"https://api.github.com/users/jonmagic/followers","following_url":"https://api.github.com/users/jonmagic/following{/other_user}","gists_url":"https://api.github.com/users/jonmagic/gists{/gist_id}","starred_url":"https://api.github.com/users/jonmagic/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/jonmagic/subscriptions","organizations_url":"https://api.github.com/users/jonmagic/orgs","repos_url":"https://api.github.com/users/jonmagic/repos","events_url":"https://api.github.com/users/jonmagic/events{/privacy}","received_events_url":"https://api.github.com/users/jonmagic/received_events","type":"User","site_admin":true}}'
+    http_version: 
+  recorded_at: Fri, 18 Jul 2014 06:37:54 GMT
+recorded_with: VCR 2.9.2

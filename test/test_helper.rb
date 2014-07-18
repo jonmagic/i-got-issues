@@ -19,7 +19,9 @@ VCR.configure do |c|
   c.hook_into :webmock
 end
 
-def login(user, access_token="fake_access_token")
+TEST_ACCESS_TOKEN = "fake_access_token"
+
+def login(user, access_token=TEST_ACCESS_TOKEN)
   page.set_rack_session :user_id     => user.id
   page.set_rack_session :oauth_token => access_token
 end
