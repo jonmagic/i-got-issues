@@ -3,7 +3,7 @@
   <head>
     <%= render :partial => "shared/head" %>
   </head>
-  <body class="<%= 'js-write-access' if @team && team_member? %>">
+  <body class="<%= 'js-write-access write-access' if @team && team_member? %>">
     <nav class="navbar navbar-default" role="navigation">
       <div class="container-fluid">
         <ul class="nav navbar-nav">
