@@ -28,15 +28,16 @@ class BucketsController < ApplicationController
 
   def create
     BucketCreator.process(current_user, params)
+
     redirect_to team_path(@team), :notice => "Bucket was successfully created."
   end
 
   def update
-    @bucket.update(bucket_params)
+    bucket = BucketUpdater.process(current_user, params)
 
     respond_to do |format|
-      format.json { render :json => @bucket }
-      format.html { redirect_to team_path(@team) }
+      format.json { render :json => bucket }
+      format.html { redirect_to team_path(bucket.team) }
     end
   end
 
