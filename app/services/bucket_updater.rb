@@ -6,7 +6,7 @@ class BucketUpdater
   # Team concerns for this service.
   include ServiceTeams
 
-  # Internal: Update bucket only after ensuring user has permission.
+  # Internal: Update bucket only after ensuring the actor has permission.
   #
   # Raises NotAuthorized or returns a Bucket instance.
   def process

@@ -1,9 +1,9 @@
 module ServiceTeams
-  # Internal: Authorize that user has write permissions for this team.
+  # Internal: Raise exception if actor does not have write permission for team.
   #
   # Returns NilClass or raises NotAuthorized.
   def authorize_write_team!
-    unless team_members.detect {|team_member| team_member.login == user.login }
+    unless team_members.detect {|team_member| team_member.login == actor.login }
       raise NotAuthorized
     end
   end
@@ -19,6 +19,6 @@ module ServiceTeams
   #
   # Returns an Array of TeamMember instances.
   def team_members
-    user.github_client.team_members(params[:team_id]).map {|team_params| TeamMember.new(team_params) }
+    github_client.team_members(team_id).map {|team_params| TeamMember.new(team_params) }
   end
 end

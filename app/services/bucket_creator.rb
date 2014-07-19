@@ -6,7 +6,7 @@ class BucketCreator
   # Team concerns for this service.
   include ServiceTeams
 
-  # Internal: Create bucket only after ensuring user has permission.
+  # Internal: Create bucket only after ensuring the actor has permission.
   #
   # Raises NotAuthorized or returns a Bucket instance.
   def process

@@ -1,5 +1,4 @@
-# Raised when a user tries to perform an action on a resource that they do not
-# have authorization for.
+# Raised when a User does not have permission to act on a resource.
 class NotAuthorized < StandardError
 
 end
