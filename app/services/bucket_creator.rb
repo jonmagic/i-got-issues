@@ -5,7 +5,7 @@ class BucketCreator
 
   # Internal: Create bucket only after ensuring user has permission.
   #
-  # Raises NotAuthorized or returns a Bucket instance.
+  # Returns a Bucket instance or raises NotAuthorized.
   def process
     authorize_write_team!
 

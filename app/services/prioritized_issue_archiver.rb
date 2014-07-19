@@ -5,11 +5,12 @@ class PrioritizedIssueArchiver
 
   # Internal: Create bucket only after ensuring user has permission.
   #
-  # Raises NotAuthorized or returns a Bucket instance.
+  # Returns a TrueClass or raises NotAuthorized.
   def process
     authorize_write_team!
 
     issues.update_all :archived_at => Time.now.beginning_of_minute
+    true
   end
 
   # Internal: Closed but not yet archived issues for team.
