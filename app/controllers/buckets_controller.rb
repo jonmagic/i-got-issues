@@ -27,9 +27,9 @@ class BucketsController < ApplicationController
   end
 
   def create
-    BucketCreator.process(current_user, params)
+    bucket = BucketCreator.process(current_user, params)
 
-    redirect_to team_path(@team), :notice => "Bucket was successfully created."
+    redirect_to team_path(bucket.team), :notice => "Bucket was successfully created."
   end
 
   def update
