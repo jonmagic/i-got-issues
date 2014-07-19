@@ -1,7 +1,7 @@
 class BucketsController < ApplicationController
   before_filter :authorize_read_team!
-  before_filter :authorize_write_team!, :only => [:destroy, :archive_closed_issues]
-  before_action :set_bucket, :only => [:edit, :update, :destroy]
+  before_filter :authorize_write_team!, :only => [:archive_closed_issues]
+  before_action :set_bucket, :only => [:edit, :update]
 
   def index
     if @team.buckets.any?
@@ -42,10 +42,9 @@ class BucketsController < ApplicationController
   end
 
   def destroy
-    new_bucket = @team.buckets.where.not(:id => @bucket.id).last
-    @bucket.issues.each {|issue| issue.move_to_bucket(new_bucket) }
-    @bucket.destroy
-    redirect_to team_path(@team), :notice => "Bucket was successfully destroyed."
+    bucket = BucketDestroyer.process(current_user, params)
+
+    redirect_to team_path(bucket.team), :notice => "Bucket was successfully destroyed."
   end
 
   # Archives all closed, non-archived issues for the current user.
