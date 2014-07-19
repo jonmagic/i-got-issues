@@ -3,7 +3,7 @@ class BucketDestroyer
   # See ServiceBase for the Public interface to this service.
   include ServiceBase
 
-  # Internal: Destroy bucket only after ensuring the actor has permission.
+  # Internal: Destroy bucket only after ensuring user has permission.
   #
   # Raises NotAuthorized or returns a Bucket instance.
   def process

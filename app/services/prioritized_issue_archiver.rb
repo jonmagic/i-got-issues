@@ -3,7 +3,7 @@ class PrioritizedIssueArchiver
   # See ServiceBase for the Public interface to this service.
   include ServiceBase
 
-  # Internal: Create bucket only after ensuring the actor has permission.
+  # Internal: Create bucket only after ensuring user has permission.
   #
   # Raises NotAuthorized or returns a Bucket instance.
   def process
