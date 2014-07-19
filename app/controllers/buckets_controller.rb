@@ -1,6 +1,6 @@
 class BucketsController < ApplicationController
   before_filter :authorize_read_team!
-  before_filter :authorize_write_team!, :only => [:create, :update, :destroy, :archive_closed_issues]
+  before_filter :authorize_write_team!, :only => [:update, :destroy, :archive_closed_issues]
   before_action :set_bucket, :only => [:edit, :update, :destroy]
 
   def index
@@ -27,15 +27,8 @@ class BucketsController < ApplicationController
   end
 
   def create
-    @bucket = Bucket.new(bucket_params)
-    @bucket.team_id = @team.id
-    @bucket.row_order_position = :last
-
-    if @bucket.save
-      redirect_to team_path(@team), :notice => "Bucket was successfully created."
-    else
-      render :new
-    end
+    BucketCreator.process(current_user, params)
+    redirect_to team_path(@team), :notice => "Bucket was successfully created."
   end
 
   def update
