@@ -3,9 +3,6 @@ class BucketDestroyer
   # See ServiceBase for the Public interface to this service.
   include ServiceBase
 
-  # Team concerns for this service.
-  include ServiceTeams
-
   # Internal: Destroy bucket only after ensuring the actor has permission.
   #
   # Raises NotAuthorized or returns a Bucket instance.
