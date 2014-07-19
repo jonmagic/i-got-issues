@@ -25,9 +25,12 @@ module ServiceBase
 
   def initialize(actor, params)
     @actor = actor
+
+    params.delete(:utf8)
+    params.delete(:authenticity_token)
     @params = params
   end
-  
+
   # Internal: GitHub client for actor.
   #
   # Returns an Octokit::Client.
