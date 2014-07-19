@@ -7,8 +7,8 @@ class BucketDestroyerTest < ActiveSupport::TestCase
     VCR.use_cassette method_name do
       bucket = buckets(:current)
       params = {
-        :id      => bucket.id,
-        :team_id => 203770 # member of https://github.com/orgs/hoytus/teams/team-b
+        :bucket_id => bucket.id,
+        :team_id   => 203770 # member of https://github.com/orgs/hoytus/teams/team-b
       }
 
       bucket = BucketDestroyer.process(user, params)
@@ -22,8 +22,8 @@ class BucketDestroyerTest < ActiveSupport::TestCase
     VCR.use_cassette method_name do
       bucket = buckets(:unauthorized_write)
       params = {
-        :id      => bucket.id,
-        :team_id => 203768 # not a member of https://github.com/orgs/hoytus/teams/owners
+        :bucket_id => bucket.id,
+        :team_id   => 203768 # not a member of https://github.com/orgs/hoytus/teams/owners
       }
 
       assert_raises(NotAuthorized) { BucketDestroyer.process(user, params) }

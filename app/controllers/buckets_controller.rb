@@ -9,7 +9,7 @@ class BucketsController < ApplicationController
       @columns = 12 / (@buckets.length > 0 ? @buckets.length : 1)
     elsif @team.present?
       if team_member?
-        redirect_to new_team_bucket_path(@team)
+        redirect_to new_team_buckets_path(@team)
       else
         redirect_to teams_path
       end

@@ -19,7 +19,7 @@ class BucketDestroyer
   #
   # Returns a Bucket.
   def bucket
-    @bucket ||= Bucket.find(params[:id])
+    @bucket ||= Bucket.find(bucket_id)
   end
 
   # Internal: The Team the bucket belongs to.

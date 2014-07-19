@@ -20,7 +20,7 @@ class BucketUpdater
   #
   # Returns a Bucket.
   def bucket
-    @bucket ||= Bucket.find(params[:id])
+    @bucket ||= Bucket.find(bucket_id)
   end
 
   # Internal: Bucket name from params.

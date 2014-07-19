@@ -7,9 +7,9 @@ class BucketUpdaterTest < ActiveSupport::TestCase
     VCR.use_cassette method_name do
       bucket = buckets(:current)
       params = {
-        :id      => bucket.id,
-        :team_id => 203770, # member of https://github.com/orgs/hoytus/teams/team-b
-        :bucket  => { :name => "Blocked" }
+        :bucket_id => bucket.id,
+        :team_id   => 203770, # member of https://github.com/orgs/hoytus/teams/team-b
+        :bucket    => { :name => "Blocked" }
       }
 
       assert_equal "Current", bucket.name
@@ -25,9 +25,9 @@ class BucketUpdaterTest < ActiveSupport::TestCase
     VCR.use_cassette method_name do
       bucket = buckets(:current)
       params = {
-        :id      => bucket.id,
-        :team_id => 203770, # member of https://github.com/orgs/hoytus/teams/team-b
-        :bucket  => { :row_order_position => 1 }
+        :bucket_id => bucket.id,
+        :team_id   => 203770, # member of https://github.com/orgs/hoytus/teams/team-b
+        :bucket    => { :row_order_position => 1 }
       }
 
       assert_equal 0, bucket.row_order
@@ -43,9 +43,9 @@ class BucketUpdaterTest < ActiveSupport::TestCase
     VCR.use_cassette method_name do
       bucket = buckets(:unauthorized_write)
       params = {
-        :id      => bucket.id,
-        :team_id => 203768, # member of https://github.com/orgs/hoytus/teams/owners
-        :bucket  => { :name => "Blocked" }
+        :bucket_id => bucket.id,
+        :team_id   => 203768, # member of https://github.com/orgs/hoytus/teams/owners
+        :bucket    => { :name => "Blocked" }
       }
 
       assert_raises(NotAuthorized) { BucketUpdater.process(user, params) }
@@ -56,9 +56,9 @@ class BucketUpdaterTest < ActiveSupport::TestCase
     VCR.use_cassette method_name do
       bucket = buckets(:unauthorized_write)
       params = {
-        :id      => bucket.id,
-        :team_id => 203768, # member of https://github.com/orgs/hoytus/teams/owners
-        :bucket  => { :row_order_position => 1 }
+        :bucket_id => bucket.id,
+        :team_id   => 203768, # member of https://github.com/orgs/hoytus/teams/owners
+        :bucket    => { :row_order_position => 1 }
       }
 
       assert_raises(NotAuthorized) { BucketUpdater.process(user, params) }
