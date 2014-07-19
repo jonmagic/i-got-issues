@@ -11,11 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140719065224) do
+ActiveRecord::Schema.define(version: 20140719065408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "audit_entries", force: true do |t|
+    t.integer  "actor_id",          null: false
+    t.string   "actor_login"
+    t.string   "actor_email"
+    t.string   "service_class",     null: false
+    t.string   "target_class",      null: false
+    t.integer  "target_id",         null: false
+    t.json     "target_attributes"
+    t.json     "target_changes"
+    t.json     "controller_params"
+    t.datetime "created_at"
+  end
 
   create_table "buckets", force: true do |t|
     t.string   "name",                   null: false
