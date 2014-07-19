@@ -6,7 +6,7 @@ class BucketDestroyer
   # Team concerns for this service.
   include ServiceTeams
 
-  # Internal: Create bucket only after ensuring user has permission.
+  # Internal: Destroy bucket only after ensuring user has permission.
   #
   # Raises NotAuthorized or returns a Bucket instance.
   def process
