@@ -10,6 +10,8 @@ module ServiceBase
     # See service #process for return definition.
     def process(user, params)
       new(user, params).process
+
+      # TODO: Rescue Octokit error and raise NotAuthorized
     end
   end
 
@@ -42,6 +44,13 @@ module ServiceBase
     unless team_members.detect {|team_member| team_member.login == user.login }
       raise NotAuthorized
     end
+  end
+
+  # Internal: Get teams for this user.
+  #
+  # Returns an Array of Team instances.
+  def user_teams
+    github_client.user_teams.map {|attrs| Team.new(attrs) }
   end
 
   # Internal: The id for this team.
