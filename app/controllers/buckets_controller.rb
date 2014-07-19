@@ -1,6 +1,6 @@
 class BucketsController < ApplicationController
   before_filter :authorize_read_team!
-  before_filter :authorize_write_team!, :only => [:update, :destroy, :archive_closed_issues]
+  before_filter :authorize_write_team!, :only => [:destroy, :archive_closed_issues]
   before_action :set_bucket, :only => [:edit, :update, :destroy]
 
   def index
