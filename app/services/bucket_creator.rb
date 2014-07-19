@@ -6,6 +6,9 @@ class BucketCreator
   # Team concerns for this service.
   include ServiceTeams
 
+  # Auditing concern.
+  include ServiceAudit
+
   # Internal: Create bucket only after ensuring the actor has permission.
   #
   # Raises NotAuthorized or returns a Bucket instance.
@@ -16,6 +19,6 @@ class BucketCreator
       bucket.name               = params[:bucket][:name]
       bucket.row_order_position = :last
       bucket.team_id            = team_id
-    end
+    end.tap {|bucket| log(actor, bucket, params) }
   end
 end
