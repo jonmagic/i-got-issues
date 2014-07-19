@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 ruby "2.1.1"
 
-gem "rails", "4.1.1"
+gem "rails", "4.1.4"
 gem "bootstrap-sass"
 gem "coffee-rails"
 gem "dotenv-rails", :groups => [:development, :test]
