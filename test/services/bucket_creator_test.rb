@@ -1,13 +1,7 @@
 require 'test_helper'
 
 class BucketCreatorTest < ActiveSupport::TestCase
-  def user
-    @user ||= begin
-      user = User.new(:login => "jonmagic-test")
-      user.github_client = Octokit::Client.new(:access_token => TEST_ACCESS_TOKEN)
-      user
-    end
-  end
+  include UserHelpers
 
   test "team member can create bucket" do
     VCR.use_cassette method_name do
