@@ -1,6 +1,5 @@
 class BucketsController < ApplicationController
   before_filter :authorize_read_team!
-  before_action :set_bucket, :only => [:edit, :update]
 
   def index
     if @team.buckets.any?
@@ -23,6 +22,7 @@ class BucketsController < ApplicationController
   end
 
   def edit
+    @bucket = BucketFinder.process(current_user, params)
   end
 
   def create
@@ -44,16 +44,5 @@ class BucketsController < ApplicationController
     bucket = BucketDestroyer.process(current_user, params)
 
     redirect_to team_path(bucket.team), :notice => "Bucket was successfully destroyed."
-  end
-
-private
-  # Use callbacks to share common setup or constraints between actions.
-  def set_bucket
-    @bucket = @team.buckets.find(params[:id])
-  end
-
-  # Only allow a trusted parameter "white list" through.
-  def bucket_params
-    params.require(:bucket).permit(:name, :row_order_position)
   end
 end
