@@ -13,12 +13,12 @@ icebox:
   row_order: 2
   team_id: 203770
 
-unauthorized_current:
-  name: Unauthorized Current
+unauthorized_write:
+  name: Unauthorized to write
   row_order: 0
   team_id: 203768
 
-unauthorized_backlog:
-  name: Unauthorized Backlog
-  row_order: 1
-  team_id: 203768
+unauthorized_read:
+  name: Unauthorized to read
+  row_order: 0
+  team_id: 614157

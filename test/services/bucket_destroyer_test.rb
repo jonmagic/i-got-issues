@@ -20,7 +20,7 @@ class BucketDestroyerTest < ActiveSupport::TestCase
 
   test "non-team member cannot destroy bucket" do
     VCR.use_cassette method_name do
-      bucket = buckets(:unauthorized_current)
+      bucket = buckets(:unauthorized_write)
       params = {
         :id      => bucket.id,
         :team_id => 203768 # not a member of https://github.com/orgs/hoytus/teams/owners

@@ -41,7 +41,7 @@ class BucketUpdaterTest < ActiveSupport::TestCase
 
   test "non-team member cannot update bucket name" do
     VCR.use_cassette method_name do
-      bucket = buckets(:unauthorized_current)
+      bucket = buckets(:unauthorized_write)
       params = {
         :id      => bucket.id,
         :team_id => 203768, # member of https://github.com/orgs/hoytus/teams/owners
@@ -54,7 +54,7 @@ class BucketUpdaterTest < ActiveSupport::TestCase
 
   test "non-team member cannot update bucket row order position" do
     VCR.use_cassette method_name do
-      bucket = buckets(:unauthorized_current)
+      bucket = buckets(:unauthorized_write)
       params = {
         :id      => bucket.id,
         :team_id => 203768, # member of https://github.com/orgs/hoytus/teams/owners
