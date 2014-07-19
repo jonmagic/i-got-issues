@@ -3,7 +3,7 @@ module ServiceTeams
   #
   # Returns NilClass or raises NotAuthorized.
   def authorize_write_team!
-    unless team_members.detect {|team_member| team_member.login == actor.login }
+    unless team_members.detect {|team_member| team_member.login == user.login }
       raise NotAuthorized
     end
   end
