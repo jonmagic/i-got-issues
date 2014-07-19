@@ -23,3 +23,10 @@ issue3:
   repository: acme
   number: 1
   state: 0
+
+closed_issue:
+  title: build an issue prioritization app
+  owner: hoytus
+  repository: acme
+  number: 2
+  state: 1
