@@ -38,11 +38,19 @@ module ServiceBase
     user.github_client
   end
 
+  # Internal: Does this user have team write permission? Aka are they a member
+  # of the team?
+  #
+  # Returns a TrueClass or FalseClass.
+  def user_write_permission?
+    !!team_members.detect {|team_member| team_member.login == user.login }
+  end
+
   # Internal: Raise exception if actor does not have write permission for team.
   #
   # Returns NilClass or raises NotAuthorized.
   def authorize_write_team!
-    unless team_members.detect {|team_member| team_member.login == user.login }
+    unless user_write_permission?
       raise NotAuthorized
     end
   end
