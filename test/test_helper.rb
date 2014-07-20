@@ -4,6 +4,10 @@ require "rails/test_help"
 require "minitest/rails/capybara"
 require "rack_session_access/capybara"
 
+# Requires supporting ruby files with custom matchers and macros, etc,
+# in test/support/ and its subdirectories.
+Dir[Rails.root.join("test/support/**/*.rb")].each {|f| require f}
+
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   #

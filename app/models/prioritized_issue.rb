@@ -53,4 +53,11 @@ class PrioritizedIssue < ActiveRecord::Base
 
   # column :created_at
   # column :updated_at
+
+  # Public: Is the issue archived?
+  #
+  # Returns a TrueClass or FalseClass.
+  def archived?
+    archived_at?
+  end
 end

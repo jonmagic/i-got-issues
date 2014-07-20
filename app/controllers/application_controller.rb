@@ -12,6 +12,11 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
+  rescue_from "NotAuthorized" do |exception|
+    # TODO: add message for user
+    redirect_to teams_path
+  end
+
   protected
   def current_user
     @current_user ||= begin

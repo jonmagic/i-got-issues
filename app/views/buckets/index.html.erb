@@ -6,8 +6,8 @@
 </div>
 <% content_for :footer_nav do %>
   <ul class="nav navbar-nav">
-    <% if team_member? %>
-      <li><%= link_to "New Bucket", new_team_bucket_path(@team) %></li>
+    <% if @team_finder.user_write_permission? %>
+      <li><%= link_to "New Bucket", new_team_buckets_path(@team) %></li>
       <% if @team.buckets.any? %>
         <li>
           <%= form_tag team_bucket_prioritized_issues_path(@team, @team.buckets.last), :class => "issue-import-form navbar-form navbar-left" do %>
@@ -16,7 +16,7 @@
           <% end %>
         </li>
       <% end %>
-      <li><%= link_to "Archive closed issues", archive_closed_issues_team_buckets_path(@team), :class => "js-issues-archive" %></li>
+      <li><%= link_to "Archive closed issues", team_archive_closed_issues_path(@team), :class => "js-issues-archive" %></li>
       <li><%= link_to "Set this as your default team", set_team_path(:team_id => @team.id) %></li>
     <% end %>
   </ul>

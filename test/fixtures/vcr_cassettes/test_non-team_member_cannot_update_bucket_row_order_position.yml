@@ -1,0 +1,79 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/teams/203768/members?per_page=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.1.0
+      Authorization:
+      - token fake_access_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Sat, 19 Jul 2014 04:09:17 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4996'
+      X-Ratelimit-Reset:
+      - '1405745932'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Etag:
+      - '"811c28adee06cef54953cdefd6f8b639"'
+      X-Oauth-Scopes:
+      - admin:org, admin:public_key, admin:repo_hook, delete_repo, gist, notifications,
+        repo, user
+      X-Accepted-Oauth-Scopes:
+      - admin:org, read:org, repo, user, write:org
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 4C0E105B:6769:290AC4A:53C9EF6D
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - a1d8c69b807c8e21f06cad9da377d1b0
+    body:
+      encoding: UTF-8
+      string: '[{"login":"jonmagic","id":623,"avatar_url":"https://avatars.githubusercontent.com/u/623?","gravatar_id":"0a5a5f09f2c85cc425f7b8db4c5e61c1","url":"https://api.github.com/users/jonmagic","html_url":"https://github.com/jonmagic","followers_url":"https://api.github.com/users/jonmagic/followers","following_url":"https://api.github.com/users/jonmagic/following{/other_user}","gists_url":"https://api.github.com/users/jonmagic/gists{/gist_id}","starred_url":"https://api.github.com/users/jonmagic/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/jonmagic/subscriptions","organizations_url":"https://api.github.com/users/jonmagic/orgs","repos_url":"https://api.github.com/users/jonmagic/repos","events_url":"https://api.github.com/users/jonmagic/events{/privacy}","received_events_url":"https://api.github.com/users/jonmagic/received_events","type":"User","site_admin":true}]'
+    http_version: 
+  recorded_at: Sat, 19 Jul 2014 04:09:17 GMT
+recorded_with: VCR 2.9.2

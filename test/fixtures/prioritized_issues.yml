@@ -18,3 +18,8 @@ pi3:
   issue: issue3
   bucket: icebox
   row_order: 1
+
+pi4:
+  issue: closed_issue
+  bucket: current
+  row_order: 1

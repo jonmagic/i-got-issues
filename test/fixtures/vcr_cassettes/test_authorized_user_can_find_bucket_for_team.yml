@@ -1,0 +1,157 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/teams/203770/members?per_page=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.1.0
+      Authorization:
+      - token fake_access_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Sun, 20 Jul 2014 16:34:21 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4999'
+      X-Ratelimit-Reset:
+      - '1405877661'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Etag:
+      - '"a0725bf81c34637428ba085268d63da1"'
+      X-Oauth-Scopes:
+      - admin:org, admin:public_key, admin:repo_hook, delete_repo, gist, notifications,
+        repo, user
+      X-Accepted-Oauth-Scopes:
+      - admin:org, read:org, repo, user, write:org
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 4C0E105B:22D5:17C20C9:53CBEF8C
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - c436b2b44345c72ff906059f604991e7
+    body:
+      encoding: UTF-8
+      string: '[{"login":"jonmagic","id":623,"avatar_url":"https://avatars.githubusercontent.com/u/623?","gravatar_id":"0a5a5f09f2c85cc425f7b8db4c5e61c1","url":"https://api.github.com/users/jonmagic","html_url":"https://github.com/jonmagic","followers_url":"https://api.github.com/users/jonmagic/followers","following_url":"https://api.github.com/users/jonmagic/following{/other_user}","gists_url":"https://api.github.com/users/jonmagic/gists{/gist_id}","starred_url":"https://api.github.com/users/jonmagic/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/jonmagic/subscriptions","organizations_url":"https://api.github.com/users/jonmagic/orgs","repos_url":"https://api.github.com/users/jonmagic/repos","events_url":"https://api.github.com/users/jonmagic/events{/privacy}","received_events_url":"https://api.github.com/users/jonmagic/received_events","type":"User","site_admin":true},{"login":"jonmagic-test","id":3475511,"avatar_url":"https://avatars.githubusercontent.com/u/3475511?","gravatar_id":"2b5618c2dc94fb50ea61204e7f99a9f8","url":"https://api.github.com/users/jonmagic-test","html_url":"https://github.com/jonmagic-test","followers_url":"https://api.github.com/users/jonmagic-test/followers","following_url":"https://api.github.com/users/jonmagic-test/following{/other_user}","gists_url":"https://api.github.com/users/jonmagic-test/gists{/gist_id}","starred_url":"https://api.github.com/users/jonmagic-test/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/jonmagic-test/subscriptions","organizations_url":"https://api.github.com/users/jonmagic-test/orgs","repos_url":"https://api.github.com/users/jonmagic-test/repos","events_url":"https://api.github.com/users/jonmagic-test/events{/privacy}","received_events_url":"https://api.github.com/users/jonmagic-test/received_events","type":"User","site_admin":false}]'
+    http_version: 
+  recorded_at: Sun, 20 Jul 2014 16:34:20 GMT
+- request:
+    method: get
+    uri: https://api.github.com/teams/203770
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.1.0
+      Authorization:
+      - token fake_access_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Sun, 20 Jul 2014 16:34:21 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4998'
+      X-Ratelimit-Reset:
+      - '1405877661'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Last-Modified:
+      - Fri, 20 Jun 2014 04:32:18 GMT
+      Etag:
+      - '"291daca9ecbc444c7460619776763cfc"'
+      X-Oauth-Scopes:
+      - admin:org, admin:public_key, admin:repo_hook, delete_repo, gist, notifications,
+        repo, user
+      X-Accepted-Oauth-Scopes:
+      - admin:org, read:org, repo, user, write:org
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 4C0E105B:22D7:2CECAE3:53CBEF8D
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - a1d8c69b807c8e21f06cad9da377d1b0
+    body:
+      encoding: UTF-8
+      string: '{"name":"Team B","id":203770,"slug":"team-b","permission":"admin","url":"https://api.github.com/teams/203770","members_url":"https://api.github.com/teams/203770/members{/member}","repositories_url":"https://api.github.com/teams/203770/repos","members_count":2,"repos_count":2,"organization":{"login":"hoytus","id":1892126,"url":"https://api.github.com/orgs/hoytus","repos_url":"https://api.github.com/orgs/hoytus/repos","events_url":"https://api.github.com/orgs/hoytus/events","members_url":"https://api.github.com/orgs/hoytus/members{/member}","public_members_url":"https://api.github.com/orgs/hoytus/public_members{/member}","avatar_url":"https://avatars.githubusercontent.com/u/1892126?","public_repos":0,"public_gists":0,"followers":0,"following":0,"html_url":"https://github.com/hoytus","created_at":"2012-06-26T01:06:43Z","updated_at":"2014-03-13T21:52:51Z","type":"Organization"}}'
+    http_version: 
+  recorded_at: Sun, 20 Jul 2014 16:34:20 GMT
+recorded_with: VCR 2.9.2

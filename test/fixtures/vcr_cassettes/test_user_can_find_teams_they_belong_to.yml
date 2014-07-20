@@ -2,73 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.github.com/teams/15000/members?per_page=100
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept:
-      - application/vnd.github.v3+json
-      User-Agent:
-      - Octokit Ruby Gem 3.1.0
-      Authorization:
-      - token fake_access_token
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 404
-      message: Not Found
-    headers:
-      Server:
-      - GitHub.com
-      Date:
-      - Sun, 20 Jul 2014 16:42:27 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Status:
-      - 404 Not Found
-      X-Ratelimit-Limit:
-      - '5000'
-      X-Ratelimit-Remaining:
-      - '4973'
-      X-Ratelimit-Reset:
-      - '1405877661'
-      X-Oauth-Scopes:
-      - admin:org, admin:public_key, admin:repo_hook, delete_repo, gist, notifications,
-        repo, user
-      X-Accepted-Oauth-Scopes:
-      - admin:org, read:org, repo, user, write:org
-      X-Github-Media-Type:
-      - github.v3; format=json
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Frame-Options:
-      - deny
-      Content-Security-Policy:
-      - default-src 'none'
-      Access-Control-Allow-Credentials:
-      - 'true'
-      Access-Control-Expose-Headers:
-      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
-        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
-      Access-Control-Allow-Origin:
-      - "*"
-      X-Github-Request-Id:
-      - 4C0E105B:5A1D:3A494A6:53CBF173
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubdomains
-      X-Content-Type-Options:
-      - nosniff
-    body:
-      encoding: UTF-8
-      string: '{"message":"Not Found","documentation_url":"https://developer.github.com/v3"}'
-    http_version: 
-  recorded_at: Sun, 20 Jul 2014 16:42:27 GMT
-- request:
-    method: get
     uri: https://api.github.com/user/teams?per_page=100
     body:
       encoding: US-ASCII
@@ -90,7 +23,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Sun, 20 Jul 2014 16:42:27 GMT
+      - Sat, 19 Jul 2014 18:18:46 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -100,9 +33,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4972'
+      - '4999'
       X-Ratelimit-Reset:
-      - '1405877661'
+      - '1405797526'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Etag:
@@ -131,16 +64,16 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Github-Request-Id:
-      - 4C0E105B:5A1C:2E5CB3C:53CBF173
+      - 4C0E105B:3AFE:11CC6DF:53CAB686
       Strict-Transport-Security:
       - max-age=31536000; includeSubdomains
       X-Content-Type-Options:
       - nosniff
       X-Served-By:
-      - c436b2b44345c72ff906059f604991e7
+      - 6d7de9e645814cac34ea2a8d72ba3141
     body:
       encoding: UTF-8
       string: '[{"name":"Team B","id":203770,"slug":"team-b","permission":"admin","url":"https://api.github.com/teams/203770","members_url":"https://api.github.com/teams/203770/members{/member}","repositories_url":"https://api.github.com/teams/203770/repos","members_count":2,"repos_count":2,"organization":{"login":"hoytus","id":1892126,"url":"https://api.github.com/orgs/hoytus","repos_url":"https://api.github.com/orgs/hoytus/repos","events_url":"https://api.github.com/orgs/hoytus/events","members_url":"https://api.github.com/orgs/hoytus/members{/member}","public_members_url":"https://api.github.com/orgs/hoytus/public_members{/member}","avatar_url":"https://avatars.githubusercontent.com/u/1892126?","public_repos":0,"public_gists":0,"followers":0,"following":0,"html_url":"https://github.com/hoytus","created_at":"2012-06-26T01:06:43Z","updated_at":"2014-03-13T21:52:51Z","type":"Organization"}},{"name":"Owners","id":744774,"slug":"owners","permission":"admin","url":"https://api.github.com/teams/744774","members_url":"https://api.github.com/teams/744774/members{/member}","repositories_url":"https://api.github.com/teams/744774/repos","members_count":2,"repos_count":2,"organization":{"login":"when-apps","id":7028797,"url":"https://api.github.com/orgs/when-apps","repos_url":"https://api.github.com/orgs/when-apps/repos","events_url":"https://api.github.com/orgs/when-apps/events","members_url":"https://api.github.com/orgs/when-apps/members{/member}","public_members_url":"https://api.github.com/orgs/when-apps/public_members{/member}","avatar_url":"https://avatars.githubusercontent.com/u/7028797?","public_repos":2,"public_gists":0,"followers":0,"following":0,"html_url":"https://github.com/when-apps","created_at":"2014-03-22T04:58:37Z","updated_at":"2014-05-18T16:22:03Z","type":"Organization"}}]'
     http_version: 
-  recorded_at: Sun, 20 Jul 2014 16:42:28 GMT
+  recorded_at: Sat, 19 Jul 2014 18:18:46 GMT
 recorded_with: VCR 2.9.2

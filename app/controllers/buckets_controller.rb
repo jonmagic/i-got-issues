@@ -1,19 +1,14 @@
 class BucketsController < ApplicationController
-  before_filter :authorize_read_team!
-  before_filter :authorize_write_team!, :only => [:create, :update, :destroy, :archive_closed_issues]
-  before_action :set_bucket, :only => [:edit, :update, :destroy]
-
   def index
-    if @team.buckets.any?
-      team_members
-      @buckets = @team.buckets
+    @buckets     = BucketsFinder.process(current_user, params)
+    @team_finder = TeamFinder.new(current_user, params)
+    @team        = @team_finder.process
+
+    if @buckets.any?
+      @team_members = TeamMembersFinder.process(current_user, params)
       @columns = 12 / (@buckets.length > 0 ? @buckets.length : 1)
-    elsif @team.present?
-      if team_member?
-        redirect_to new_team_bucket_path(@team)
-      else
-        redirect_to teams_path
-      end
+    elsif @team_finder.user_write_permission?
+      redirect_to new_team_buckets_path(@team)
     else
       redirect_to teams_path
     end
@@ -24,54 +19,27 @@ class BucketsController < ApplicationController
   end
 
   def edit
+    @bucket = BucketFinder.process(current_user, params)
   end
 
   def create
-    @bucket = Bucket.new(bucket_params)
-    @bucket.team_id = @team.id
-    @bucket.row_order_position = :last
+    bucket = BucketCreator.process(current_user, params)
 
-    if @bucket.save
-      redirect_to team_path(@team), :notice => "Bucket was successfully created."
-    else
-      render :new
-    end
+    redirect_to team_path(bucket.team), :notice => "Bucket was successfully created."
   end
 
   def update
-    @bucket.update(bucket_params)
+    bucket = BucketUpdater.process(current_user, params)
 
     respond_to do |format|
-      format.json { render :json => @bucket }
-      format.html { redirect_to team_path(@team) }
+      format.json { render :json => bucket }
+      format.html { redirect_to team_path(bucket.team) }
     end
   end
 
   def destroy
-    new_bucket = @team.buckets.where.not(:id => @bucket.id).last
-    @bucket.issues.each {|issue| issue.move_to_bucket(new_bucket) }
-    @bucket.destroy
-    redirect_to team_path(@team), :notice => "Bucket was successfully destroyed."
-  end
+    bucket = BucketDestroyer.process(current_user, params)
 
-  # Archives all closed, non-archived issues for the current user.
-  #
-  # Note: In the future, when issues aren't limited to the user's team ID,
-  # this will have to be scoped to the current team.
-  def archive_closed_issues
-    @team.issues.closed.where(:archived_at => nil).update_all :archived_at => Time.now.beginning_of_minute
-
-    head :ok
-  end
-
-private
-  # Use callbacks to share common setup or constraints between actions.
-  def set_bucket
-    @bucket = @team.buckets.find(params[:id])
-  end
-
-  # Only allow a trusted parameter "white list" through.
-  def bucket_params
-    params.require(:bucket).permit(:name, :row_order_position)
+    redirect_to team_path(bucket.team), :notice => "Bucket was successfully destroyed."
   end
 end

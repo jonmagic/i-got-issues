@@ -1,4 +1,4 @@
-<% url = @bucket.new_record? ? team_buckets_path(@team) : team_bucket_path(@team, @bucket) %>
+<% url = @bucket.new_record? ? team_buckets_path(:team_id => params[:team_id]) : team_bucket_path(:team_id => params[:team_id], :bucket_id => params[:bucket_id]) %>
 
 <%= form_for @bucket, :url => url do |f| %>
   <% if @bucket.errors.any? %>
