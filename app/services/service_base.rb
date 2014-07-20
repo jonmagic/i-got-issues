@@ -82,7 +82,8 @@ module ServiceBase
   #
   # Returns a Team.
   def team
-    @team ||= Team.new(:id => team_id)
+    attrs = github_client.team(team_id)
+    Team.new(attrs)
   end
 
   # Internal: Get team members for this team.

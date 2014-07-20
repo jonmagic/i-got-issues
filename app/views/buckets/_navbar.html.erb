@@ -1,2 +1,2 @@
-<li class="<%= navbar_link_class(:buckets, [:new, :edit, :index]) %>"><%= link_to "Buckets", team_path(@team) %></li>
-<li class="<%= navbar_link_class(:ship_lists, [:index, :show]) %>"><%= link_to "Ship Lists", team_ship_lists_path(@team) %></li>
+<li class="<%= navbar_link_class(:buckets, [:new, :edit, :index]) %>"><%= link_to "Buckets", team_path(:team_id => params[:team_id]) %></li>
+<li class="<%= navbar_link_class(:ship_lists, [:index, :show]) %>"><%= link_to "Ship Lists", team_ship_lists_path(:team_id => params[:team_id]) %></li>

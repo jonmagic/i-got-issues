@@ -1,17 +1,14 @@
 class BucketsController < ApplicationController
-  before_filter :authorize_read_team!
-
   def index
-    if @team.buckets.any?
-      team_members
-      @buckets = @team.buckets
+    @buckets     = BucketsFinder.process(current_user, params)
+    @team_finder = TeamFinder.new(current_user, params)
+    @team        = @team_finder.process
+
+    if @buckets.any?
+      @team_members = TeamMembersFinder.process(current_user, params)
       @columns = 12 / (@buckets.length > 0 ? @buckets.length : 1)
-    elsif @team.present?
-      if team_member?
-        redirect_to new_team_buckets_path(@team)
-      else
-        redirect_to teams_path
-      end
+    elsif @team_finder.user_write_permission?
+      redirect_to new_team_buckets_path(@team)
     else
       redirect_to teams_path
     end
