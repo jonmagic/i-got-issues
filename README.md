@@ -20,7 +20,7 @@ cd i-got-issues
 bundle
 ```
 
-Now got to https://github.com/settings/applications and register a new application, you'll need the *Client ID* and *Client Secret*.
+Now got to https://github.com/settings/applications and register a new application. You'll need the *Client ID* and *Client Secret*, if you run the server locally the *Authorization callback URL* is http://127.0.0.1:3000/auth/github/callback.
 
 Create a `.env` file in the root of the project and enter the following details filling in with the values you just copied after registering a new application:
 
