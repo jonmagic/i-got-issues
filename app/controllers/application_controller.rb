@@ -57,13 +57,19 @@ class ApplicationController < ActionController::Base
 
   def team_members
     @team_members ||= begin
-      team_members = current_user.github_client.team_members team.id
-      team_members.map {|member| member["login"] }
+      current_user.
+        github_client.
+        team_members(params[:team_id]).
+        map {|attributes| TeamMember.new(attributes) }
     end
   end
 
   def team
-    @team ||= Team.new current_user.github_client.team(params[:team_id])
+    @team ||= begin
+      team = Team.new(current_user.github_client.team(params[:team_id]))
+      team.members = team_members
+      team
+    end
   end
 
   def authorize_read_team!
