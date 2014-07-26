@@ -4,12 +4,11 @@ class BucketsController < ApplicationController
   before_action :set_bucket, :only => [:edit, :update, :destroy]
 
   def index
-    if @team.buckets.any?
-      team_members
+    if team.buckets.any?
       @buckets = @team.buckets
       @columns = 12 / (@buckets.length > 0 ? @buckets.length : 1)
-    elsif @team.present?
-      if team_member?
+    elsif team.present?
+      if team.member?(current_user)
         redirect_to new_team_bucket_path(@team)
       else
         redirect_to teams_path
