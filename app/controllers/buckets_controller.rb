@@ -20,20 +20,13 @@ class BucketsController < ApplicationController
   end
 
   def create
-    bucket = Bucket.new(bucket_params)
-    bucket.team_id = team.id
-    bucket.row_order_position = :last
+    BucketService.create(team, bucket_params)
 
-    if bucket.save
-      redirect_to team_path(team), :notice => "Bucket was successfully created."
-    else
-      render :new
-    end
+    redirect_to team_path(team), :notice => "Bucket was successfully created."
   end
 
   def update
-    bucket = team.buckets.find(params[:id])
-    bucket.update(bucket_params)
+    BucketService.new(params[:id]).update(bucket_params)
 
     respond_to do |format|
       format.json { render :json => bucket }
@@ -42,10 +35,8 @@ class BucketsController < ApplicationController
   end
 
   def destroy
-    bucket = team.buckets.find(params[:id])
-    new_bucket = team.buckets.where.not(:id => bucket.id).last
-    bucket.issues.each {|issue| issue.move_to_bucket(new_bucket) }
-    bucket.destroy
+    BucketService.new(params[:id]).destroy
+    
     redirect_to team_path(team), :notice => "Bucket was successfully destroyed."
   end
 
