@@ -26,16 +26,17 @@ class BucketsController < ApplicationController
   end
 
   def update
-    BucketService.new(params[:id]).update(bucket_params)
+    bucket_service = BucketService.new(team, params[:id])
+    bucket_service.update(bucket_params)
 
     respond_to do |format|
-      format.json { render :json => bucket }
+      format.json { render :json => bucket_service.bucket }
       format.html { redirect_to team_path(team) }
     end
   end
 
   def destroy
-    BucketService.new(params[:id]).destroy
+    BucketService.new(team, params[:id]).destroy
 
     redirect_to team_path(team), :notice => "Bucket was successfully destroyed."
   end

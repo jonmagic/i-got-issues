@@ -7,14 +7,15 @@ class BucketService
     bucket
   end
 
-  def initialize(bucket_id)
+  def initialize(team, bucket_id)
     @bucket_id = bucket_id
+    @team      = team
   end
 
-  attr_reader :bucket_id
+  attr_reader :bucket_id, :team
 
   def bucket
-    @bucket ||= Bucket.find(bucket_id)
+    @bucket ||= team.buckets.find(bucket_id)
   end
 
   def update(params)
@@ -35,10 +36,6 @@ class BucketService
   end
 
 private
-
-  def team
-    bucket.team
-  end
 
   def destination_bucket
     @destination_bucket ||= team.buckets.where.not(:id => bucket.id).last
