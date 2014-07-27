@@ -1,15 +1,12 @@
 Rails.application.routes.draw do
   resources :teams, :only => :index do
-    get "/" => "buckets#index"
+    get  "/"                      => "buckets#index"
+    post "/archive_closed_issues" => "teams#archive_closed_issues"
 
     resources :buckets, :only => [:new, :edit, :create, :update, :destroy] do
       resources :prioritized_issues, :only => [:create, :update, :destroy] do
         post :sync, :as => :sync
         patch "move" => "prioritized_issues#move_to_bucket"
-      end
-
-      collection do
-        post :archive_closed_issues
       end
     end
 

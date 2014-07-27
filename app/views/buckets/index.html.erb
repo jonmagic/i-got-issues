@@ -16,7 +16,7 @@
           <% end %>
         </li>
       <% end %>
-      <li><%= link_to "Archive closed issues", archive_closed_issues_team_buckets_path(@team), :class => "js-issues-archive" %></li>
+      <li><%= link_to "Archive closed issues", team_archive_closed_issues_path(@team), :class => "js-issues-archive" %></li>
       <li><%= link_to "Set this as your default team", set_team_path(:team_id => @team.id) %></li>
     <% end %>
   </ul>
