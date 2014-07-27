@@ -1,6 +1,6 @@
 class BucketsController < ApplicationController
   before_filter :authorize_read_team!
-  before_filter :authorize_write_team!, :only => [:create, :update, :destroy, :archive_closed_issues]
+  before_filter :authorize_write_team!, :only => [:new, :create, :edit, :update, :destroy]
 
   def index
     if team.buckets.any?
