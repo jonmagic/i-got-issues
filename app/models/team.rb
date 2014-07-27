@@ -8,7 +8,7 @@ class Team
     @avatar_url   = params[:organization] ? params[:organization][:avatar_url] : nil
   end
 
-  attr_reader :id, :name, :organization, :avatar_url
+  attr_accessor :id, :name, :organization, :avatar_url, :members
 
   def to_param
     id.to_s
@@ -29,5 +29,9 @@ class Team
   def ship_list(timestamp)
     issues = PrioritizedIssue.archive(buckets, timestamp.to_time)
     ShipList.new(:timestamp => timestamp, :issues => issues)
+  end
+
+  def member?(user)
+    !!members.detect {|member| user.login == member.login }
   end
 end

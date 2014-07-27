@@ -6,7 +6,7 @@
 </div>
 <% content_for :footer_nav do %>
   <ul class="nav navbar-nav">
-    <% if team_member? %>
+    <% if @team.member?(current_user) %>
       <li><%= link_to "New Bucket", new_team_bucket_path(@team) %></li>
       <% if @team.buckets.any? %>
         <li>

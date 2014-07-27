@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
   helper_method :current_user
   helper_method :current_service
-  helper_method :team_member?
 
   rescue_from "Octokit::NotFound" do |exception|
     redirect_to root_path
@@ -57,27 +56,29 @@ class ApplicationController < ActionController::Base
 
   def team_members
     @team_members ||= begin
-      team_members = current_user.github_client.team_members team.id
-      team_members.map {|member| member["login"] }
+      current_user.
+        github_client.
+        team_members(params[:team_id]).
+        map {|attributes| TeamMember.new(attributes) }
     end
   end
 
   def team
-    @team ||= Team.new current_user.github_client.team(params[:team_id])
+    @team ||= begin
+      team = Team.new(current_user.github_client.team(params[:team_id]))
+      team.members = team_members
+      team
+    end
   end
 
   def authorize_read_team!
-    unless team_members
+    unless team
       redirect_to teams_path
     end
   end
 
-  def team_member?
-    team_members.detect {|team_member| team_member == current_user.login }
-  end
-
   def authorize_write_team!
-    unless team_member?
+    unless team.member?(current_user)
       redirect_to team_path(team)
     end
   end
