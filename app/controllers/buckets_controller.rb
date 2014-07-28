@@ -20,14 +20,14 @@ class BucketsController < ApplicationController
   end
 
   def create
-    BucketService.create(team, bucket_params)
+    BucketService.create_for_team_with_params(team, bucket_params)
 
     redirect_to team_path(team), :notice => "Bucket was successfully created."
   end
 
   def update
-    bucket_service = BucketService.new(team, params[:id])
-    bucket_service.update(bucket_params)
+    bucket_service = BucketService.for_bucket_by_team_and_bucket_id(team, params[:id])
+    bucket_service.update_bucket_with_params(bucket_params)
 
     respond_to do |format|
       format.json { render :json => bucket_service.bucket }
@@ -36,7 +36,8 @@ class BucketsController < ApplicationController
   end
 
   def destroy
-    BucketService.new(team, params[:id]).destroy
+    bucket_service = BucketService.for_bucket_by_team_and_bucket_id(team, params[:id])
+    bucket_service.move_issues_and_destroy_bucket
 
     redirect_to team_path(team), :notice => "Bucket was successfully destroyed."
   end
