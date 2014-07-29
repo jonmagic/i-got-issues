@@ -31,6 +31,7 @@ class PrioritizedIssuesController < ApplicationController
     prioritized_issue.issue.update(issue_params)
     issue_updater.from_issue(prioritized_issue.issue)
     prioritized_issue.reload
+    @assignees = team_members.map &:login
 
     render :partial => "buckets/issue", :locals => {:issue => prioritized_issue}
   end

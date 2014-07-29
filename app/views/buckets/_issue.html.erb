@@ -13,7 +13,7 @@
         <%= link_to "claim or assign", "#", :class => "issue-assignee js-issue-assignee-link" %>
       <% end %>
       <%= form_for [issue.bucket.team, issue.bucket, issue], :html => {:class => "issue-assignee-form"} do |f| %>
-        <%= f.select :assignee, @team_members, {:include_blank => true}, :class => "js-issue-assignee-select" %>
+        <%= f.select :assignee, @assignees, {:include_blank => true}, :class => "js-issue-assignee-select" %>
       <% end %>
       <% issue.labels.each do |label| %>
         <span class="issue-label"><%= label %></span>

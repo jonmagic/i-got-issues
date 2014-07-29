@@ -4,8 +4,9 @@ class BucketsController < ApplicationController
 
   def index
     if team.buckets.any?
-      @buckets = team.buckets
-      @columns = 12 / (@buckets.length > 0 ? @buckets.length : 1)
+      @buckets   = team.buckets
+      @columns   = 12 / (@buckets.length > 0 ? @buckets.length : 1)
+      @assignees = team_members.map &:login
     else
       redirect_to new_team_bucket_path(team)
     end
