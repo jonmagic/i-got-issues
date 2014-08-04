@@ -7,7 +7,7 @@
 <% content_for :footer_nav do %>
   <ul class="nav navbar-nav">
     <% if @team.member?(current_user) %>
-      <li><%= link_to "New Bucket", new_team_bucket_path(@team) %></li>
+      <li><%= link_to octicon("plus") + " New Bucket", new_team_bucket_path(@team) %></li>
       <% if @team.buckets.any? %>
         <li>
           <%= form_tag team_bucket_prioritized_issues_path(@team, @team.buckets.last), :class => "issue-import-form navbar-form navbar-left" do %>

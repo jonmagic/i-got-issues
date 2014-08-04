@@ -2,10 +2,12 @@
   <%= render "navbar" %>
 <% end %>
 
-<h1>Editing bucket</h1>
+<div class="form-container">
+  <h1>Editing bucket</h1>
 
-<%= render 'form' %>
+  <%= render 'form' %>
 
-<%= form_for @bucket, :url => team_bucket_path(@team, @bucket), :method => "delete" do |f| %>
-  <%= f.submit "Delete Bucket" %>
-<% end %>
+  <%= form_for @bucket, :url => team_bucket_path(@team, @bucket), :method => "delete" do |f| %>
+    <%= f.submit "Delete Bucket", :class => "button danger" %>
+  <% end %>
+</div>

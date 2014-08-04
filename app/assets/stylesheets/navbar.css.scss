@@ -1,3 +1,36 @@
 .issue-url {
   min-width: 25em;
 }
+
+.navbar-default {
+  box-shadow: none;
+  background-image: none;
+  border-radius: 0;
+  min-height: 0;
+
+  .main .octicon {
+    margin-right: 7px;
+  }
+
+  .navbar-form {
+    margin: 4px 0;
+  }
+}
+
+.navbar-nav li > a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid transparent;
+}
+
+.navbar-nav .active > a {
+  border-bottom-color: #86cbe9;
+  font-weight: bold;
+
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.navbar-default.navbar-fixed-bottom li > a {
+  color: #08c;
+}

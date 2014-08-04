@@ -1,0 +1,23 @@
+.homepage {
+  text-align: center;
+  padding: 100px 0;
+}
+
+.site-title {
+  font-weight: 300;
+  font-size: 40px;
+
+  .mega-octicon {
+    display: block;
+    margin-bottom: 15px;
+    color: #ddd;
+  }
+}
+
+.auth-box {
+  border: 1px solid #e0e0e0;
+  width: 360px;
+  border-radius: 3px;
+  padding: 15px;
+  margin: 80px auto 0;
+}

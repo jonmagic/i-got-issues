@@ -1,16 +1,19 @@
 <li class="ui-state-default panel panel-default issue collapsed" data-prioritized-issue-path="<%= team_bucket_prioritized_issue_path(issue.bucket.team, issue.bucket, issue) %>" data-move-to-bucket-path="<%= team_bucket_prioritized_issue_move_path(issue.bucket.team, issue.bucket, issue) %>" data-issue-sync-path="<%= team_bucket_prioritized_issue_sync_path(issue.bucket.team, issue.bucket, issue) %>">
   <div class="panel-heading">
+    <%= form_for [issue.bucket.team, issue.bucket, issue], :method => "delete", :html => {:class => "issue-destroy-form"} do |f| %>
+      <%= f.button octicon("x"), :class => "button danger issue-destroy", :data => { :confirm => "Are you sure you want to remove this issue?" } %>
+    <% end %>
+    <%= form_for [issue.bucket.team, issue.bucket, issue], :html => {:class => "issue-state-toggle"} do |f| %>
+      <%= f.check_box :state, {:checked => issue.closed?, :title => "Check to close issue", :class => "js-issue-state-toggle"}, "closed", "open" %>
+    <% end %>
     <div class="issue-data">
-      <%= form_for [issue.bucket.team, issue.bucket, issue], :html => {:class => "issue-state-toggle"} do |f| %>
-        <%= f.check_box :state, {:checked => issue.closed?, :class => "js-issue-state-toggle"}, "closed", "open" %>
-      <% end %>
       <%= link_to issue.title, github_issue_url(issue), :class => "issue-link" %>
-      <%= link_to "<span class='glyphicon glyphicon-refresh'></span>".html_safe, "#", :class => "issue-sync js-issue-sync" %>
+      <%= link_to octicon("sync"), "#", :class => "issue-sync js-issue-sync", :title => "Sync with original issue" %>
 
       <% if issue.assignee %>
-        <%= link_to "@#{issue.assignee}", "#", :class => "issue-assignee js-issue-assignee-link" %>
+        <%= link_to "@#{issue.assignee}", "#", :class => "issue-assignee js-issue-assignee-link", :title => "Assigned to #{issue.assignee} (edit)" %>
       <% else %>
-        <%= link_to "claim or assign", "#", :class => "issue-assignee js-issue-assignee-link" %>
+        <%= link_to "claim or assign", "#", :class => "minibutton issue-unassigned js-issue-assignee-link" %>
       <% end %>
       <%= form_for [issue.bucket.team, issue.bucket, issue], :html => {:class => "issue-assignee-form"} do |f| %>
         <%= f.select :assignee, @assignees, {:include_blank => true}, :class => "js-issue-assignee-select" %>
@@ -19,8 +22,5 @@
         <span class="issue-label"><%= label %></span>
       <% end %>
     </div>
-    <%= form_for [issue.bucket.team, issue.bucket, issue], :method => "delete", :html => {:class => "issue-destroy-form"} do |f| %>
-      <%= f.button octicon("x"), :class => "button danger", :data => { :confirm => "Are you sure you want to remove this issue?" } %>
-    <% end %>
   </div>
 </li>

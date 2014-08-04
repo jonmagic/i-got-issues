@@ -3,12 +3,14 @@
   <head>
     <%= render :partial => "shared/head" %>
   </head>
-  <body>
+  <body class="homepage">
     <div class="container">
-      <div class="row">
-        <div class="page-header">
-          <h1>I Got Issues <small>Teams, Buckets, and Issues</small></h1>
-        </div>
+      <h1 class="site-title">
+        <span class="mega-octicon octicon-issue-closed"></span>
+        I Got Issues
+      </h1>
+      <p class="lead">Teams, Buckets, and Issues</p>
+      <div class="auth-box">
         <p>Please authenticate with GitHub to continue using the Issues application.</p>
         <a href="/auth/github"><i class="icon-github-alt"></i> <span><%= t('auth.github_html') %></span></a>
       </div>

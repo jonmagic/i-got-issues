@@ -1,37 +1,57 @@
+.team-container {
+  padding-bottom: 100px
+}
+
 .team {
-  background-color: rgb(248,248,248);
-  border: 1px solid rgb(231,231,231);
+  border: 1px solid #08c;
   display: block;
-  margin: 10px;
-  padding: 10px 10px 10px 10px;
-  text-align: left;
-  width: 100%;
-}
-
-.team-name {
-  line-height: 50px;
-  font-size: 20px;
-}
-
-.team-avatar {
   float: left;
+  padding: 10px;
+  text-align: left;
+  width: 48%;
+  border-radius: 3px;
+  margin-right: 2%;
+  margin-bottom: 15px;
+  font-weight: bold;
+
+  &:hover {
+    background: #08c;
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+.org {
+  border-top: 1px solid #e0e0e0;
+
+  &:nth-child(1),
+  &:nth-child(2) {
+    border-top: 0;
+  }
+}
+
+.org-avatar {
   width: 48px;
   height: 48px;
+  vertical-align: middle;
   margin-right: 10px;
 }
 
 .teams-link {
-  top: -14px;
-  left: 0px;
-  height: 30px;
-}
-
-.teams-link-organization {
-  font-size: 9px;
-  margin-bottom: -6px;
+  .divider {
+    padding: 0 5px;
+  }
+  .teams-link-organization,
+  .teams-link-name {
+    font-weight: bold;
+    color: #333;
+    text-transform: capitalize;
+  }
 }
 
 .teams-link-change {
-  font-size: 9px;
-  margin-top: -6px;
+  margin-left: 10px;
+  font-size: 10px;
+  text-transform: uppercase;
+  vertical-align: bottom;
 }
