@@ -11,6 +11,10 @@
   .main .octicon {
     margin-right: 7px;
   }
+
+  .navbar-form {
+    margin: 4px 0;
+  }
 }
 
 .navbar-nav li > a {
@@ -25,4 +29,8 @@
 
   background: transparent !important;
   box-shadow: none !important;
+}
+
+.navbar-default.navbar-fixed-bottom li > a {
+  color: #08c;
 }
