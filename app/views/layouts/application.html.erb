@@ -7,7 +7,7 @@
     <nav class="navbar navbar-default" role="navigation">
       <div class="container-fluid">
         <ul class="nav navbar-nav">
-          <li class="<%= navbar_link_class(:teams, :index) %>"><%= teams_link(@team) %></li>
+          <li class="main <%= navbar_link_class(:teams, :index) %>"><%= teams_link(@team) %></li>
           <%= yield :header_nav %>
         </ul>
 
@@ -15,7 +15,11 @@
           <li>
             <%= link_to "Chrome Extension", "https://chrome.google.com/webstore/detail/tissues/amppomcpploimdoanchlddlimnaiecji" %>
           </li>
-          <li><%= link_to "Logout", logout_path %></li>
+          <li>
+            <%= link_to logout_path do %>
+              <span class="octicon octicon-sign-out"></span>
+            <% end %>
+          </li>
         </ul>
       </div>
     </nav>

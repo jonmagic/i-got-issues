@@ -21,17 +21,20 @@
 }
 
 .teams-link {
-  top: -14px;
-  left: 0px;
-  height: 30px;
-}
-
-.teams-link-organization {
-  font-size: 9px;
-  margin-bottom: -6px;
+  .divider {
+    padding: 0 5px;
+  }
+  .teams-link-organization,
+  .teams-link-name {
+    font-weight: bold;
+    color: #333;
+    text-transform: capitalize;
+  }
 }
 
 .teams-link-change {
-  font-size: 9px;
-  margin-top: -6px;
+  margin-left: 10px;
+  font-size: 10px;
+  text-transform: uppercase;
+  vertical-align: bottom;
 }

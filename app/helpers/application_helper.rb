@@ -21,9 +21,11 @@ module ApplicationHelper
 
   def teams_link(team)
     text, css_class = if team.present? && team.name.present?
-      string  = content_tag :div, team.organization, :class => "teams-link-organization"
-      string += content_tag :div, team.name, :class => "teams-link-name"
-      string += content_tag :div, "(change team)", :class => "teams-link-change"
+      string  = octicon("jersey")
+      string += content_tag :span, team.organization, :class => "teams-link-organization"
+      string += content_tag :span, "/", :class => "divider"
+      string += content_tag :span, team.name, :class => "teams-link-name"
+      string += content_tag :span, "(change)", :class => "teams-link-change"
       [string, "teams-link"]
     else
       ["Teams", ""]
