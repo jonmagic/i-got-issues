@@ -2,6 +2,7 @@ class PrioritizedIssuesController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:create, :bookmarklet_legacy]
   before_filter :authorize_read_team!, :except => [:bookmarklet_legacy, :new]
   before_filter :authorize_write_team!, :except => [:sync, :bookmarklet_legacy, :new]
+  before_filter :load_assignees, :only => [:update, :sync]
 
   def create
     if issue = issue_importer.from_url(params[:url])
@@ -31,7 +32,6 @@ class PrioritizedIssuesController < ApplicationController
     prioritized_issue.issue.update(issue_params)
     issue_updater.from_issue(prioritized_issue.issue)
     prioritized_issue.reload
-    @assignees = team_members.map &:login
 
     render :partial => "buckets/issue", :locals => {:issue => prioritized_issue}
   end
@@ -88,5 +88,9 @@ private
 
   def issue_updater
     @issue_updater ||= IssueUpdater.new(current_user.github_client)
+  end
+
+  def load_assignees
+    @assignees = team_members.map &:login
   end
 end
