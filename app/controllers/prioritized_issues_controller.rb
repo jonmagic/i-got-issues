@@ -5,58 +5,50 @@ class PrioritizedIssuesController < ApplicationController
   before_filter :load_assignees, :only => [:update, :sync]
 
   def create
-    if issue = issue_importer.from_url(params[:url])
-      prioritized_issue = PrioritizedIssue.where(
-        :bucket => @team.buckets,
-        :issue  => issue
-      ).first_or_initialize
-
-      attributes = {:archived_at => nil}
-      if prioritized_issue.new_record?
-        attributes[:row_order_position] = :last
-        attributes[:bucket] = @team.buckets.last
-      end
-
-      prioritized_issue.update_attributes(attributes)
-    end
+    prioritized_issue_service.import_issue_from_url(params[:url])
 
     if params[:return]
       redirect_to params[:url]
     else
-      redirect_to team_path(@team)
+      redirect_to team_path(team)
     end
   end
 
   def update
-    prioritized_issue = @team.issues.find(params[:id])
-    prioritized_issue.issue.update(issue_params)
-    issue_updater.from_issue(prioritized_issue.issue)
-    prioritized_issue.reload
+    prioritized_issue = \
+      prioritized_issue_service.
+        for_prioritized_issue_by_id(params[:id]).
+        update_issue_with_params(issue_params)
 
     render :partial => "buckets/issue", :locals => {:issue => prioritized_issue}
   end
 
   def destroy
-    prioritized_issue = @team.issues.find(params[:id])
-    prioritized_issue.destroy
+    prioritized_issue_service.
+      for_prioritized_issue_by_id(params[:id]).
+      remove_prioritized_issue
 
     redirect_to team_path(@team), :notice => 'Issue was successfully destroyed.'
   end
 
   def move_to_bucket
-    prioritized_issue = @team.issues.find(params[:prioritized_issue_id])
-    bucket = @team.buckets.find(params[:prioritized_issue][:bucket_id])
-    prioritized_issue.move_to_bucket(bucket, params[:prioritized_issue][:row_order_position].to_i)
+    bucket   = team.buckets.find(params[:prioritized_issue][:bucket_id])
+    position = params[:prioritized_issue][:row_order_position].to_i
 
-    render :json => prioritized_issue
+    prioritized_issue_service.
+      for_prioritized_issue_by_id(params[:prioritized_issue_id]).
+      move_prioritized_issue_to_position_in_bucket(position, bucket)
+
+    render :json => prioritized_issue_service.prioritized_issue
   end
 
   def sync
-    prioritized_issue = @team.issues.find(params[:prioritized_issue_id])
-    issue_importer.from_issue(prioritized_issue.issue)
-    prioritized_issue.reload
+    prioritized_issue_service.
+      for_prioritized_issue_by_id(params[:prioritized_issue_id]).
+      update_issue_with_values_from_github
 
-    render :partial => "buckets/issue", :locals => {:issue => prioritized_issue}
+    render :partial => "buckets/issue",
+           :locals => {:issue => prioritized_issue_service.prioritized_issue}
   end
 
   def bookmarklet_legacy
@@ -82,12 +74,10 @@ private
     params.require(:prioritized_issue).permit(:title, :owner, :repository, :number, :state, :assignee)
   end
 
-  def issue_importer
-    @issue_importer ||= IssueImporter.new(current_user.github_client)
-  end
-
-  def issue_updater
-    @issue_updater ||= IssueUpdater.new(current_user.github_client)
+  def prioritized_issue_service
+    @prioritized_issue_service ||= \
+      PrioritizedIssueService.
+        for_user_and_team(current_user, team)
   end
 
   def load_assignees

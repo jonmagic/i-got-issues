@@ -17,18 +17,19 @@ class BucketsController < ApplicationController
   end
 
   def edit
-    @bucket = team.buckets.find(params[:id])
+    @bucket = bucket_service.for_bucket_by_id(params[:id]).bucket
   end
 
   def create
-    BucketService.create_for_team_with_params(team, bucket_params)
+    bucket_service.create_bucket_with_params(bucket_params)
 
     redirect_to team_path(team), :notice => "Bucket was successfully created."
   end
 
   def update
-    bucket_service = BucketService.for_bucket_by_team_and_bucket_id(team, params[:id])
-    bucket_service.update_bucket_with_params(bucket_params)
+    bucket_service.
+      for_bucket_by_id(params[:id]).
+      update_bucket_with_params(bucket_params)
 
     respond_to do |format|
       format.json { render :json => bucket_service.bucket }
@@ -37,8 +38,7 @@ class BucketsController < ApplicationController
   end
 
   def destroy
-    bucket_service = BucketService.for_bucket_by_team_and_bucket_id(team, params[:id])
-    bucket_service.move_issues_and_destroy_bucket
+    bucket_service.for_bucket_by_id(params[:id]).move_issues_and_remove_bucket
 
     redirect_to team_path(team), :notice => "Bucket was successfully destroyed."
   end
@@ -47,5 +47,10 @@ private
   # Only allow a trusted parameter "white list" through.
   def bucket_params
     params.require(:bucket).permit(:name, :row_order_position)
+  end
+
+  def bucket_service
+    @bucket_service ||= \
+      BucketService.for_user_and_team(current_user, team)
   end
 end

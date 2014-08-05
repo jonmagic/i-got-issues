@@ -1,0 +1,82 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/hoytus/acme/issues/2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.1.0
+      Authorization:
+      - token fake_access_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 05 Aug 2014 19:08:08 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4995'
+      X-Ratelimit-Reset:
+      - '1407268346'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Last-Modified:
+      - Mon, 04 Aug 2014 17:47:59 GMT
+      Etag:
+      - '"a6aa4dec9a6437ceba2495b459bda0c2"'
+      X-Oauth-Scopes:
+      - admin:org, admin:public_key, admin:repo_hook, delete_repo, gist, notifications,
+        repo, user
+      X-Accepted-Oauth-Scopes:
+      - ''
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 46C513DB:5530:23D56D4:53E12B97
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - 62a1303ae95931e56e387e87d354bb24
+    body:
+      encoding: UTF-8
+      string: '{"url":"https://api.github.com/repos/hoytus/acme/issues/2","labels_url":"https://api.github.com/repos/hoytus/acme/issues/2/labels{/name}","comments_url":"https://api.github.com/repos/hoytus/acme/issues/2/comments","events_url":"https://api.github.com/repos/hoytus/acme/issues/2/events","html_url":"https://github.com/hoytus/acme/pull/2","id":38217931,"number":2,"title":"Update
+        README.md","user":{"login":"jonmagic-test","id":3475511,"avatar_url":"https://avatars.githubusercontent.com/u/3475511?v=2","gravatar_id":"2b5618c2dc94fb50ea61204e7f99a9f8","url":"https://api.github.com/users/jonmagic-test","html_url":"https://github.com/jonmagic-test","followers_url":"https://api.github.com/users/jonmagic-test/followers","following_url":"https://api.github.com/users/jonmagic-test/following{/other_user}","gists_url":"https://api.github.com/users/jonmagic-test/gists{/gist_id}","starred_url":"https://api.github.com/users/jonmagic-test/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/jonmagic-test/subscriptions","organizations_url":"https://api.github.com/users/jonmagic-test/orgs","repos_url":"https://api.github.com/users/jonmagic-test/repos","events_url":"https://api.github.com/users/jonmagic-test/events{/privacy}","received_events_url":"https://api.github.com/users/jonmagic-test/received_events","type":"User","site_admin":false},"labels":[],"state":"closed","assignee":null,"milestone":null,"comments":0,"created_at":"2014-07-18T22:41:57Z","updated_at":"2014-07-18T22:42:01Z","closed_at":"2014-07-18T22:42:01Z","pull_request":{"url":"https://api.github.com/repos/hoytus/acme/pulls/2","html_url":"https://github.com/hoytus/acme/pull/2","diff_url":"https://github.com/hoytus/acme/pull/2.diff","patch_url":"https://github.com/hoytus/acme/pull/2.patch"},"body":"","closed_by":{"login":"jonmagic-test","id":3475511,"avatar_url":"https://avatars.githubusercontent.com/u/3475511?v=2","gravatar_id":"2b5618c2dc94fb50ea61204e7f99a9f8","url":"https://api.github.com/users/jonmagic-test","html_url":"https://github.com/jonmagic-test","followers_url":"https://api.github.com/users/jonmagic-test/followers","following_url":"https://api.github.com/users/jonmagic-test/following{/other_user}","gists_url":"https://api.github.com/users/jonmagic-test/gists{/gist_id}","starred_url":"https://api.github.com/users/jonmagic-test/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/jonmagic-test/subscriptions","organizations_url":"https://api.github.com/users/jonmagic-test/orgs","repos_url":"https://api.github.com/users/jonmagic-test/repos","events_url":"https://api.github.com/users/jonmagic-test/events{/privacy}","received_events_url":"https://api.github.com/users/jonmagic-test/received_events","type":"User","site_admin":false}}'
+    http_version: 
+  recorded_at: Tue, 05 Aug 2014 19:08:08 GMT
+recorded_with: VCR 2.9.2
