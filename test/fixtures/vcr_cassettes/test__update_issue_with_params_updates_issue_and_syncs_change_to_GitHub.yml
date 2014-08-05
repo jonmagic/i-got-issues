@@ -1,0 +1,160 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/hoytus/acme/issues/1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.1.0
+      Authorization:
+      - token fake_access_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 05 Aug 2014 19:08:08 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4994'
+      X-Ratelimit-Reset:
+      - '1407268346'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Last-Modified:
+      - Tue, 05 Aug 2014 18:56:15 GMT
+      Etag:
+      - '"901fc7949851c8767905457456d89674"'
+      X-Oauth-Scopes:
+      - admin:org, admin:public_key, admin:repo_hook, delete_repo, gist, notifications,
+        repo, user
+      X-Accepted-Oauth-Scopes:
+      - ''
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 46C513DB:552F:1EC6481:53E12B98
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - 6d7de9e645814cac34ea2a8d72ba3141
+    body:
+      encoding: UTF-8
+      string: '{"url":"https://api.github.com/repos/hoytus/acme/issues/1","labels_url":"https://api.github.com/repos/hoytus/acme/issues/1/labels{/name}","comments_url":"https://api.github.com/repos/hoytus/acme/issues/1/comments","events_url":"https://api.github.com/repos/hoytus/acme/issues/1/events","html_url":"https://github.com/hoytus/acme/issues/1","id":35251260,"number":1,"title":"It''s
+        dangerous to go alone. Take this!","user":{"login":"jonmagic","id":623,"avatar_url":"https://avatars.githubusercontent.com/u/623?v=2","gravatar_id":"0a5a5f09f2c85cc425f7b8db4c5e61c1","url":"https://api.github.com/users/jonmagic","html_url":"https://github.com/jonmagic","followers_url":"https://api.github.com/users/jonmagic/followers","following_url":"https://api.github.com/users/jonmagic/following{/other_user}","gists_url":"https://api.github.com/users/jonmagic/gists{/gist_id}","starred_url":"https://api.github.com/users/jonmagic/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/jonmagic/subscriptions","organizations_url":"https://api.github.com/users/jonmagic/orgs","repos_url":"https://api.github.com/users/jonmagic/repos","events_url":"https://api.github.com/users/jonmagic/events{/privacy}","received_events_url":"https://api.github.com/users/jonmagic/received_events","type":"User","site_admin":true},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":0,"created_at":"2014-06-08T23:57:04Z","updated_at":"2014-08-05T18:56:15Z","closed_at":null,"body":"Doh!","closed_by":{"login":"jonmagic-test","id":3475511,"avatar_url":"https://avatars.githubusercontent.com/u/3475511?v=2","gravatar_id":"2b5618c2dc94fb50ea61204e7f99a9f8","url":"https://api.github.com/users/jonmagic-test","html_url":"https://github.com/jonmagic-test","followers_url":"https://api.github.com/users/jonmagic-test/followers","following_url":"https://api.github.com/users/jonmagic-test/following{/other_user}","gists_url":"https://api.github.com/users/jonmagic-test/gists{/gist_id}","starred_url":"https://api.github.com/users/jonmagic-test/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/jonmagic-test/subscriptions","organizations_url":"https://api.github.com/users/jonmagic-test/orgs","repos_url":"https://api.github.com/users/jonmagic-test/repos","events_url":"https://api.github.com/users/jonmagic-test/events{/privacy}","received_events_url":"https://api.github.com/users/jonmagic-test/received_events","type":"User","site_admin":false}}'
+    http_version: 
+  recorded_at: Tue, 05 Aug 2014 19:08:08 GMT
+- request:
+    method: patch
+    uri: https://api.github.com/repos/hoytus/acme/issues/1
+    body:
+      encoding: UTF-8
+      string: '{"state":"closed","assignee":null,"title":"It''s dangerous to go alone.
+        Take this!","body":"Doh!"}'
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.1.0
+      Authorization:
+      - token fake_access_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 05 Aug 2014 19:08:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4993'
+      X-Ratelimit-Reset:
+      - '1407268346'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Etag:
+      - '"2a7308c38c54eeefeeffc509f9b8e5be"'
+      X-Oauth-Scopes:
+      - admin:org, admin:public_key, admin:repo_hook, delete_repo, gist, notifications,
+        repo, user
+      X-Accepted-Oauth-Scopes:
+      - ''
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 46C513DB:5530:23D591F:53E12B98
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - c046d59f93ede9ab52d5ac29f1ed70f7
+    body:
+      encoding: UTF-8
+      string: '{"url":"https://api.github.com/repos/hoytus/acme/issues/1","labels_url":"https://api.github.com/repos/hoytus/acme/issues/1/labels{/name}","comments_url":"https://api.github.com/repos/hoytus/acme/issues/1/comments","events_url":"https://api.github.com/repos/hoytus/acme/issues/1/events","html_url":"https://github.com/hoytus/acme/issues/1","id":35251260,"number":1,"title":"It''s
+        dangerous to go alone. Take this!","user":{"login":"jonmagic","id":623,"avatar_url":"https://avatars.githubusercontent.com/u/623?v=2","gravatar_id":"0a5a5f09f2c85cc425f7b8db4c5e61c1","url":"https://api.github.com/users/jonmagic","html_url":"https://github.com/jonmagic","followers_url":"https://api.github.com/users/jonmagic/followers","following_url":"https://api.github.com/users/jonmagic/following{/other_user}","gists_url":"https://api.github.com/users/jonmagic/gists{/gist_id}","starred_url":"https://api.github.com/users/jonmagic/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/jonmagic/subscriptions","organizations_url":"https://api.github.com/users/jonmagic/orgs","repos_url":"https://api.github.com/users/jonmagic/repos","events_url":"https://api.github.com/users/jonmagic/events{/privacy}","received_events_url":"https://api.github.com/users/jonmagic/received_events","type":"User","site_admin":true},"labels":[],"state":"closed","assignee":null,"milestone":null,"comments":0,"created_at":"2014-06-08T23:57:04Z","updated_at":"2014-08-05T19:08:09Z","closed_at":"2014-08-05T19:08:09Z","body":"Doh!","closed_by":{"login":"jonmagic-test","id":3475511,"avatar_url":"https://avatars.githubusercontent.com/u/3475511?v=2","gravatar_id":"2b5618c2dc94fb50ea61204e7f99a9f8","url":"https://api.github.com/users/jonmagic-test","html_url":"https://github.com/jonmagic-test","followers_url":"https://api.github.com/users/jonmagic-test/followers","following_url":"https://api.github.com/users/jonmagic-test/following{/other_user}","gists_url":"https://api.github.com/users/jonmagic-test/gists{/gist_id}","starred_url":"https://api.github.com/users/jonmagic-test/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/jonmagic-test/subscriptions","organizations_url":"https://api.github.com/users/jonmagic-test/orgs","repos_url":"https://api.github.com/users/jonmagic-test/repos","events_url":"https://api.github.com/users/jonmagic-test/events{/privacy}","received_events_url":"https://api.github.com/users/jonmagic-test/received_events","type":"User","site_admin":false}}'
+    http_version: 
+  recorded_at: Tue, 05 Aug 2014 19:08:09 GMT
+recorded_with: VCR 2.9.2
