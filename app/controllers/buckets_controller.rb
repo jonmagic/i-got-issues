@@ -27,7 +27,6 @@ class BucketsController < ApplicationController
   end
 
   def update
-    bucket_service = BucketService.for_bucket_by_team_and_bucket_id(team, params[:id])
     bucket_service.update_bucket_with_params(bucket_params)
 
     respond_to do |format|
@@ -37,7 +36,6 @@ class BucketsController < ApplicationController
   end
 
   def destroy
-    bucket_service = BucketService.for_bucket_by_team_and_bucket_id(team, params[:id])
     bucket_service.move_issues_and_destroy_bucket
 
     redirect_to team_path(team), :notice => "Bucket was successfully destroyed."
@@ -47,5 +45,10 @@ private
   # Only allow a trusted parameter "white list" through.
   def bucket_params
     params.require(:bucket).permit(:name, :row_order_position)
+  end
+
+  def bucket_service
+    @bucket_service ||= \
+      BucketService.for_bucket_by_team_and_bucket_id(team, params[:id])
   end
 end
