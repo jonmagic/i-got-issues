@@ -12,3 +12,8 @@ icebox:
   name: Icebox
   row_order: 2
   team_id: 203770
+
+other:
+  name: Other Bucket
+  row_order: 0
+  team_id: 203768
