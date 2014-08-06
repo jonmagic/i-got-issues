@@ -119,6 +119,20 @@ class AuditEntry < ActiveRecord::Base
   # column :bucket_end_position
   # Returns an Integer.
 
+  # Public: Set source bucket attributes before action.
+  def bucket_before_action=(bucket)
+    self.source_bucket_id      = bucket.id
+    self.source_bucket_name    = bucket.name
+    self.bucket_start_position = bucket.current_position
+  end
+
+  # Public: Set bucket related attributes after action.
+  def bucket_after_action=(bucket)
+    self.target_bucket_id    = bucket.id
+    self.target_bucket_name  = bucket.name
+    self.bucket_end_position = bucket.current_position
+  end
+
   # Public: Timestamp from when entry was created.
   # column :created_at
   # Returns an ActiveSupport::TimeWithZone.

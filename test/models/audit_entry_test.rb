@@ -52,4 +52,24 @@ class AuditEntryTest < ActiveSupport::TestCase
     assert_equal pi.bucket.id, entry.target_bucket_id
     assert_equal pi.bucket.name, entry.target_bucket_name
   end
+
+  test "#bucket_before_action= sets source bucket attributes" do
+    bucket = buckets(:current)
+    entry  = AuditEntry.new
+    entry.bucket_before_action = bucket
+
+    assert_equal bucket.id, entry.source_bucket_id
+    assert_equal bucket.name, entry.source_bucket_name
+    assert_equal 1, entry.bucket_start_position
+  end
+
+  test "#bucket_after_action= sets target bucket attributes" do
+    bucket = buckets(:current)
+    entry  = AuditEntry.new
+    entry.bucket_after_action = bucket
+
+    assert_equal bucket.id, entry.target_bucket_id
+    assert_equal bucket.name, entry.target_bucket_name
+    assert_equal 1, entry.bucket_end_position
+  end
 end
