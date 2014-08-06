@@ -11,10 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614210138) do
+ActiveRecord::Schema.define(version: 20140805221233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "audit_entries", force: true do |t|
+    t.integer  "team_id",               null: false
+    t.string   "team_name"
+    t.integer  "user_id",               null: false
+    t.string   "user_login"
+    t.integer  "action"
+    t.integer  "issue_id"
+    t.string   "issue_title"
+    t.integer  "prioritized_issue_id"
+    t.integer  "issue_start_position"
+    t.integer  "issue_end_position"
+    t.integer  "source_bucket_id"
+    t.string   "source_bucket_name"
+    t.integer  "target_bucket_id"
+    t.string   "target_bucket_name"
+    t.integer  "bucket_start_position"
+    t.integer  "bucket_end_position"
+    t.datetime "created_at"
+  end
+
+  add_index "audit_entries", ["created_at", "team_id"], name: "index_audit_entries_on_created_at_and_team_id", using: :btree
 
   create_table "buckets", force: true do |t|
     t.string   "name",                   null: false

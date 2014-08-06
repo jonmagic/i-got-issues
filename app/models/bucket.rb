@@ -22,6 +22,14 @@ class Bucket < ActiveRecord::Base
     update_attribute :row_order_position, position
   end
 
+  # Public: Get the current column position of the bucket. Columns start at 1
+  # and go up.
+  #
+  # Returns an Integer >= 1.
+  def current_position
+    team.buckets.pluck(:row_order).index(row_order) + 1
+  end
+
   # Public: Id of team on GitHub.
   # column :team_id
   # Returns an Integer.

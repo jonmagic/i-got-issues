@@ -39,6 +39,14 @@ class PrioritizedIssue < ActiveRecord::Base
     update_attribute :row_order_position, position
   end
 
+  # Public: Get the current position of the issue in the bucket. Highest
+  # priority is 1 and lower priority approaches infinity.
+  #
+  # Returns an Integer >= 1.
+  def current_position
+    self.class.bucket(bucket).pluck(:row_order).index(row_order) + 1
+  end
+
   # Public: Move to bucket. Optionally position issue in bucket.
   #
   # bucket - Bucket instance.

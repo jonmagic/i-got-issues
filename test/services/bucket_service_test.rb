@@ -38,14 +38,19 @@ class BucketServiceTest < ActiveSupport::TestCase
     assert_equal "Foo", service_for_user_and_team.bucket.name
   end
 
-  test "#update_bucket_with_params updates bucket name and row_order from params" do
+  test "#rename_bucket updates bucket name" do
     bucket = buckets(:current)
 
-    service_for_user_and_team.
-      for_bucket_by_id(bucket.id).
-      update_bucket_with_params({:name => "Icebox", :row_order_position => 1})
+    service_for_user_and_team.for_bucket_by_id(bucket.id).rename_bucket("Woot!")
 
-    assert_equal "Icebox", service_for_user_and_team.bucket.name
+    assert_equal "Woot!", service_for_user_and_team.bucket.name
+  end
+
+  test "#move_bucket updates bucket position" do
+    bucket = buckets(:current)
+
+    service_for_user_and_team.for_bucket_by_id(bucket.id).move_bucket(1)
+
     assert_equal 1, service_for_user_and_team.bucket.row_order
   end
 

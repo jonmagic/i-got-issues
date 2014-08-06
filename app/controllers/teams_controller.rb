@@ -14,6 +14,12 @@ class TeamsController < ApplicationController
   def archive_closed_issues
     team.issues.closed.where(:archived_at => nil).update_all :archived_at => Time.now.beginning_of_minute
 
+    AuditEntry.create do |entry|
+      entry.user   = current_user
+      entry.team   = team
+      entry.action = :archive_issues
+    end
+
     head :ok
   end
 end
