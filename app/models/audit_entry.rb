@@ -50,6 +50,7 @@ class AuditEntry < ActiveRecord::Base
     :rename_bucket,
     :move_bucket,
     :remove_bucket,
+    :archive_issues,
   ]
 
   # Public: The associated Issue.
