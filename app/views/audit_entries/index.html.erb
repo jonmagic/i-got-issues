@@ -1,0 +1,11 @@
+<% content_for :header_nav do %>
+  <%= render "buckets/navbar" %>
+<% end %>
+<div class="list-group">
+  <% @entries.each do |entry| %>
+    <div class="list-group-item">
+      <span class="badge"><%= time_ago_in_words(entry.created_at) %> ago</span>
+      <%= render :partial => entry.action.to_s, :locals => {:entry => entry} %>
+    </div>
+  <% end %>
+</div>

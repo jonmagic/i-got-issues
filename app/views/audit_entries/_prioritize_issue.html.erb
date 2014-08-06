@@ -1,0 +1,5 @@
+<% if entry.source_bucket_id == entry.target_bucket_id %>
+  <strong><%= entry.user_login %></strong> prioritized <%= link_to entry.issue_title, github_issue_url(entry.issue) %> from the <strong>#<%= entry.issue_start_position %></strong> position to the <strong>#<%= entry.issue_end_position %></strong> position in bucket <strong><%= entry.target_bucket_name %></strong>
+<% else %>
+  <strong><%= entry.user_login %></strong> moved <%= link_to entry.issue_title, github_issue_url(entry.issue) %> from the <strong>#<%= entry.issue_start_position %></strong> position in bucket <strong><%= entry.source_bucket_name %></strong> to the <strong>#<%= entry.issue_end_position %></strong> position in bucket <strong><%= entry.target_bucket_name %></strong>
+<% end %>
