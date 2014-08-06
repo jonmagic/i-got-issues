@@ -36,6 +36,8 @@ class PrioritizedIssueService < ApplicationService
 
       prioritized_issue.update_attributes(attributes)
       self.prioritized_issue = prioritized_issue
+      log(:import_issue)
+      prioritized_issue
     end
   end
 
@@ -54,7 +56,11 @@ class PrioritizedIssueService < ApplicationService
   #
   # Returns a PrioritizedIssue.
   def remove_prioritized_issue
-    prioritized_issue.destroy
+    log(:remove_issue) do
+      prioritized_issue.destroy
+    end
+
+    prioritized_issue
   end
 
   # Public: Moves PrioritizedIssue to a position in a Bucket.
@@ -64,7 +70,11 @@ class PrioritizedIssueService < ApplicationService
   #
   # Returns a PrioritizedIssue.
   def move_prioritized_issue_to_position_in_bucket(position, bucket)
-    prioritized_issue.move_to_bucket(bucket, position)
+    log(:prioritize_issue) do
+      prioritized_issue.move_to_bucket(bucket, position)
+    end
+
+    prioritized_issue
   end
 
   # Public: Update Issue with values from GitHub.
@@ -89,5 +99,18 @@ private
   # Returns an IssueUpdater.
   def issue_updater
     @issue_updater ||= IssueUpdater.new(github_client)
+  end
+
+  def log(action)
+    AuditEntry.create do |entry|
+      entry.user                = user
+      entry.team                = team
+      entry.action              = action
+      entry.issue_before_action = prioritized_issue
+
+      yield if block_given?
+
+      entry.issue_after_action  = prioritized_issue
+    end
   end
 end
