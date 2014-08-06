@@ -22,4 +22,9 @@ class PrioritizedIssueTest < ActiveSupport::TestCase
     assert_equal "Backlog", pi1.bucket.name
     assert_equal [pi1, pi2], PrioritizedIssue.bucket(backlog).all
   end
+
+  test "#current_position returns position of issue in bucket" do
+    assert_equal 1, prioritized_issues(:pi1).current_position
+    assert_equal 2, prioritized_issues(:pi3).current_position
+  end
 end
