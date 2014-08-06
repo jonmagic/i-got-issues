@@ -136,4 +136,7 @@ class AuditEntry < ActiveRecord::Base
   # Public: Timestamp from when entry was created.
   # column :created_at
   # Returns an ActiveSupport::TimeWithZone.
+
+  # Last 100 audit log entries for a Team sorted oldest to newest.
+  scope :by_team_id, -> (team_id) { where(:team_id => team_id).order(:created_at => :desc).limit(100) }
 end
