@@ -12,6 +12,7 @@ gem "newrelic_rpm"
 gem "octokit"
 gem "omniauth-github"
 gem "pg"
+gem "pusher"
 gem "rails_12factor", :group => :production
 gem "ranked-model"
 gem "sass-rails"
