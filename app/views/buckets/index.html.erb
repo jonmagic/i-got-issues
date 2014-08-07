@@ -1,6 +1,7 @@
 <% content_for :header_nav do %>
   <%= render "navbar" %>
 <% end %>
+<div id="pusher_config" data-pusher-channel="<%= pusher_channel %>" data-user-id="<%= current_user.id %>"></div>
 <div class="row js-buckets">
   <%= render :partial => "bucket", :collection => @buckets %>
 </div>
