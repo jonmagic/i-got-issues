@@ -105,7 +105,7 @@ class AuditEntry < ActiveRecord::Base
 
   # Public: Set issue related attributes after action.
   def issue_after_action=(prioritized_issue)
-    return unless prioritized_issue.persisted?
+    return unless prioritized_issue.present? && prioritized_issue.persisted?
 
     self.issue_end_position = prioritized_issue.current_position
     self.target_bucket_id   = prioritized_issue.bucket.id
@@ -129,6 +129,8 @@ class AuditEntry < ActiveRecord::Base
 
   # Public: Set bucket related attributes after action.
   def bucket_after_action=(bucket)
+    return unless bucket.present? && bucket.persisted?
+
     self.target_bucket_id    = bucket.id
     self.target_bucket_name  = bucket.name
     self.bucket_end_position = bucket.current_position
