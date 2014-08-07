@@ -82,4 +82,10 @@ class ApplicationController < ActionController::Base
       redirect_to team_path(team)
     end
   end
+
+  def notify_team_subscribers
+    Pusher["team.#{team.id}"].trigger('update', {
+      :params => params
+    })
+  end
 end
