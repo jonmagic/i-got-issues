@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <%= render :partial => "shared/head" %>
+    <%= render :partial => "shared/scripts" %>
   </head>
   <body class="<%= 'js-write-access write-access' if @team && @team.member?(current_user) %>">
     <nav class="navbar navbar-default" role="navigation">
@@ -35,7 +36,5 @@
         <%= yield :footer_nav %>
       </div>
     </nav>
-
-    <%= render :partial => "shared/footer" %>
   </body>
 </html>
