@@ -1,0 +1,26 @@
+<% content_for :header_nav do %>
+  <%= render "buckets/navbar" %>
+<% end %>
+<div class="form-container">
+  <h1>Import Repository Issues</h1>
+  <%= form_tag do %>
+    <div class="field">
+      <%= label_tag :url, "Repository Url" %><br>
+      <%= text_field_tag :url, "", :class => "form-control", :placeholder => "https://github.com/jonmagic/scriptular" %>
+    </div>
+
+    <div class="field">
+      <%= label_tag :labels, "Only These Labels" %><br>
+      <%= text_field_tag :labels, "", :class => "form-control", :placeholder => "bug,enhancement" %>
+    </div>
+
+    <div class="field">
+      <%= label_tag :state, "Issue State" %><br>
+      <%= select_tag :state, options_for_select(["open", "closed"]) %>
+    </div>
+
+    <div class="actions">
+      <%= submit_tag "Import Issues", :class => "button" %>
+    </div>
+  <% end %>
+</div>

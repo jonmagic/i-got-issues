@@ -23,21 +23,30 @@ class PrioritizedIssueService < ApplicationService
   # Returns a PrioritizedIssue.
   def import_issue_from_url(url)
     if issue = issue_importer.from_url(url)
-      prioritized_issue = PrioritizedIssue.where(
-        :bucket => team.buckets,
-        :issue  => issue
-      ).first_or_initialize
+      create_or_update_prioritized_issue(issue)
+    end
+  end
 
-      attributes = {:archived_at => nil}
-      if prioritized_issue.new_record?
-        attributes[:row_order_position] = :last
-        attributes[:bucket] = team.buckets.last
-      end
+  # Public: Import issues from a repository. Filter which issues to import by
+  # passing in labels and state.
+  #
+  # url    - String url that can be parsed by RepositoryUrlParser
+  # labels - String of comma seperated issue labels
+  # state  - String issue state, "open" or "closed"
+  #
+  # Returns an Array of PrioritizedIssue instances.
+  def import_issues_from_repository(url, labels=nil, state="open")
+    url_parser = RepositoryUrlParser.new(url)
+    options    = {:state => state}
+    options[:labels] = labels if labels.present?
 
-      prioritized_issue.update_attributes(attributes)
-      self.prioritized_issue = prioritized_issue
-      log(:import_issue)
-      prioritized_issue
+    github_issues = \
+      github_client.
+        issues "#{url_parser.owner}/#{url_parser.repository}", options
+
+    github_issues.map do |github_issue|
+      issue = issue_importer.from_github_issue(github_issue)
+      create_or_update_prioritized_issue(issue)
     end
   end
 
@@ -112,5 +121,28 @@ private
 
       entry.issue_after_action  = prioritized_issue
     end
+  end
+
+  # Internal: Create or update PrioritizedIssue from it's associated Issue.
+  #
+  # issue - Issue instance
+  #
+  # Returns a PrioritizedIssue.
+  def create_or_update_prioritized_issue(issue)
+    prioritized_issue = PrioritizedIssue.where(
+      :bucket => team.buckets,
+      :issue  => issue
+    ).first_or_initialize
+
+    attributes = {:archived_at => nil}
+    if prioritized_issue.new_record?
+      attributes[:row_order_position] = :last
+      attributes[:bucket] = team.buckets.last
+    end
+
+    prioritized_issue.update_attributes(attributes)
+    self.prioritized_issue = prioritized_issue
+    log(:import_issue)
+    prioritized_issue
   end
 end
