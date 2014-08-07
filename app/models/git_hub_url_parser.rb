@@ -1,10 +1,8 @@
-class UrlParser
+class GitHubUrlParser
   class InvalidUrl < StandardError; end
 
-  ISSUE_REGEX = /https?\:\/\/github\.(?:com|dev)\/(.+)\/(.+)\/(?:issues|pull)\/(\d*)/
-
   def initialize(url)
-    @matches = ISSUE_REGEX.match(url)
+    @matches = url_pattern.match(url)
     raise InvalidUrl unless @matches.present?
   end
 
@@ -16,9 +14,5 @@ class UrlParser
 
   def repository
     matches[2]
-  end
-
-  def number
-    matches[3].to_i
   end
 end
