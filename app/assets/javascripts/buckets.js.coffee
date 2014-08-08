@@ -53,6 +53,9 @@ makeIssuesAssignable = ->
       data: { prioritized_issue: { assignee: field.val() } }
       success: (html) ->
         issue.replaceWith(html)
+    .fail (data) ->
+      issue.toggleClass("assigning")
+
 
 makeIssuesStateable = ->
   $(document).on "change", ".js-write-access .js-issue-state-toggle", (e) ->
