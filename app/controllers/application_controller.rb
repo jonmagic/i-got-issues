@@ -89,6 +89,8 @@ class ApplicationController < ActionController::Base
   end
 
   def notify_team_subscribers
+    return if Pusher.app_id.blank?
+
     Pusher[pusher_channel].trigger('update', {
       :params => params.merge(:user_id => current_user.id)
     })
