@@ -55,21 +55,12 @@ class ApplicationController < ActionController::Base
     reset_session
   end
 
-  def team_members
-    @team_members ||= begin
-      current_user.
-        github_client.
-        team_members(params[:team_id]).
-        map {|attributes| TeamMember.new(attributes) }
-    end
+  def team_service
+    @team_service ||= TeamService.for_user(current_user).for_team_by_id(params[:team_id])
   end
 
   def team
-    @team ||= begin
-      team = Team.new(current_user.github_client.team(params[:team_id]))
-      team.members = team_members
-      team
-    end
+    @team ||= team_service.team
   end
 
   def authorize_read_team!

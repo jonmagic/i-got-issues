@@ -82,6 +82,6 @@ private
   end
 
   def load_assignees
-    @assignees = team_members.map &:login
+    @assignees = team.members.map &:login
   end
 end
