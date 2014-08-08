@@ -3,10 +3,10 @@ class TeamsController < ApplicationController
   after_filter  :notify_team_subscribers, :only => [:archive_closed_issues]
 
   def index
-    @organizations = current_user.
-      github_client.
+    @organizations = \
+      TeamService.
+      for_user(current_user).
       user_teams.
-      map {|t| Team.new(t) }.
       group_by {|t| t.organization.downcase }.
       sort
   end

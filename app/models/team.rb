@@ -4,8 +4,8 @@ class Team
   def initialize(params={})
     @id           = params[:id]
     @name         = params[:name]
-    @organization = params[:organization] ? params[:organization][:login] : nil
-    @avatar_url   = params[:organization] ? params[:organization][:avatar_url] : nil
+    @organization = params[:organization]
+    @avatar_url   = params[:avatar_url]
   end
 
   attr_accessor :id, :name, :organization, :avatar_url, :members
