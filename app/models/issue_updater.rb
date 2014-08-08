@@ -3,10 +3,12 @@ class IssueUpdater
     @github_client = github_client
   end
 
-  def from_issue(issue)
-    github_issue = @github_client.issue "#{issue.owner}/#{issue.repository}", issue.number
+  attr_reader :github_client
 
-    @github_client.update_issue \
+  def from_issue(issue)
+    github_issue = github_client.issue "#{issue.owner}/#{issue.repository}", issue.number
+
+    github_client.update_issue \
       "#{issue.owner}/#{issue.repository}", issue.number,
       github_issue[:title], github_issue[:body],
       :state => issue.state, :assignee => issue.assignee
