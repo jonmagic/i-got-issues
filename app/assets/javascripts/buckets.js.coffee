@@ -98,19 +98,20 @@ makeIssuesArchivable = ->
         $("[name=prioritized_issue\\[state\\]]:checked").closest(".issue").hide()
 
 subscribeToTeamUpdates = ->
-  pusher_config    = $("#pusher_config")
-  window.channel ||= null
+  pusher_config     = $("#pusher_config")
+  window.channels ||= {}
 
-  if pusher_config.length > 0 && !window.channel
-    channel_name   = pusher_config.data().pusherChannel
-    window.channel = pusher.subscribe(channel_name)
-    window.channel.bind "update", (data) ->
+  if pusher_config.length > 0 && !window.channels[channel_name]
+    channel_name                  = pusher_config.data().pusherChannel
+    window.channels[channel_name] = pusher.subscribe(channel_name)
+
+    window.channels[channel_name].bind "update", (data) ->
       refreshOnUpdateByOtherUsers(data)
   else if pusher_config.length > 0
-    window.channel.bind "update", (data) ->
+    window.channels[channel_name].bind "update", (data) ->
       refreshOnUpdateByOtherUsers(data)
-  else if window.channel
-    window.channel.unbind()
+  else if window.channels[channel_name]
+    window.channels[channel_name].unbind()
 
 refreshOnUpdateByOtherUsers = (data) ->
   pusher_config = $("#pusher_config")
