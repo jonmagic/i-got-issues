@@ -56,8 +56,10 @@ class PrioritizedIssueService < ApplicationService
   #
   # Returns a PrioritizedIssue.
   def update_issue_with_params(params)
-    prioritized_issue.issue.update(params)
-    issue_updater.from_issue(prioritized_issue.issue)
+    Issue.transaction do
+      prioritized_issue.issue.update(params)
+      issue_updater.from_issue(prioritized_issue.issue)
+    end
     self.prioritized_issue = prioritized_issue.reload
   end
 
