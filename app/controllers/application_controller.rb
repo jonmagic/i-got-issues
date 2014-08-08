@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
   helper_method :current_user
   helper_method :current_service
+  helper_method :pusher_channel
 
   rescue_from "Octokit::NotFound" do |exception|
     redirect_to root_path
@@ -81,5 +82,15 @@ class ApplicationController < ActionController::Base
     unless team.member?(current_user)
       redirect_to team_path(team)
     end
+  end
+
+  def pusher_channel
+    "team.#{team.id}"
+  end
+
+  def notify_team_subscribers
+    Pusher[pusher_channel].trigger('update', {
+      :params => params.merge(:user_id => current_user.id)
+    })
   end
 end

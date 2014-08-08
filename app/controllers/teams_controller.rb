@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
   before_filter :authorize_write_team!, :only => [:archive_closed_issues]
+  after_filter  :notify_team_subscribers, :only => [:archive_closed_issues]
 
   def index
     @organizations = current_user.

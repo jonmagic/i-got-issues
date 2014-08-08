@@ -97,6 +97,28 @@ makeIssuesArchivable = ->
       success: (html) ->
         $("[name=prioritized_issue\\[state\\]]:checked").closest(".issue").hide()
 
+subscribeToTeamUpdates = ->
+  pusher_config     = $("#pusher_config")
+  window.channels ||= {}
+
+  if pusher_config.length > 0 && !window.channels[channel_name]
+    channel_name                  = pusher_config.data().pusherChannel
+    window.channels[channel_name] = pusher.subscribe(channel_name)
+
+    window.channels[channel_name].bind "update", (data) ->
+      refreshOnUpdateByOtherUsers(data)
+  else if pusher_config.length > 0
+    window.channels[channel_name].bind "update", (data) ->
+      refreshOnUpdateByOtherUsers(data)
+  else if window.channels[channel_name]
+    window.channels[channel_name].unbind()
+
+refreshOnUpdateByOtherUsers = (data) ->
+  pusher_config = $("#pusher_config")
+
+  if pusher_config.length > 0 && data.params.user_id != pusher_config.data().userId
+    Turbolinks.visit(window.location.href)
+
 $ ->
   makeIssuesSortable()
   makeIssuesAssignable()
@@ -105,7 +127,9 @@ $ ->
   makeBucketsSortable()
   makeIssueSyncable()
   makeIssuesArchivable()
+  subscribeToTeamUpdates()
 
 $(document).on "page:load", ->
   makeIssuesSortable()
   makeBucketsSortable()
+  subscribeToTeamUpdates()

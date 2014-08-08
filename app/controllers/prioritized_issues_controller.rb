@@ -3,6 +3,7 @@ class PrioritizedIssuesController < ApplicationController
   before_filter :authorize_read_team!, :except => [:bookmarklet_legacy, :new]
   before_filter :authorize_write_team!, :except => [:sync, :bookmarklet_legacy, :new]
   before_filter :load_assignees, :only => [:update, :sync]
+  after_filter  :notify_team_subscribers, :only => [:create, :update, :destroy, :move_to_bucket, :sync]
 
   def create
     prioritized_issue_service.import_issue_from_url(params[:url])
