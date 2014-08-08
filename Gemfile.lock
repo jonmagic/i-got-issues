@@ -48,6 +48,7 @@ GEM
     coffee-script-source (1.7.0)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
+    dalli (2.7.2)
     dotenv (0.11.1)
       dotenv-deployment (~> 0.0.2)
     dotenv-deployment (0.0.2)
@@ -72,6 +73,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    memcachier (0.0.2)
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.6.0)
@@ -207,9 +209,11 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass
   coffee-rails
+  dalli
   dotenv-rails
   jquery-rails
   jquery-ui-rails
+  memcachier
   minitest-rails-capybara
   newrelic_rpm
   octokit

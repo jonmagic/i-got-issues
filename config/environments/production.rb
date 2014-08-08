@@ -80,4 +80,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Configure to use Dalli for caching in production
+  config.cache_store = :dalli_store
 end
