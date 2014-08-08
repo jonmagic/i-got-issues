@@ -20,7 +20,6 @@ class ServicesController < ApplicationController
         session[:user_id]            = current_service.user.id
         session[:service_id]         = current_service.id
         session[:oauth_token]        = omnihash[:credentials][:token]
-        session[:oauth_token_secret] = omnihash[:credentials][:secret]
       else
         user         = User.where(:login => omnihash[:info][:nickname]).first_or_initialize
         user.email   = omnihash[:info][:email]
@@ -33,7 +32,6 @@ class ServicesController < ApplicationController
           session[:user_id]            = user.id
           session[:service_id]         = user_service.id
           session[:oauth_token]        = omnihash[:credentials][:token]
-          session[:oauth_token_secret] = omnihash[:credentials][:secret]
 
           flash[:notice] = I18n.t("notifications.account_created")
         end
