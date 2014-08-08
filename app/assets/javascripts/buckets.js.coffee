@@ -104,23 +104,24 @@ subscribeToTeamUpdates = ->
   pusher_config     = $("#pusher_config")
   window.channels ||= {}
 
-  if pusher_config.length > 0 && !window.channels[channel_name]
-    channel_name                  = pusher_config.data().pusherChannel
-    window.channels[channel_name] = pusher.subscribe(channel_name)
+  if pusher_config.length > 0
+    channel_name = pusher_config.data().pusherChannel
+
+    if !window.channels[channel_name]
+      window.channels[channel_name] = pusher.subscribe(channel_name)
+    else
+      window.channels[channel_name].unbind()
 
     window.channels[channel_name].bind "update", (data) ->
-      refreshOnUpdateByOtherUsers(data)
-  else if pusher_config.length > 0
-    window.channels[channel_name].bind "update", (data) ->
-      refreshOnUpdateByOtherUsers(data)
-  else if !!window.channels[channel_name]
-    window.channels[channel_name].unbind()
+      refreshTeamWhenUpdated(data)
 
-refreshOnUpdateByOtherUsers = (data) ->
-  pusher_config = $("#pusher_config")
+refreshTeamWhenUpdated = (data) ->
+  pusher_config  = $("#pusher_config")
 
-  if pusher_config.length > 0 && data.params.user_id != pusher_config.data().userId
-    Turbolinks.visit(window.location.href)
+  if pusher_config.length > 0
+    if data.user_id != pusher_config.data().userId
+      if data.team_id == "#{pusher_config.data().teamId}"
+        Turbolinks.visit(window.location.href)
 
 $ ->
   makeIssuesSortable()

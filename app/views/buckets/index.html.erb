@@ -2,7 +2,7 @@
   <%= render "navbar" %>
 <% end %>
 <% if Pusher.app_id.present? %>
-  <div id="pusher_config" data-pusher-channel="<%= pusher_channel %>" data-user-id="<%= current_user.id %>"></div>
+  <div id="pusher_config" data-pusher-channel="<%= pusher_channel %>" data-user-id="<%= current_user.id %>" data-team-id="<%= @team.id %>"></div>
 <% end %>
 <div class="row js-buckets">
   <%= render :partial => "bucket", :collection => @buckets %>
