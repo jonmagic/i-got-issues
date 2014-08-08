@@ -110,7 +110,7 @@ subscribeToTeamUpdates = ->
   else if pusher_config.length > 0
     window.channels[channel_name].bind "update", (data) ->
       refreshOnUpdateByOtherUsers(data)
-  else if window.channels[channel_name]
+  else if !!window.channels[channel_name]
     window.channels[channel_name].unbind()
 
 refreshOnUpdateByOtherUsers = (data) ->
