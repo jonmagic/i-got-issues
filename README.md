@@ -14,29 +14,43 @@ I Got Issues **does not force a specific workflow** but it was developed with a 
 
 ## Our Workflow
 
+### Buckets
+
 My team at work prioritizes our issues into three buckets, In Progress, Up Next, and Icebox.
 
 ![buckets](http://cl.ly/image/0j2B0f0I3H2H/Issues.jpg)
+
+### Prioritization Meeting
 
 Approximately once a week we have a meeting where we work together to prioritize what is up next. Everyone on the team has ownership in the process and decisions made.
 
 ![prioritizing](http://cl.ly/image/0e0l3M06452S/prioritize.gif)
 
+### Importing
+
 We only import issues that we need to talk about and possibly work on.
 
 ![importing](http://cl.ly/image/0m0T1P3z0m1s/importing.gif)
+
+### Working An Issue
 
 When I start working on an issue I move it from Up Next to In Progress and assign it to myself.
 
 ![start working](http://cl.ly/image/2a2D300H353X/start%20working.gif)
 
+### Completing An Issue
+
 I can close the issue by simply checking the box once I have completed the work.
 
 ![completing](http://cl.ly/image/1i1V0d2q3X1T/completing.gif)
 
+### Shipping
+
 At our next prioritization meeting we discuss and then ship the completed issues which are automatically rolled up into a Markdown ship list that we can post somewhere for the rest of the company to see.
 
 ![shipping](http://cl.ly/image/0u3M1J3m3O3k/shipping.gif)
+
+### Auditing
 
 Finally we can audit the history of decisions we made.
 
