@@ -63,6 +63,7 @@ Read the [guide to contributing](https://github.com/jonmagic/i-got-issues/blob/m
 * [@jonmagic](https://github.com/jonmagic)
 * [@juliamae](https://github.com/juliamae)
 * [*jankeesvw](https://github.com/jankeesvw)
+* [@muan](https://github.com/muan)
 
 ## License
 
