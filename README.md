@@ -2,11 +2,15 @@
 
 I Got Issues provides a few simple building blocks for organization and then gets out of the way so you can do your work.
 
+## Core Concepts
+
 ![football](http://f.cl.ly/items/0u2T313B0I0X0O0E1p08/Screen%20Recording%202014-11-11%20at%2011.05%20PM.gif)
 
-I Got Issues is team specific and repository agnostic so you can import issues from any number of repositories into your team's buckets.
+I Got Issues is **team specific and repository agnostic** so you can import issues from any number of repositories into your team's buckets.
 
-I Got Issues does not force a specific workflow but it was developed with a workflow in mind.
+I Got Issues **improves the signal to noise ratio** for your team by not showing every issue in every repository that you work in. Import issues that need your team's attention and ignore everything else.
+
+I Got Issues **does not force a specific workflow** but it was developed with a particular workflow in mind.
 
 ## Our Workflow
 
@@ -14,7 +18,7 @@ My team at work prioritizes our issues into three buckets, In Progress, Up Next,
 
 ![buckets](http://cl.ly/image/0j2B0f0I3H2H/Issues.jpg)
 
-Approximately once a week we have a meeting where we move issues between the buckets, discussing in progress and completed issues, figuring out what issues are up next to work on, and triaging the icebox.
+Approximately once a week we have a meeting where we work together to prioritize what is up next. Everyone on the team has ownership in the process and decisions made.
 
 ![prioritizing](http://cl.ly/image/0e0l3M06452S/prioritize.gif)
 
@@ -30,7 +34,7 @@ I can close the issue by simply checking the box once I have completed the work.
 
 ![completing](http://cl.ly/image/1i1V0d2q3X1T/completing.gif)
 
-At our next prioritization meeting we discuss and then ship the completed issues which are then rolled up into a Markdown ship list that we can post somewhere for the rest of the company to see.
+At our next prioritization meeting we discuss and then ship the completed issues which are automatically rolled up into a Markdown ship list that we can post somewhere for the rest of the company to see.
 
 ![shipping](http://cl.ly/image/0u3M1J3m3O3k/shipping.gif)
 
