@@ -1,14 +1,42 @@
-# Prioritized Issues
+# Teams, Buckets, Issues
 
-My team at GitHub prioritizes our issues into three buckets, Current, Backlog, and Icebox.
+I Got Issues provides a few simple building blocks for organization and then gets out of the way so you can do your work.
 
-I move an issue from Backlog to Current and assign it to myself when I start working on it. Any new issues that come in during the week go into the Icebox. Once a week we have a meeting where we decide as a team what issues should become a priority and get moved from the Icebox to the Backlog. When we complete an issue we check close it.
+![football](http://f.cl.ly/items/0u2T313B0I0X0O0E1p08/Screen%20Recording%202014-11-11%20at%2011.05%20PM.gif)
 
-We have been using a single tracking issue with three task lists to represent the three buckets. This requires manually editing the text of the issue each time you want to pick something off of the backlog. It requires a massive edit during our weekly planning meeting. It also requires editing every time a new issue comes to our attention that we may be responsible for.
+I Got Issues is team specific and repository agnostic so you can import issues from any number of repositories into your team's buckets.
 
-This app aims to solve alleviate some of the pain of our current process.
+I Got Issues does not force a specific workflow but it was developed with a workflow in mind.
 
-![i got issues](http://cl.ly/image/1h1e03010B2B/i-got-issues-2.gif)
+## Our Workflow
+
+My team at work prioritizes our issues into three buckets, In Progress, Up Next, and Icebox.
+
+![buckets](http://cl.ly/image/0j2B0f0I3H2H/Issues.jpg)
+
+Approximately once a week we have a meeting where we move issues between the buckets, discussing in progress and completed issues, figuring out what issues are up next to work on, and triaging the icebox.
+
+![prioritizing](http://cl.ly/image/0e0l3M06452S/prioritize.gif)
+
+We only import issues that we need to talk about and possibly work on.
+
+![importing](http://cl.ly/image/0m0T1P3z0m1s/importing.gif)
+
+When I start working on an issue I move it from Up Next to In Progress and assign it to myself.
+
+![start working](http://cl.ly/image/2a2D300H353X/start%20working.gif)
+
+I can close the issue by simply checking the box once I have completed the work.
+
+![completing](http://cl.ly/image/1i1V0d2q3X1T/completing.gif)
+
+At our next prioritization meeting we discuss and then ship the completed issues which are then rolled up into a Markdown ship list that we can post somewhere for the rest of the company to see.
+
+![shipping](http://cl.ly/image/0u3M1J3m3O3k/shipping.gif)
+
+Finally we can audit the history of decisions we made.
+
+![auditing](http://cl.ly/image/1E2s0o0G0O12/auditing.gif)
 
 ## Usage
 
