@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140805221233) do
+ActiveRecord::Schema.define(version: 20160127054900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,15 +49,16 @@ ActiveRecord::Schema.define(version: 20140805221233) do
   add_index "buckets", ["team_id", "row_order"], name: "index_buckets_on_team_id_and_row_order", using: :btree
 
   create_table "issues", force: true do |t|
-    t.string   "title",      null: false
-    t.string   "owner",      null: false
-    t.string   "repository", null: false
-    t.integer  "number",     null: false
-    t.integer  "state",      null: false
+    t.string   "title",                        null: false
+    t.string   "owner",                        null: false
+    t.string   "repository",                   null: false
+    t.integer  "number",                       null: false
+    t.integer  "state",                        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "assignee"
     t.binary   "labels"
+    t.boolean  "pull_request", default: false
   end
 
   add_index "issues", ["owner", "repository", "number"], name: "index_issues_on_owner_and_repository_and_number", unique: true, using: :btree

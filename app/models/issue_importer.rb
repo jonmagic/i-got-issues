@@ -82,10 +82,11 @@ private
     issue = Issue.by_owner_repo_number(owner, repository, number).first_or_initialize
 
     issue.update_attributes \
-      :title      => github_issue["title"],
-      :state      => github_issue["state"],
-      :assignee   => github_issue["assignee"] ? github_issue["assignee"]["login"] : nil,
-      :labels     => github_issue["labels"].map {|label| label[:name] }
+      :title        => github_issue["title"],
+      :state        => github_issue["state"],
+      :assignee     => github_issue["assignee"] ? github_issue["assignee"]["login"] : nil,
+      :labels       => github_issue["labels"].map {|label| label[:name] },
+      :pull_request => github_issue["pull_request"].present?
 
     issue
   end

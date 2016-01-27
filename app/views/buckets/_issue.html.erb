@@ -7,6 +7,7 @@
       <%= f.check_box :state, {:checked => issue.closed?, :title => "Check to close issue", :class => "js-issue-state-toggle"}, "closed", "open" %>
     <% end %>
     <div class="issue-data">
+      <span class="octicon <%= issue.pull_request? ? 'octicon-git-pull-request' : 'octicon-issue-opened' %>"></span>
       <%= link_to "[#{issue.owner}/#{issue.repository}] #{issue.title}", github_issue_url(issue), :class => "issue-link" %>
       <%= link_to octicon("sync"), "#", :class => "issue-sync js-issue-sync", :title => "Sync with original issue" %>
 
