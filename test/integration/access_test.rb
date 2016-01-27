@@ -1,3 +1,5 @@
+require 'test_helper'
+
 class AccessTest < Capybara::Rails::TestCase
   test "unauthenticated user can access login" do
     visit "/"
