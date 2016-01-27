@@ -30,6 +30,17 @@ class Issue < ActiveRecord::Base
   # Public: Labels for issue.
   # column :labels
   serialize :labels, Array
+  # Stop gap to get onto Rails 4.2. Will be replaced with type casting in
+  # Rails 5: http://edgeapi.rubyonrails.org/classes/ActiveModel/Type/Value.html
+  def labels
+    labels = super
+
+    if labels.is_a? String
+      JSON.parse(labels)
+    else
+      labels
+    end
+  end
 
   # column :created_at
   # column :updated_at
