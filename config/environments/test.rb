@@ -40,4 +40,6 @@ Rails.application.configure do
   # Middleware to make integration testing easier. Let's you set the session
   # programmatically.
   config.middleware.use RackSessionAccess::Middleware
+
+  config.active_support.test_order = :random
 end
