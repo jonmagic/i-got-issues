@@ -56,9 +56,25 @@ Finally we can audit the history of decisions we made.
 
 ![auditing](http://cl.ly/image/1E2s0o0G0O12/auditing.gif)
 
-## Usage
+## Prerequisites
 
-Clone the repo and run bundler.
+* postgres or whatever database you want to use (update database.yml accordingly)
+
+I install postgres using [homebrew](http://brew.sh/):
+
+```bash
+brew install postgres
+```
+
+And then I start the postgres server with:
+
+```bash
+postgres -D /usr/local/var/postgres
+```
+
+## Setup
+
+Clone the repo.
 
 ```bash
 git clone https://github.com/jonmagic/i-got-issues.git
@@ -75,7 +91,7 @@ GITHUB_KEY=client_id_from_the_app_you_just_registered
 GITHUB_SECRET=client_secret_from_the_app_you_just_registered
 ```
 
-Now bootstrap the database and start the server.
+Now setup the database and start the server.
 
 ```bash
 rake db:setup
