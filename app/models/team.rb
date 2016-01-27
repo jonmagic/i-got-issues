@@ -1,4 +1,5 @@
 class Team
+  include ActiveModel::Conversion
   extend ActiveModel::Naming
 
   def initialize(params={})
