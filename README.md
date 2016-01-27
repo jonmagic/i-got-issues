@@ -56,9 +56,25 @@ Finally we can audit the history of decisions we made.
 
 ![auditing](http://cl.ly/image/1E2s0o0G0O12/auditing.gif)
 
-## Usage
+## Prerequisites
 
-Clone the repo and run bundler.
+* postgres or whatever database you want to use (update database.yml accordingly)
+
+I install postgres using [homebrew](http://brew.sh/):
+
+```bash
+brew install postgres
+```
+
+And then I start the postgres server with:
+
+```bash
+postgres -D /usr/local/var/postgres
+```
+
+## Setup
+
+Clone the repo.
 
 ```bash
 git clone https://github.com/jonmagic/i-got-issues.git
@@ -66,7 +82,7 @@ cd i-got-issues
 bundle
 ```
 
-Now go to https://github.com/settings/applications and register a new application. You'll need the *Client ID* and *Client Secret*, if you run the server locally the *Authorization callback URL* is http://127.0.0.1:3000/auth/github/callback.
+Now go to https://github.com/settings/applications and register a new application. You'll need the *Client ID* and *Client Secret*, if you run the server locally the *Authorization callback URL* is http://localhost:3000/auth/github/callback.
 
 Create a `.env` file in the root of the project and enter the following details filling in with the values you just copied after registering a new application:
 
@@ -75,7 +91,7 @@ GITHUB_KEY=client_id_from_the_app_you_just_registered
 GITHUB_SECRET=client_secret_from_the_app_you_just_registered
 ```
 
-Now bootstrap the database and start the server.
+Now setup the database and start the server.
 
 ```bash
 rake db:setup
