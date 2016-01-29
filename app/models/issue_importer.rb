@@ -23,6 +23,7 @@ class IssueImporter
     @owner      = issue.owner
     @repository = issue.repository
     @number     = issue.number
+    @updated_at = issue.updated_at
 
     import
   end
@@ -37,7 +38,6 @@ class IssueImporter
     @owner        = parsed_url.owner
     @repository   = parsed_url.repository
     @number       = parsed_url.number
-    @github_issue = github_issue
 
     import
   end
@@ -57,7 +57,18 @@ private
   #
   # Returns a Sawyer::Resource.
   def github_issue
-    @github_issue ||= github_client.issue "#{owner}/#{repository}", number
+    @github_issue ||= begin
+      path = "/repos/#{@owner}/#{@repository}/issues/#{@number}"
+      options = {}
+
+      if defined?(@updated_at)
+        options[:headers] = {
+          "If-Modified-Since" => @updated_at.httpdate
+        }
+      end
+
+      github_client.send(:request, :get, path, nil, options)
+    end
   end
 
   # Internal: Repository owner on GitHub.
@@ -80,6 +91,9 @@ private
   # Returns an Issue.
   def import
     issue = Issue.by_owner_repo_number(owner, repository, number).first_or_initialize
+
+    # Return immediately if Issue has not changed since it was last updated.
+    return issue if github_issue.blank? && github_client.last_response.status == 304
 
     issue.update_attributes \
       :title        => github_issue["title"],
