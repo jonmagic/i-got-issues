@@ -103,8 +103,8 @@ makeIssuesSyncOnMouseEnter = ->
 makeIssuesSyncOnInterval = ->
   # sync issues on load
   syncIssues()
-  # sync issues every 1 minute
-  setInterval(syncIssues, 60000)
+  # sync issues every 2 minutes
+  setInterval(syncIssues, 1200000)
 
 makeIssuesArchivable = ->
   $(document).on "click", ".js-write-access .js-issues-archive", (e) ->
