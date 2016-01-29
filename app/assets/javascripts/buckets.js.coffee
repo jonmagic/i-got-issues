@@ -90,11 +90,15 @@ syncIssue = (issue) ->
     type: "POST"
     success: (html) ->
       issue.replaceWith(html) if html.length > 0
+      issue.data("synced-at", new Date())
 
 makeIssuesSyncOnMouseEnter = ->
   $(document).on "mouseenter", ".js-issue", (e) ->
     issue = $(this)
-    syncIssue(issue)
+    synced_at = issue.data("synced-at")
+
+    if synced_at && new Date - synced_at > 20000
+      syncIssue(issue)
 
 makeIssuesSyncOnInterval = ->
   # sync issues on load
