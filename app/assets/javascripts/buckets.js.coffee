@@ -89,7 +89,7 @@ syncIssue = (issue) ->
     url: issue.data("issue-sync-path")
     type: "POST"
     success: (html) ->
-      issue.replaceWith(html)
+      issue.replaceWith(html) if html.length > 0
 
 makeIssuesSyncOnMouseEnter = ->
   $(document).on "mouseenter", ".js-issue", (e) ->
