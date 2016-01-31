@@ -79,16 +79,32 @@ focusIssueImportOnCommand = ->
     if $(".js-issue-import-url:focus").length == 0 && e.keyCode == 73
       $(".js-issue-import-url").focus()
 
-makeIssueSyncable = ->
-  $(document).on "click", ".js-issue-sync", (e) ->
-    e.preventDefault()
-    issue = $(this).parents(".issue")
+syncIssues = ->
+  $(".js-issue").each (i, element) ->
+    issue = $(element)
+    syncIssue(issue)
 
-    request = $.ajax
-      url: issue.data("issue-sync-path")
-      type: "POST"
-      success: (html) ->
-        issue.replaceWith(html)
+syncIssue = (issue) ->
+  request = $.ajax
+    url: issue.data("issue-sync-path")
+    type: "POST"
+    success: (html) ->
+      issue.replaceWith(html) if html.length > 0
+      issue.data("synced-at", new Date())
+
+makeIssuesSyncOnMouseEnter = ->
+  $(document).on "mouseenter", ".js-issue", (e) ->
+    issue = $(this)
+    synced_at = issue.data("synced-at")
+
+    if synced_at && new Date - synced_at > 20000
+      syncIssue(issue)
+
+makeIssuesSyncOnInterval = ->
+  # sync issues on load
+  syncIssues()
+  # sync issues every 2 minutes
+  setInterval(syncIssues, 1200000)
 
 makeIssuesArchivable = ->
   $(document).on "click", ".js-write-access .js-issues-archive", (e) ->
@@ -129,7 +145,8 @@ $ ->
   makeIssuesStateable()
   focusIssueImportOnCommand()
   makeBucketsSortable()
-  makeIssueSyncable()
+  makeIssuesSyncOnInterval()
+  makeIssuesSyncOnMouseEnter()
   makeIssuesArchivable()
   subscribeToTeamUpdates()
 

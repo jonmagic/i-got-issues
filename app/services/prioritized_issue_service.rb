@@ -96,6 +96,10 @@ class PrioritizedIssueService < ApplicationService
     self.prioritized_issue = prioritized_issue.reload
   end
 
+  def issue_updated_at
+    prioritized_issue.issue.updated_at
+  end
+
 private
 
   # Internal: IssueImporter for importing an issue from GitHub.

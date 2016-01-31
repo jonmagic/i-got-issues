@@ -44,12 +44,17 @@ class PrioritizedIssuesController < ApplicationController
   end
 
   def sync
-    prioritized_issue_service.
-      for_prioritized_issue_by_id(params[:prioritized_issue_id]).
-      update_issue_with_values_from_github
+    prioritized_issue_service.for_prioritized_issue_by_id(params[:prioritized_issue_id])
+    before_sync_updated_at = prioritized_issue_service.issue_updated_at
+    prioritized_issue_service.update_issue_with_values_from_github
+    after_sync_updated_at = prioritized_issue_service.issue_updated_at
 
-    render :partial => "buckets/issue",
-           :locals => {:issue => prioritized_issue_service.prioritized_issue}
+    if before_sync_updated_at != after_sync_updated_at
+      render :partial => "buckets/issue",
+        :locals => {:issue => prioritized_issue_service.prioritized_issue}
+    else
+      render :nothing => true
+    end
   end
 
   def bookmarklet_legacy
