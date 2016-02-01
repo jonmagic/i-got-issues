@@ -8,7 +8,7 @@
     <% end %>
     <div class="issue-data">
       <%= issue.pull_request? ? octicon("git-pull-request") : octicon("issue-opened") %>
-      <%= link_to "[#{issue.owner}/#{issue.repository}] #{issue.title}", github_issue_url(issue), :class => "issue-link" %>
+      <%= link_to "[#{github_issue_nwo_id(issue)}] #{issue.title}", github_issue_url(issue), :class => "issue-link" %>
 
       <% if issue.assignee %>
         <%= link_to "@#{issue.assignee}", "#", :class => "issue-assignee js-issue-assignee-link", :title => "Assigned to #{issue.assignee} (edit)" %>

@@ -7,6 +7,10 @@ module ApplicationHelper
     "https://github.com/#{issue.owner}/#{issue.repository}/issues/#{issue.number}"
   end
 
+  def github_issue_nwo_id(issue)
+    "#{issue.owner}/#{issue.repository}##{issue.number}"
+  end
+
   def github_user_url(issue)
     "https://github.com/#{issue.assignee}"
   end
