@@ -35,6 +35,7 @@ class IssueImporter
   # Returns an Issue.
   def from_github_issue(github_issue)
     parsed_url    = IssueUrlParser.new(github_issue["html_url"])
+    @github_issue = github_issue
     @owner        = parsed_url.owner
     @repository   = parsed_url.repository
     @number       = parsed_url.number
