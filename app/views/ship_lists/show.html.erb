@@ -3,9 +3,9 @@
 <% end %>
 <div class="row">
   <div class="col-lg-12">
-    <p># Ship List for <%= @ship_list %></p>
-    <% @ship_list.issues.each do |issue| %>
-      <p>* [<%= issue.title %>](<%= github_issue_url(issue) %>)</p>
-    <% end %>
+    <p>#### Ship List for <%= @ship_list %></p>
+    <p>
+      <% @ship_list.issues.each do |issue| %>* ([<%= github_issue_nwo_id(issue) %>](<%= github_issue_url(issue) %>)) <%= issue.title %><br /><% end %>
+    </p>
   </div>
 </div>
