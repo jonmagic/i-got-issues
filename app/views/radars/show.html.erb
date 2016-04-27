@@ -1,0 +1,16 @@
+<% content_for :header_nav do %>
+  <%= render "buckets/navbar" %>
+<% end %>
+<div class="row">
+  <div class="col-lg-12">
+    <p>##### Did:</p>
+    <% @did.each do |issue| %>
+      - [x] [<%= github_issue_nwo_id(issue) %>](<%= github_issue_url(issue) %>): <%= issue.title %><br />
+    <% end %>
+    <br />
+    <p>##### Doing:</p>
+    <% @doing.each do |issue| %>
+      - [ ] [<%= github_issue_nwo_id(issue) %>](<%= github_issue_url(issue) %>): <%= issue.title %><br />
+    <% end %>
+  </div>
+</div>

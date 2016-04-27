@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
 
     resources :ship_lists, :only => [:index, :show]
+    resources :radars, :only => [:show]
     resources :import,     :only => [:index, :create]
   end
 
