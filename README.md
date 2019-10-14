@@ -1,5 +1,7 @@
 # Teams, Buckets, Issues
 
+**I'm archiving this repository as [GitHub Projects](https://help.github.com/en/articles/about-project-boards) do almost everything this project set out to do.**
+
 I Got Issues provides a few simple building blocks for organization and then gets out of the way so you can do your work.
 
 ## Core Concepts
